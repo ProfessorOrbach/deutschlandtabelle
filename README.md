@@ -1,4 +1,6 @@
-# Deutschlandweites Ranking der Fußballvereine
+# Deutschlandtabelle
+
+**→ [professororbach.github.io/deutschlandtabelle](https://professororbach.github.io/deutschlandtabelle/)**
 
 Eine einzige, tagesaktuelle Rangfolge aller erfassten deutschen Fußballmannschaften —
 ligaübergreifend, von der Bundesliga abwärts, ausschließlich aus den Spielen der
@@ -85,11 +87,23 @@ python3 build.py --no-cache   # alles frisch laden
 Keine Abhängigkeiten außer Python 3.12+. Ergebnis: `docs/index.html`,
 `docs/ranking.json`, `docs/ranking.csv`.
 
-## GitHub Pages einrichten
+## Veröffentlichung
 
-1. Repository anlegen und pushen.
-2. *Settings → Pages → Source* auf **GitHub Actions** stellen.
-3. Fertig — `.github/workflows/daily.yml` baut täglich um 03:15 UTC neu und deployt.
+Die Seite liegt auf GitHub Pages und wird derzeit direkt aus dem Ordner `docs/`
+des `main`-Branch ausgeliefert. Ein `python3 build.py` gefolgt von Commit und Push
+aktualisiert sie.
+
+**Tägliche Aktualisierung aktivieren.** `.github/workflows/daily.yml` baut das Ranking
+täglich um 03:15 UTC neu. Zum Hochladen braucht der GitHub-Token einmalig den
+`workflow`-Scope:
+
+```bash
+gh auth refresh -s workflow
+git add .github/workflows/daily.yml && git commit -m "Täglicher Build" && git push
+```
+
+Danach in *Settings → Pages → Source* von „Deploy from a branch" auf
+**GitHub Actions** umstellen.
 
 ## Aufbau
 
