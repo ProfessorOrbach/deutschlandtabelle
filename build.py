@@ -59,15 +59,18 @@ def main() -> int:
         parts.append("Auf Ligastufe 4 fehlen " + ", ".join(gaps)
                      + " — für diese Staffeln stellt OpenLigaDB keine Daten bereit.")
     if external:
-        kreise = sorted({lg["name"].split(" · ")[-1] for lg in leagues
-                         if lg.get("source") == "fussball.de" and " · " in lg["name"]})
+        verbaende = sorted({lg["verband"] for lg in leagues
+                            if lg.get("source") == "fussball.de" and lg.get("verband")})
+        kreise = len({lg["name"].split(" · ")[-1] for lg in leagues
+                      if lg.get("source") == "fussball.de" and " · " in lg["name"]})
         parts.append(
-            "Die Ligastufen 5 bis 11 sind <b>nicht bundesweit</b> erfasst, sondern "
-            "ausschließlich für den Fußball-Verband Mittelrhein — von der "
-            f"Mittelrheinliga bis zur Kreisliga D, über alle {len(kreise)} Kreise "
-            f"({', '.join(k.replace('Kreis ', '') for k in kreise)}). Ein Kreisligist "
-            "steht hier also stellvertretend für zehntausende nicht erfasste Vereine "
-            "derselben Stufe.")
+            "Die Ligastufen 5 bis 12 sind <b>nicht bundesweit</b> erfasst, sondern "
+            f"für die Verbände {', '.join(verbaende)} — also ganz Nordrhein-Westfalen, "
+            f"über rund {kreise} Fußballkreise bis hinunter zur Kreisliga D. Ein "
+            "Kreisligist steht hier stellvertretend für zehntausende nicht erfasste "
+            "Vereine derselben Stufe. Beachte auch: die Verbände bauen ihre Pyramide "
+            "unterschiedlich — Westfalen schiebt zwischen Oberliga und Landesliga noch "
+            "die Verbandsliga ein und reicht deshalb bis Stufe 12.")
     note = ("<b>Abdeckung.</b> " + " ".join(parts)) if parts else None
 
     meta = {

@@ -43,6 +43,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from dataclasses import dataclass
 from pathlib import Path
 
 ENABLED = True
@@ -51,24 +52,49 @@ BASE = "https://www.fussball.de"
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 
-MANDANT = "23"        # Fußball-Verband Mittelrhein
 COMP_TYPE = "1"       # Meisterschaften (keine Pokale, Turniere, Freundschaftsspiele)
-TEAM_TYPE = "95"      # Herren
-VERBAND = "Mittelrhein"
 
-# Spielklassen-ID -> Ligastufe. Die Zuordnung gilt für den Mittelrhein; andere
-# Landesverbände bauen ihre Pyramide anders (Bayern etwa mit Kreisklasse und
-# A-Klasse unterhalb der Kreisliga). Für eine Ausweitung braucht jeder Verband
-# seine eigene Tabelle.
-TIER_BY_LEAGUE = {
-    "129": 5,    # Verbandsliga = Mittelrheinliga
-    "130": 6,    # Landesliga
-    "132": 7,    # Bezirksliga
-    "135": 8,    # Kreisliga A
-    "136": 9,    # Kreisliga B
-    "137": 10,   # Kreisliga C
-    "138": 11,   # Kreisliga D
-}
+
+@dataclass(frozen=True)
+class Verband:
+    """Ein Landesverband samt Zuordnung seiner Spielklassen auf Ligastufen.
+
+    Die Pyramide ist nicht überall gleich: Westfalen schiebt zwischen Oberliga
+    und Landesliga noch die Verbandsliga (Westfalenliga) ein und kommt dadurch
+    bis Stufe 12, während Mittelrhein und Niederrhein bei 11 enden. Deshalb
+    braucht jeder Verband seine eigene Tabelle -- eine Heuristik über die
+    Spielklassen-Namen wäre hier schlicht falsch.
+
+    Die Mannschaftsart "Herren" hat je Verband eine andere ID (95 / 343 / 41);
+    sie wird deshalb zur Laufzeit aus der kinds-Datei gelesen.
+    """
+    mandant: str
+    name: str
+    tiers: dict[str, int]
+
+
+VERBAENDE = [
+    Verband("23", "Mittelrhein", {
+        "129": 5,   # Verbandsliga = Mittelrheinliga
+        "130": 6,   # Landesliga
+        "132": 7,   # Bezirksliga
+        "135": 8, "136": 9, "137": 10, "138": 11,   # Kreisliga A-D
+    }),
+    Verband("22", "Niederrhein", {
+        "584": 5,   # Oberliga Niederrhein
+        "114": 6,   # Landesliga
+        "116": 7,   # Bezirksliga
+        "119": 8, "120": 9, "121": 10, "122": 11,   # Kreisliga A-D
+    }),
+    Verband("21", "Westfalen", {
+        "361": 5,   # Oberliga Westfalen
+        "93": 6,    # Verbandsliga = Westfalenliga
+        "94": 7,    # Landesliga
+        "96": 8,    # Bezirksliga
+        "99": 9, "100": 10, "101": 11, "102": 12,   # Kreisliga A-D
+    }),
+]
+
 
 # fussball.de setzt in Vereinsnamen unsichtbare Trennzeichen, etwa
 # "SG Hämmern /<U+200B> Heide". Die müssen vor der Anzeige raus.
@@ -126,20 +152,32 @@ class FussballDe:
             return None
 
     # -- Discovery --------------------------------------------------------
-    def discover(self, season: int) -> list[dict]:
-        """Alle Herren-Meisterschaftsstaffeln des Verbands der laufenden Saison."""
-        sc = season_code(season)
-        kinds = self._json(f"{BASE}/wam_kinds_{MANDANT}_{sc}_{COMP_TYPE}.json")
+    def team_type(self, verband: Verband, season: int) -> tuple[str, dict] | None:
+        """ID der Mannschaftsart "Herren" und der kinds-Baum des Verbands."""
+        kinds = self._json(f"{BASE}/wam_kinds_{verband.mandant}"
+                           f"_{season_code(season)}_{COMP_TYPE}.json")
         if not kinds:
+            return None
+        for key, label in (kinds.get("Mannschaftsart") or {}).items():
+            if str(label).strip() == "Herren":
+                return key.lstrip("_"), kinds
+        return None
+
+    def discover(self, verband: Verband, season: int) -> list[dict]:
+        """Alle Herren-Meisterschaftsstaffeln eines Verbands der laufenden Saison."""
+        found = self.team_type(verband, season)
+        if not found:
             return []
-        areas_by_league = (kinds.get("Gebiet") or {}).get(TEAM_TYPE, {})
+        team_type, kinds = found
+        sc = season_code(season)
+        areas_by_league = (kinds.get("Gebiet") or {}).get(team_type, {})
         out: list[dict] = []
-        for league_id, tier in TIER_BY_LEAGUE.items():
+        for league_id, tier in verband.tiers.items():
             for area_key, area_name in (areas_by_league.get(league_id) or {}).items():
                 area = area_key.lstrip("_")
                 data = self._json(
-                    f"{BASE}/wam_competitions_{MANDANT}_{sc}_{COMP_TYPE}"
-                    f"_{TEAM_TYPE}_{league_id}_{area}.json")
+                    f"{BASE}/wam_competitions_{verband.mandant}_{sc}_{COMP_TYPE}"
+                    f"_{team_type}_{league_id}_{area}.json")
                 if not data:
                     continue
                 for by_area in data.values():
@@ -148,7 +186,8 @@ class FussballDe:
                             sid = re.search(r"/staffel/([0-9A-Z]+-[GC])", url)
                             if sid:
                                 out.append({"tier": tier, "area": area_name,
-                                            "name": name, "staffel": sid.group(1)})
+                                            "verband": verband.name, "name": name,
+                                            "staffel": sid.group(1)})
         return out
 
     # -- Tabelle ----------------------------------------------------------
@@ -189,11 +228,17 @@ class FussballDe:
 
 
 def _label(entry: dict) -> str:
-    """Eindeutiger Anzeigename. "Kreisliga A" gibt es in jedem der neun Kreise,
-    deshalb muss der Kreis ab Stufe 8 mit in den Namen."""
-    if entry["tier"] >= 8:
-        return f"{entry['name']} · {entry['area']}"
-    return entry["name"]
+    """Eindeutiger Anzeigename.
+
+    "Kreisliga A" gibt es in jedem der rund 50 Kreise und "Landesliga" in jedem
+    Verband -- allerdings auf unterschiedlichen Stufen. Deshalb kommt das Gebiet
+    mit in den Namen, außer es steckt schon darin ("Oberliga Westfalen").
+    """
+    area = entry["area"]
+    kern = area.replace("Bezirk ", "").replace("Kreis ", "")
+    if kern.lower() in entry["name"].lower():
+        return entry["name"]
+    return f"{entry['name']} · {area}"
 
 
 def fetch(cache_dir: Path, season: int, verbose: bool = True) -> list[dict]:
@@ -201,15 +246,20 @@ def fetch(cache_dir: Path, season: int, verbose: bool = True) -> list[dict]:
     if not ENABLED:
         return []
     client = FussballDe(cache_dir)
-    entries = client.discover(season)
-    if verbose:
-        print(f"  fussball.de: {len(entries)} Staffeln im Verband {VERBAND} gefunden",
-              file=sys.stderr)
+
+    entries: list[dict] = []
+    for verband in VERBAENDE:
+        gefunden = client.discover(verband, season)
+        entries += gefunden
+        if verbose:
+            print(f"  fussball.de: {verband.name:12s} {len(gefunden):4d} Staffeln",
+                  file=sys.stderr)
 
     out: list[dict] = []
     used: set[str] = set()
     empty = 0
-    for entry in sorted(entries, key=lambda e: (e["tier"], e["area"], e["name"])):
+    for entry in sorted(entries, key=lambda e: (e["tier"], e["verband"],
+                                                e["area"], e["name"])):
         rows = client.table(entry["staffel"])
         if not rows:
             empty += 1
@@ -219,10 +269,10 @@ def fetch(cache_dir: Path, season: int, verbose: bool = True) -> list[dict]:
             label = f"{label} ({entry['staffel'][:6]})"
         used.add(label)
         out.append({"name": label, "tier": entry["tier"],
-                    "verband": f"FVM / {entry['area']}",
+                    "verband": entry["verband"], "area": entry["area"],
                     "staffel": entry["staffel"], "rows": rows})
     if verbose:
         teams = sum(len(g["rows"]) for g in out)
         print(f"  fussball.de: {len(out)} Staffeln mit Daten, {teams} Mannschaften"
-              f" ({empty} Staffeln noch ohne Tabelle)", file=sys.stderr)
+              f" ({empty} noch ohne Tabelle)", file=sys.stderr)
     return out

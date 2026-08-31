@@ -18,14 +18,14 @@ TEMPLATE = """<!doctype html>
   --bg:#f6f7f9; --panel:#ffffff; --line:#e3e6ea; --ink:#14171c; --muted:#666e79;
   --accent:#1a6b3c; --accent-soft:#e6f2ea; --up:#137a3d; --down:#b02a2a;
   --t1:#0b3d91; --t2:#1a6b3c; --t3:#8a6100; --t4:#7a3aa8; --t5:#a3442c;
-  --t6:#0d6b74; --t7:#7a5a1f; --t8:#8a2f5e; --t9:#3f5aa6; --t10:#5c6b1f; --t11:#6b4a8a;
+  --t6:#0d6b74; --t7:#7a5a1f; --t8:#8a2f5e; --t9:#3f5aa6; --t10:#5c6b1f; --t11:#6b4a8a; --t12:#1f6b5c;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#0f1216; --panel:#161a20; --line:#262c34; --ink:#e8ebef; --muted:#98a2ae;
     --accent:#4ec27f; --accent-soft:#17301f; --up:#4ec27f; --down:#e8695f;
     --t1:#6ea8ff; --t2:#4ec27f; --t3:#e0b453; --t4:#c194ea; --t5:#f0937a;
-    --t6:#5ec9d4; --t7:#d9b26a; --t8:#ef8ab8; --t9:#8fa8ee; --t10:#b3c96a; --t11:#bfa0e0;
+    --t6:#5ec9d4; --t7:#d9b26a; --t8:#ef8ab8; --t9:#8fa8ee; --t10:#b3c96a; --t11:#bfa0e0; --t12:#66c9b4;
   }
 }
 *{box-sizing:border-box}
@@ -64,6 +64,7 @@ tbody tr.t8 {background:color-mix(in srgb, var(--t8)  7%, var(--panel))}
 tbody tr.t9 {background:color-mix(in srgb, var(--t9)  7%, var(--panel))}
 tbody tr.t10{background:color-mix(in srgb, var(--t10) 7%, var(--panel))}
 tbody tr.t11{background:color-mix(in srgb, var(--t11) 7%, var(--panel))}
+tbody tr.t12{background:color-mix(in srgb, var(--t12) 7%, var(--panel))}
 /* Erste Zeile einer Stufe: kräftige Kante in der Farbe der Stufe.
    Nur die Rahmenfarbe setzen -- über `color` liefe die Tönung sonst per
    Vererbung in den Zeilentext. */
@@ -79,6 +80,7 @@ tbody tr.step.t8 >td{border-top-color:var(--t8)}
 tbody tr.step.t9 >td{border-top-color:var(--t9)}
 tbody tr.step.t10>td{border-top-color:var(--t10)}
 tbody tr.step.t11>td{border-top-color:var(--t11)}
+tbody tr.step.t12>td{border-top-color:var(--t12)}
 tbody tr:hover{background:var(--accent-soft)}
 td.rank{font-weight:700;width:52px}
 td.delta{width:56px;font-size:13px}
@@ -90,7 +92,7 @@ td.delta{width:56px;font-size:13px}
 .tier1{color:var(--t1)}.tier2{color:var(--t2)}.tier3{color:var(--t3)}
 .tier4{color:var(--t4)}.tier5{color:var(--t5)}.tier6{color:var(--t6)}
 .tier7{color:var(--t7)}.tier8{color:var(--t8)}.tier9{color:var(--t9)}
-.tier10{color:var(--t10)}.tier11{color:var(--t11)}
+.tier10{color:var(--t10)}.tier11{color:var(--t11)}.tier12{color:var(--t12)}
 .league{color:var(--muted);font-size:13px}
 .up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--muted)}
 .empty{padding:28px;text-align:center;color:var(--muted)}
@@ -121,6 +123,7 @@ __NOTE__
 
 <div class="controls">
   <input type="search" id="q" placeholder="Verein suchen …" autocomplete="off">
+  <select id="verbandFilter"><option value="">Alle Verbände</option>__VERBAND_OPTIONS__</select>
   <select id="tierFilter"><option value="">Alle Ligastufen</option>__TIER_OPTIONS__</select>
   <select id="leagueFilter"><option value="">Alle Staffeln</option>__LEAGUE_OPTIONS__</select>
 </div>
@@ -156,12 +159,22 @@ __NOTE__
 </div>
 
 <script>
+// Die Zeilen stecken als Arrays statt als Objekte in der Seite, Staffel- und
+// Verbandsnamen nur einmal in einer Nachschlagetabelle. Bei über 5000
+// Mannschaften spart das rund zwei Drittel der Dateigröße.
 const DATA = __DATA__;
+const RANKING = DATA.rows.map(a => ({
+  rank: a[0], delta: a[1], name: a[2], icon: a[3], tier: a[4],
+  league: DATA.leagues[a[5]], verband: DATA.verbaende[a[6]],
+  leaguePos: a[7], played: a[8], won: a[9], drawn: a[10], lost: a[11],
+  goalsFor: a[12], goalsAgainst: a[13], goalDiff: a[14], points: a[15], ppg: a[16],
+}));
 const rows = document.getElementById('rows');
 const empty = document.getElementById('empty');
 const q = document.getElementById('q');
 const tierFilter = document.getElementById('tierFilter');
 const leagueFilter = document.getElementById('leagueFilter');
+const verbandFilter = document.getElementById('verbandFilter');
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c =>
   ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -176,12 +189,14 @@ function render(){
   const term = q.value.trim().toLowerCase();
   const tier = tierFilter.value;
   const league = leagueFilter.value;
+  const verband = verbandFilter.value;
   let n = 0;
   let lastTier = null;
   const html = [];
-  for (const r of DATA.ranking){
+  for (const r of RANKING){
     if (tier && String(r.tier) !== tier) continue;
     if (league && r.league !== league) continue;
+    if (verband && r.verband !== verband) continue;
     if (term && !r.name.toLowerCase().includes(term)) continue;
     n++;
     const step = r.tier !== lastTier;
@@ -207,15 +222,43 @@ function render(){
 }
 
 document.getElementById('legend').innerHTML =
-  [...new Set(DATA.ranking.map(r => r.tier))].sort((a, b) => a - b)
+  [...new Set(RANKING.map(r => r.tier))].sort((a, b) => a - b)
     .map(t => `<span class="tier${t}">${t}. Stufe</span>`).join('');
 
-[q, tierFilter, leagueFilter].forEach(el => el.addEventListener('input', render));
+[q, tierFilter, leagueFilter, verbandFilter].forEach(
+  el => el.addEventListener('input', render));
 render();
 </script>
 </body>
 </html>
 """
+
+
+def _compact(ranking: list[dict]) -> dict:
+    """Zeilen als Arrays, Staffel- und Verbandsnamen als Nachschlagetabelle.
+
+    Bei 5000+ Mannschaften wiederholen sich die Staffelnamen hundertfach und
+    die Objektschlüssel bei jeder Zeile -- beides fliegt hier raus.
+    """
+    leagues: list[str] = []
+    verbaende: list[str] = []
+    index: dict[tuple[str, str], tuple[int, int]] = {}
+    rows = []
+    for r in ranking:
+        lg, vb = r["league"] or "", r["verband"] or ""
+        if (lg, vb) not in index:
+            if lg not in leagues:
+                leagues.append(lg)
+            if vb not in verbaende:
+                verbaende.append(vb)
+            index[(lg, vb)] = (leagues.index(lg), verbaende.index(vb))
+        li, vi = index[(lg, vb)]
+        rows.append([
+            r["rank"], r["delta"], r["name"], r["icon"], r["tier"], li, vi,
+            r["leaguePos"], r["played"], r["won"], r["drawn"], r["lost"],
+            r["goalsFor"], r["goalsAgainst"], r["goalDiff"], r["points"], r["ppg"],
+        ])
+    return {"leagues": leagues, "verbaende": verbaende, "rows": rows}
 
 
 def _options(pairs):
@@ -225,6 +268,8 @@ def _options(pairs):
 def write_site(out_dir: Path, ranking, meta) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    verbaende = sorted({r["verband"] for r in ranking if r.get("verband")})
+    verband_opts = _options((v, v) for v in verbaende)
     tiers = sorted({r["tier"] for r in ranking})
     tier_opts = _options((str(t), f"{t}. Ligastufe") for t in tiers)
     leagues = sorted({(r["tier"], r["league"]) for r in ranking})
@@ -241,9 +286,11 @@ def write_site(out_dir: Path, ranking, meta) -> None:
         "__N_TIERS__": str(len(tiers)),
         "__SEASON__": meta["season_label"],
         "__TIER_OPTIONS__": tier_opts,
+        "__VERBAND_OPTIONS__": verband_opts,
         "__LEAGUE_OPTIONS__": league_opts,
         "__NOTE__": note,
-        "__DATA__": json.dumps({"ranking": ranking}, ensure_ascii=False),
+        "__DATA__": json.dumps(_compact(ranking), ensure_ascii=False,
+                               separators=(",", ":")),
     }.items():
         html = html.replace(key, value)
 

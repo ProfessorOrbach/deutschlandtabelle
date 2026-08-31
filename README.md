@@ -39,12 +39,21 @@ Woche noch kein Spiel hatten, zeigen „–" statt eines erfundenen Werts.
 |---|---|---|
 | 1–3 | bundesweit vollständig | OpenLigaDB |
 | 4 (Regionalliga) | Nord und Nordost; West, Südwest, Bayern fehlen | OpenLigaDB |
-| 5–11 (Mittelrheinliga bis Kreisliga D) | **kompletter Fußball-Verband Mittelrhein**, alle 9 Kreise: Aachen, Berg, Bonn, Düren, Euskirchen, Heinsberg, Köln, Rhein-Erft, Sieg | fussball.de |
+| 5–12 | **ganz Nordrhein-Westfalen** — die Verbände Mittelrhein, Niederrhein und Westfalen, rund 42 Fußballkreise, von der Oberliga bis zur Kreisliga D | fussball.de |
 
-Aktuell rund **1.280 Mannschaften in 85 Staffeln über 11 Ligastufen**. Die Stufen 5–11
-sind damit kein bundesweiter Schnitt, sondern ein regional vollständiger: innerhalb des
-Mittelrheins ist die Pyramide lückenlos, ein Kreisligist aus Bayern fehlt. Das steht so
-auch als Hinweis auf der Seite.
+Aktuell **5.295 Mannschaften in 357 Staffeln über 12 Ligastufen**. Die Stufen 5–12 sind
+kein bundesweiter Schnitt, sondern ein regional vollständiger: innerhalb von NRW ist die
+Pyramide lückenlos, ein bayerischer Kreisligist fehlt. Das steht so auch auf der Seite.
+
+Warum ausgerechnet diese drei: sie hängen über die Regionalliga West zusammen, die ohnehin
+erfasst ist. Das Ranking bleibt dadurch sportlich begründet und ist nicht nur groß.
+
+**Die Pyramide ist nicht überall gleich.** Westfalen schiebt zwischen Oberliga und
+Landesliga noch die Verbandsliga (Westfalenliga) ein und reicht deshalb bis Stufe 12,
+Mittelrhein und Niederrhein enden bei 11. Jeder Verband braucht daher in
+`ranking/fussballde.py` seine eigene `tiers`-Tabelle — eine Heuristik über die
+Spielklassen-Namen wäre schlicht falsch. Auch die Mannschaftsart „Herren" hat je Verband
+eine andere ID (95 / 343 / 41); die wird zur Laufzeit ermittelt.
 
 ### Zu fussball.de
 
@@ -74,13 +83,12 @@ wam_competitions_<mandant>_<saison>_<typ>_<art>_<klasse>_<gebiet>.json
 ```
 
 Der Adapter folgt damit dem Saisonwechsel und neu eingerichteten Staffeln von selbst.
-Ein kompletter Kaltstart sind rund 36 Discovery-Abrufe plus ein Tabellenabruf je
-Staffel, zusammen etwa zwei Minuten.
+Ein Kaltstart über die drei Verbände sind rund 180 Discovery-Abrufe plus einer je
+Staffel, zusammen etwa zehn Minuten. Danach greift der Plattencache.
 
-**Auf einen anderen Landesverband umstellen:** `MANDANT` in `ranking/fussballde.py`
-ändern (`23` = Mittelrhein, `21` = Westfalen, `31` = Bayern …) und `TIER_BY_LEAGUE`
-anpassen — die Pyramide ist nicht überall gleich, Bayern hat unterhalb der Kreisliga
-noch Kreisklasse und A-Klasse.
+**Einen weiteren Verband aufnehmen:** einen `Verband(...)`-Eintrag in `VERBAENDE`
+ergänzen. Die Mandanten-ID steht in `wam_base.json` (`21` = Westfalen, `31` = Bayern,
+`34` = Hessen …), die Spielklassen-IDs in `wam_kinds_<mandant>_<saison>_1.json`.
 
 **Es gibt nur fertige Tabellen, keine Einzelspiele** — die Spielliste baut fussball.de
 erst im Browser per JavaScript auf. Diesen Staffeln fehlt deshalb die Vorwochen-Differenz;
@@ -140,10 +148,14 @@ ranking/render.py     HTML, JSON, CSV
   community-gepflegten Ligen abweichende Schreibweisen führt („Werder Bremen" /
   „SV Werder Bremen"). Die Reserve-Kennung bleibt dabei erhalten.
 * **Negative Punktzahlen sind echt.** Im Amateurbereich gibt es Punktabzüge, meist −3
-  oder −6. Derzeit betrifft das 20 der rund 1.280 Mannschaften; die Zahlen stammen so
-  von fussball.de und sind kein Parser-Fehler.
+  oder −6. Derzeit betrifft das 101 der 5.295 Mannschaften; die Zahlen stammen so von
+  fussball.de und sind kein Parser-Fehler.
+* **Die Seite trägt ihre Daten kompakt.** Zeilen stecken als Arrays statt als Objekte in
+  der Seite, Staffel- und Verbandsnamen nur einmal in einer Nachschlagetabelle. Das drückt
+  `index.html` von 1,7 MB auf 428 KB; ein Filterwechsel über alle 5.295 Zeilen dauert
+  rund 75 ms.
 * Innerhalb einer Ligastufe werden parallele Staffeln ohne Stärkekorrektur verglichen:
   2,4 Punkte pro Spiel in der Regionalliga Nord zählen genauso viel wie 2,4 in der
   Nordost-Staffel, und dasselbe gilt für Kreisliga B Staffel 2 gegen Staffel 3 oder
-  die neun Kreisliga-A-Staffeln der verschiedenen Kreise untereinander. Bewusst
-  einfach und für jeden nachvollziehbar.
+  die Kreisliga-A-Staffeln der 42 Kreise untereinander. Bewusst einfach und für
+  jeden nachvollziehbar.
