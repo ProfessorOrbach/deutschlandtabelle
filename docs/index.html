@@ -21,29 +21,27 @@
   }
 }
 *{box-sizing:border-box}
-/* App-Layout: die Seite selbst scrollt nicht, nur die Tabelle. Nur so bleibt
-   der Spaltenkopf zuverlässig stehen -- ein sticky <th> klebt am oberen Rand
-   seines Scroll-Containers, und der darf dafür nicht aus dem Bild wandern. */
-html,body{height:100%}
-body{margin:0;overflow:hidden;background:var(--bg);color:var(--ink);
+body{margin:0;background:var(--bg);color:var(--ink);
   font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-.wrap{max-width:1080px;margin:0 auto;padding:20px 18px 14px;
-  height:100%;display:flex;flex-direction:column;gap:0}
-header,.stats,.note,.controls,.legend,.foot{flex:0 0 auto}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 18px 56px}
 header h1{margin:0 0 6px;font-size:clamp(22px,3.4vw,32px);letter-spacing:-.02em}
 header p{margin:0;color:var(--muted)}
-.stats{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
 .stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;
   padding:10px 14px;min-width:118px}
 .stat b{display:block;font-size:20px;letter-spacing:-.01em}
 .stat span{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
-.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 10px}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:18px 0 12px}
 input[type=search],select{background:var(--panel);color:var(--ink);border:1px solid var(--line);
-  border-radius:8px;padding:9px 11px;font-size:14px}
+  border-radius:8px;padding:9px 11px;font-size:14px;max-width:100%;min-width:0}
+select{text-overflow:ellipsis}
 input[type=search]{flex:1 1 240px;min-width:180px}
-.tablewrap{flex:1 1 auto;min-height:160px;overflow:auto;
-  background:var(--panel);border:1px solid var(--line);border-radius:12px}
-table{border-collapse:collapse;width:100%;min-width:800px;font-variant-numeric:tabular-nums}
+/* Bewusst KEIN overflow hier. Ein Scroll-Container würde den fixierten
+   Spaltenkopf aushebeln: ein sticky <th> klebt am oberen Rand seines
+   Scroll-Containers, nicht am Fenster. Damit die Tabelle trotzdem in schmale
+   Fenster passt, fallen dort weiter unten Nebenspalten weg. */
+.tablewrap{background:var(--panel);border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
 th,td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
 th{position:sticky;top:0;z-index:3;background:var(--panel);
   font-size:11px;text-transform:uppercase;letter-spacing:.06em;
@@ -84,7 +82,7 @@ tbody tr.step.t12>td{border-top-color:var(--t12)}
 tbody tr:hover{background:var(--accent-soft)}
 td.rank{font-weight:700;width:52px}
 td.delta{width:56px;font-size:13px}
-.club{display:flex;align-items:center;gap:9px}
+.club{display:flex;align-items:center;gap:9px;min-width:0}
 .club img{width:20px;height:20px;object-fit:contain;flex:0 0 20px}
 .club span{overflow:hidden;text-overflow:ellipsis;max-width:250px}
 .tier{display:inline-block;padding:2px 7px;border-radius:999px;font-size:11px;font-weight:600;
@@ -93,29 +91,65 @@ td.delta{width:56px;font-size:13px}
 .tier4{color:var(--t4)}.tier5{color:var(--t5)}.tier6{color:var(--t6)}
 .tier7{color:var(--t7)}.tier8{color:var(--t8)}.tier9{color:var(--t9)}
 .tier10{color:var(--t10)}.tier11{color:var(--t11)}.tier12{color:var(--t12)}
-.league{color:var(--muted);font-size:13px}
+/* Staffelnamen wie "IGA 2027 Landesliga Staffel 3 · Westfalen" sprengen sonst
+   die Tabellenbreite und erzwingen waagerechtes Scrollen der ganzen Seite.
+   Gekappt mit Auslassungspunkten; der volle Name steht im title-Attribut. */
+.league{color:var(--muted);font-size:13px;display:inline-block;max-width:205px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:middle}
 .up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--muted)}
 .empty{padding:28px;text-align:center;color:var(--muted)}
 .legend{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
 .legend span{font-size:11px;padding:3px 9px;border-radius:999px;
   border:1px solid currentColor;font-weight:600}
 .foot a{color:var(--accent)}
-.note,.foot{background:var(--panel);border:1px solid var(--line);
-  border-radius:8px;padding:10px 13px;margin:14px 0 0;font-size:13px;color:var(--muted)}
-.note{border-left:3px solid var(--t3)}
-.note summary,.foot summary{cursor:pointer;color:var(--ink);font-weight:600;
-  font-size:13px;list-style:none}
-.note summary::-webkit-details-marker,.foot summary::-webkit-details-marker{display:none}
-.note summary::before,.foot summary::before{content:"▸ ";color:var(--muted)}
-.note[open] summary::before,.foot[open] summary::before{content:"▾ "}
-.note p,.foot p{margin:8px 0 0}
-.foot{margin:10px 0 0;max-height:38vh;overflow:auto}
-/* Sehr flache Fenster: lieber normal scrollen als eine Tabelle ohne Platz. */
-@media (max-height:560px){
-  html,body{height:auto}
-  body{overflow:auto}
-  .wrap{height:auto;display:block}
-  .tablewrap{max-height:75vh}
+.note{background:var(--panel);border:1px solid var(--line);
+  border-left:3px solid var(--t3);border-radius:8px;padding:12px 14px;
+  margin:16px 0;font-size:14px;color:var(--muted)}
+.note summary{cursor:pointer;color:var(--ink);font-weight:600;list-style:none}
+.note summary::-webkit-details-marker{display:none}
+.note summary::before{content:"▸ ";color:var(--muted)}
+.note[open] summary::before{content:"▾ "}
+.note p{margin:8px 0 0}
+.foot{display:block;margin-top:30px;color:var(--muted);font-size:13px;line-height:1.7}
+.foot summary{cursor:pointer;font-weight:600;color:var(--ink);list-style:none}
+.foot summary::-webkit-details-marker{display:none}
+.foot summary::before{content:"▸ ";color:var(--muted)}
+.foot[open] summary::before{content:"▾ "}
+/* Schmale Fenster: Nebenspalten ausblenden, statt die Tabelle seitlich
+   scrollen zu lassen. Der Scroll-Container würde den fixierten Kopf kosten. */
+@media (max-width:1100px){
+  th:nth-child(5),td:nth-child(5),      /* Pl. in der Staffel */
+  th:nth-child(7),td:nth-child(7),      /* S */
+  th:nth-child(8),td:nth-child(8),      /* U */
+  th:nth-child(9),td:nth-child(9){display:none}   /* N */
+  .club span{max-width:130px}
+  .league{max-width:150px}
+}
+@media (max-width:860px){
+  th:nth-child(2),td:nth-child(2),      /* Vorwochen-Differenz */
+  th:nth-child(10),td:nth-child(10),    /* Tore */
+  th:nth-child(11),td:nth-child(11),    /* Diff */
+  th:nth-child(12),td:nth-child(12){display:none} /* Pkt -- Pkt/Sp bleibt,
+                                          das ist das Sortierkriterium */
+  th,td{padding:8px 6px;white-space:normal}
+  /* Statt zu kappen hier umbrechen lassen: so schrumpft die Tabelle auf jede
+     Breite, ohne dass die Seite seitlich scrollen muss. */
+  .club span,.league{max-width:none;white-space:normal;overflow:visible;
+    text-overflow:clip;display:inline;min-width:0}
+  .club{align-items:flex-start}
+  /* Feste Spaltenbreiten: die automatische Tabellenbreite hält sich hier nicht
+     an den Container und schiebt die Verein-Spalte auf Maximalbreite. */
+  table{table-layout:fixed}
+  th:nth-child(1),td:nth-child(1){width:11%}
+  th:nth-child(3),td:nth-child(3){width:41%}
+  th:nth-child(4),td:nth-child(4){width:25%}
+  th:nth-child(6),td:nth-child(6){width:9%}
+  th:nth-child(13),td:nth-child(13){width:14%}
+  /* Silbentrennung statt harter Umbruch mitten im Wort: die Seite ist
+     lang="de", der Browser trennt "Mönchen-gladbach" statt "Mönchengladbac|h". */
+  td:nth-child(3),td:nth-child(4){overflow-wrap:break-word;hyphens:auto}
+  td.rank{width:11%}
+  .league{font-size:11px}
 }
 </style>
 </head>
@@ -123,7 +157,7 @@ td.delta{width:56px;font-size:13px}
 <div class="wrap">
 <header>
   <h1>Deutschlandweites Vereinsranking</h1>
-  <p>Alle erfassten deutschen Fußballmannschaften in einer Rangfolge · Saison 2026/27 · Stand 31.08.2026, 11:58 Uhr</p>
+  <p>Alle erfassten deutschen Fußballmannschaften in einer Rangfolge · Saison 2026/27 · Stand 31.08.2026, 12:21 Uhr</p>
 </header>
 
 <div class="stats">
@@ -169,7 +203,7 @@ td.delta{width:56px;font-size:13px}
   Woche hatte diese Mannschaft noch kein Spiel absolviert.</p>
   <p>Grundlage sind ausschließlich die Ligaspiele der laufenden Saison 2026/27.
   Daten: <a href="https://www.openligadb.de/">OpenLigaDB</a>. Wappen von Wikimedia Commons.
-  Erzeugt am 31.08.2026, 11:58 Uhr.</p>
+  Erzeugt am 31.08.2026, 12:21 Uhr.</p>
 </details>
 </div>
 
@@ -221,9 +255,9 @@ function render(){
     html.push(`<tr class="t${r.tier}${step ? ' step' : ''}">
       <td class="rank">${r.rank}</td>
       <td class="delta">${deltaCell(r.delta)}</td>
-      <td><div class="club">${icon}<span>${esc(r.name)}</span></div></td>
+      <td><div class="club">${icon}<span title="${esc(r.name)}">${esc(r.name)}</span></div></td>
       <td><span class="tier tier${r.tier}">${r.tier}</span>
-          <span class="league">${esc(r.league)}</span></td>
+          <span class="league" title="${esc(r.league)}">${esc(r.league)}</span></td>
       <td>${r.leaguePos ?? '–'}</td>
       <td>${r.played}</td><td>${r.won}</td><td>${r.drawn}</td><td>${r.lost}</td>
       <td>${r.goalsFor}:${r.goalsAgainst}</td>

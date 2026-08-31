@@ -156,12 +156,23 @@ ranking/render.py     HTML, JSON, CSV
 * **Negative Punktzahlen sind echt.** Im Amateurbereich gibt es Punktabzüge, meist −3
   oder −6. Derzeit betrifft das rund 100 der 5.350 Mannschaften; die Zahlen stammen so von
   fussball.de und sind kein Parser-Fehler.
-* **Die Seite scrollt nicht, die Tabelle schon.** Damit der Spaltenkopf beim Blättern
-  stehen bleibt, ist die Seite ein Layout in Fensterhöhe, in dem nur der Tabellenbereich
-  scrollt. Ein `position:sticky` am `<th>` allein reicht nicht: es klebt am oberen Rand
-  seines Scroll-Containers, und der darf dafür nicht selbst aus dem Bild wandern.
-  Abdeckungshinweis und Methodik sind deshalb einklappbar. Unter 560 px Fensterhöhe
-  fällt die Seite auf normales Scrollen zurück.
+* **Nur die Kopfzeile der Tabelle bleibt stehen.** Titel, Kennzahlen und Filter scrollen
+  weg, die Spaltenüberschriften kleben am Fensterrand. Der Haken dabei: ein
+  `position:sticky` am `<th>` klebt am oberen Rand seines *Scroll-Containers*. Ein
+  `overflow-x:auto` um die Tabelle — der übliche Griff für breite Tabellen — macht genau
+  so einen Container auf und setzt das Kleben außer Kraft. Deshalb hat die Tabelle hier
+  keinen eigenen Scrollbereich; sie passt sich stattdessen über zwei Umbruchpunkte an:
+
+  | Fensterbreite | Spalten | Tabellenbreite |
+  |---|---|---|
+  | ab 1100 px | alle 13 | 1054 px |
+  | 860–1100 px | 9 (ohne Pl., S, U, N) | 762 px |
+  | unter 860 px | 5 (#, Verein, Liga, Sp, Pkt/Sp) | feste Spaltenbreiten, Silbentrennung |
+
+  Die Schwellen stammen aus gemessenen Tabellenbreiten, nicht aus Gerätegrößen.
+  Unterhalb von 860 px greift außerdem `table-layout:fixed` — die automatische
+  Tabellenbreite hält sich sonst nicht an den Container und schiebt die Verein-Spalte
+  auf Maximalbreite.
 * **Die Seite trägt ihre Daten kompakt.** Zeilen stecken als Arrays statt als Objekte in
   der Seite, Staffel- und Verbandsnamen nur einmal in einer Nachschlagetabelle. Das drückt
   `index.html` von 1,7 MB auf gut 430 KB; ein Filterwechsel über alle Zeilen dauert
