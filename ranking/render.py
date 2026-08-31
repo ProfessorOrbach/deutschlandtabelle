@@ -50,6 +50,35 @@ th,td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--line);whit
 th{background:var(--panel);font-size:11px;text-transform:uppercase;
   letter-spacing:.06em;color:var(--muted);font-weight:600}
 th:nth-child(3),td:nth-child(3),th:nth-child(4),td:nth-child(4){text-align:left}
+/* Jede Ligastufe bekommt einen eigenen, sehr blassen Hintergrund. Der
+   Farbton ist derselbe wie beim Stufen-Abzeichen, nur stark aufgehellt --
+   dadurch liest man den Ligensprung, ohne dass die Tabelle bunt wirkt. */
+tbody tr.t1 {background:color-mix(in srgb, var(--t1)  7%, var(--panel))}
+tbody tr.t2 {background:color-mix(in srgb, var(--t2)  7%, var(--panel))}
+tbody tr.t3 {background:color-mix(in srgb, var(--t3)  7%, var(--panel))}
+tbody tr.t4 {background:color-mix(in srgb, var(--t4)  7%, var(--panel))}
+tbody tr.t5 {background:color-mix(in srgb, var(--t5)  7%, var(--panel))}
+tbody tr.t6 {background:color-mix(in srgb, var(--t6)  7%, var(--panel))}
+tbody tr.t7 {background:color-mix(in srgb, var(--t7)  7%, var(--panel))}
+tbody tr.t8 {background:color-mix(in srgb, var(--t8)  7%, var(--panel))}
+tbody tr.t9 {background:color-mix(in srgb, var(--t9)  7%, var(--panel))}
+tbody tr.t10{background:color-mix(in srgb, var(--t10) 7%, var(--panel))}
+tbody tr.t11{background:color-mix(in srgb, var(--t11) 7%, var(--panel))}
+/* Erste Zeile einer Stufe: kräftige Kante in der Farbe der Stufe.
+   Nur die Rahmenfarbe setzen -- über `color` liefe die Tönung sonst per
+   Vererbung in den Zeilentext. */
+tbody tr.step > td{border-top:2px solid var(--line)}
+tbody tr.step.t1 >td{border-top-color:var(--t1)}
+tbody tr.step.t2 >td{border-top-color:var(--t2)}
+tbody tr.step.t3 >td{border-top-color:var(--t3)}
+tbody tr.step.t4 >td{border-top-color:var(--t4)}
+tbody tr.step.t5 >td{border-top-color:var(--t5)}
+tbody tr.step.t6 >td{border-top-color:var(--t6)}
+tbody tr.step.t7 >td{border-top-color:var(--t7)}
+tbody tr.step.t8 >td{border-top-color:var(--t8)}
+tbody tr.step.t9 >td{border-top-color:var(--t9)}
+tbody tr.step.t10>td{border-top-color:var(--t10)}
+tbody tr.step.t11>td{border-top-color:var(--t11)}
 tbody tr:hover{background:var(--accent-soft)}
 td.rank{font-weight:700;width:52px}
 td.delta{width:56px;font-size:13px}
@@ -65,6 +94,9 @@ td.delta{width:56px;font-size:13px}
 .league{color:var(--muted);font-size:13px}
 .up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--muted)}
 .empty{padding:28px;text-align:center;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.legend span{font-size:11px;padding:3px 9px;border-radius:999px;
+  border:1px solid currentColor;font-weight:600}
 footer{margin-top:34px;color:var(--muted);font-size:13px;line-height:1.7}
 footer a{color:var(--accent)}
 .note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--t3);
@@ -92,6 +124,8 @@ __NOTE__
   <select id="tierFilter"><option value="">Alle Ligastufen</option>__TIER_OPTIONS__</select>
   <select id="leagueFilter"><option value="">Alle Staffeln</option>__LEAGUE_OPTIONS__</select>
 </div>
+
+<div class="legend" id="legend"></div>
 
 <div class="tablewrap">
   <table>
@@ -143,15 +177,18 @@ function render(){
   const tier = tierFilter.value;
   const league = leagueFilter.value;
   let n = 0;
+  let lastTier = null;
   const html = [];
   for (const r of DATA.ranking){
     if (tier && String(r.tier) !== tier) continue;
     if (league && r.league !== league) continue;
     if (term && !r.name.toLowerCase().includes(term)) continue;
     n++;
+    const step = r.tier !== lastTier;
+    lastTier = r.tier;
     const icon = r.icon ? `<img src="${esc(r.icon)}" alt="" loading="lazy"
       onerror="this.style.visibility='hidden'">` : '<img alt="" style="visibility:hidden">';
-    html.push(`<tr>
+    html.push(`<tr class="t${r.tier}${step ? ' step' : ''}">
       <td class="rank">${r.rank}</td>
       <td class="delta">${deltaCell(r.delta)}</td>
       <td><div class="club">${icon}<span>${esc(r.name)}</span></div></td>
@@ -168,6 +205,10 @@ function render(){
   rows.innerHTML = html.join('');
   empty.hidden = n > 0;
 }
+
+document.getElementById('legend').innerHTML =
+  [...new Set(DATA.ranking.map(r => r.tier))].sort((a, b) => a - b)
+    .map(t => `<span class="tier${t}">${t}. Stufe</span>`).join('');
 
 [q, tierFilter, leagueFilter].forEach(el => el.addEventListener('input', render));
 render();
