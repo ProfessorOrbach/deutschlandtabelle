@@ -69,30 +69,42 @@ class Verband:
     sie wird deshalb zur Laufzeit aus der kinds-Datei gelesen.
     """
     mandant: str
-    name: str
+    name: str                          # nur für die Fortschrittsausgabe
     tiers: dict[str, int]
+    label: str | None = None           # Eintrag im Verbandsfilter; None = keiner
+    only: frozenset[str] | None = None # nur diese Wettbewerbe übernehmen
 
 
 VERBAENDE = [
+    # Ligastufe 4: Nord und Nordost kommen mit Einzelspielen aus OpenLigaDB und
+    # bleiben dort -- nur so funktioniert für sie die Vorwochen-Spalte. Von
+    # fussball.de kommen die drei Staffeln, die OpenLigaDB nicht führt.
+    # "Deutschland" verwaltet vier der fünf Regionalligen; die Regionalliga
+    # Bayern läuft beim BFV und hat deshalb einen eigenen Eintrag.
+    Verband("89", "Regionalliga (überregional)", {"4": 4},
+            only=frozenset({"Regionalliga West", "Regionalliga Südwest"})),
+    Verband("31", "Regionalliga Bayern", {"714": 4},
+            only=frozenset({"Regionalliga Bayern"})),
+
     Verband("23", "Mittelrhein", {
         "129": 5,   # Verbandsliga = Mittelrheinliga
         "130": 6,   # Landesliga
         "132": 7,   # Bezirksliga
         "135": 8, "136": 9, "137": 10, "138": 11,   # Kreisliga A-D
-    }),
+    }, label="Mittelrhein"),
     Verband("22", "Niederrhein", {
         "584": 5,   # Oberliga Niederrhein
         "114": 6,   # Landesliga
         "116": 7,   # Bezirksliga
         "119": 8, "120": 9, "121": 10, "122": 11,   # Kreisliga A-D
-    }),
+    }, label="Niederrhein"),
     Verband("21", "Westfalen", {
         "361": 5,   # Oberliga Westfalen
         "93": 6,    # Verbandsliga = Westfalenliga
         "94": 7,    # Landesliga
         "96": 8,    # Bezirksliga
         "99": 9, "100": 10, "101": 11, "102": 12,   # Kreisliga A-D
-    }),
+    }, label="Westfalen"),
 ]
 
 
@@ -183,10 +195,12 @@ class FussballDe:
                 for by_area in data.values():
                     for comps in by_area.values():
                         for url, name in comps.items():
+                            if verband.only and name not in verband.only:
+                                continue
                             sid = re.search(r"/staffel/([0-9A-Z]+-[GC])", url)
                             if sid:
                                 out.append({"tier": tier, "area": area_name,
-                                            "verband": verband.name, "name": name,
+                                            "verband": verband.label, "name": name,
                                             "staffel": sid.group(1)})
         return out
 
@@ -235,6 +249,8 @@ def _label(entry: dict) -> str:
     mit in den Namen, außer es steckt schon darin ("Oberliga Westfalen").
     """
     area = entry["area"]
+    if not entry["verband"] or area == "Deutschland":
+        return entry["name"]            # überregionale Staffeln stehen für sich
     kern = area.replace("Bezirk ", "").replace("Kreis ", "")
     if kern.lower() in entry["name"].lower():
         return entry["name"]
@@ -258,7 +274,7 @@ def fetch(cache_dir: Path, season: int, verbose: bool = True) -> list[dict]:
     out: list[dict] = []
     used: set[str] = set()
     empty = 0
-    for entry in sorted(entries, key=lambda e: (e["tier"], e["verband"],
+    for entry in sorted(entries, key=lambda e: (e["tier"], e["verband"] or "",
                                                 e["area"], e["name"])):
         rows = client.table(entry["staffel"])
         if not rows:

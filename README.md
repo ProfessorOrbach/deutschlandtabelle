@@ -38,10 +38,16 @@ Woche noch kein Spiel hatten, zeigen „–" statt eines erfundenen Werts.
 | Stufe | Umfang | Quelle |
 |---|---|---|
 | 1–3 | bundesweit vollständig | OpenLigaDB |
-| 4 (Regionalliga) | Nord und Nordost; West, Südwest, Bayern fehlen | OpenLigaDB |
+| 4 (Regionalliga) | **alle fünf Staffeln** — Nord und Nordost mit Einzelspielen aus OpenLigaDB, West, Südwest und Bayern von fussball.de | beide |
 | 5–12 | **ganz Nordrhein-Westfalen** — die Verbände Mittelrhein, Niederrhein und Westfalen, rund 42 Fußballkreise, von der Oberliga bis zur Kreisliga D | fussball.de |
 
-Aktuell **5.295 Mannschaften in 357 Staffeln über 12 Ligastufen**. Die Stufen 5–12 sind
+Aktuell **5.350 Mannschaften in 360 Staffeln über 12 Ligastufen**.
+
+Auf Stufe 4 bleiben Nord und Nordost bewusst bei OpenLigaDB: nur diese Quelle liefert
+Einzelspiele mit Datum, und nur damit funktioniert für sie die Vorwochen-Spalte. Die drei
+fehlenden Staffeln kommen über fussball.de dazu — vier davon führt der Mandant
+„Deutschland", die Regionalliga Bayern läuft beim BFV und hat deshalb einen eigenen
+Eintrag in `VERBAENDE`. Die Stufen 5–12 sind
 kein bundesweiter Schnitt, sondern ein regional vollständiger: innerhalb von NRW ist die
 Pyramide lückenlos, ein bayerischer Kreisligist fehlt. Das steht so auch auf der Seite.
 
@@ -148,12 +154,21 @@ ranking/render.py     HTML, JSON, CSV
   community-gepflegten Ligen abweichende Schreibweisen führt („Werder Bremen" /
   „SV Werder Bremen"). Die Reserve-Kennung bleibt dabei erhalten.
 * **Negative Punktzahlen sind echt.** Im Amateurbereich gibt es Punktabzüge, meist −3
-  oder −6. Derzeit betrifft das 101 der 5.295 Mannschaften; die Zahlen stammen so von
+  oder −6. Derzeit betrifft das rund 100 der 5.350 Mannschaften; die Zahlen stammen so von
   fussball.de und sind kein Parser-Fehler.
+* **Die Seite scrollt nicht, die Tabelle schon.** Damit der Spaltenkopf beim Blättern
+  stehen bleibt, ist die Seite ein Layout in Fensterhöhe, in dem nur der Tabellenbereich
+  scrollt. Ein `position:sticky` am `<th>` allein reicht nicht: es klebt am oberen Rand
+  seines Scroll-Containers, und der darf dafür nicht selbst aus dem Bild wandern.
+  Abdeckungshinweis und Methodik sind deshalb einklappbar. Unter 560 px Fensterhöhe
+  fällt die Seite auf normales Scrollen zurück.
 * **Die Seite trägt ihre Daten kompakt.** Zeilen stecken als Arrays statt als Objekte in
   der Seite, Staffel- und Verbandsnamen nur einmal in einer Nachschlagetabelle. Das drückt
-  `index.html` von 1,7 MB auf 428 KB; ein Filterwechsel über alle 5.295 Zeilen dauert
+  `index.html` von 1,7 MB auf gut 430 KB; ein Filterwechsel über alle Zeilen dauert
   rund 75 ms.
+* **Gleichnamige Vereine bleiben getrennt.** „TuS Brake" gibt es in Bielefeld und in
+  Lemgo — zwei verschiedene Vereine. Sie werden nicht verschmolzen, sind in der Liste
+  aber nur an der Liga-Spalte auseinanderzuhalten.
 * Innerhalb einer Ligastufe werden parallele Staffeln ohne Stärkekorrektur verglichen:
   2,4 Punkte pro Spiel in der Regionalliga Nord zählen genauso viel wie 2,4 in der
   Nordost-Staffel, und dasselbe gilt für Kreisliga B Staffel 2 gegen Staffel 3 oder

@@ -71,7 +71,9 @@ def main() -> int:
             "Vereine derselben Stufe. Beachte auch: die Verbände bauen ihre Pyramide "
             "unterschiedlich — Westfalen schiebt zwischen Oberliga und Landesliga noch "
             "die Verbandsliga ein und reicht deshalb bis Stufe 12.")
-    note = ("<b>Abdeckung.</b> " + " ".join(parts)) if parts else None
+    note = " ".join(parts) if parts else None
+    note_summary = ("Abdeckung: Ligastufen 5 bis 12 nur Nordrhein-Westfalen"
+                    if external else "Abdeckung")
 
     meta = {
         "generated": dt.datetime.now().strftime("%d.%m.%Y, %H:%M Uhr"),
@@ -82,6 +84,7 @@ def main() -> int:
         "leagues": len(leagues),
         "matches": len(matches),
         "note": note,
+        "note_summary": note_summary,
         "coverage": leagues,
     }
 

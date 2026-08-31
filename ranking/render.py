@@ -29,26 +29,34 @@ TEMPLATE = """<!doctype html>
   }
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);
+/* App-Layout: die Seite selbst scrollt nicht, nur die Tabelle. Nur so bleibt
+   der Spaltenkopf zuverlässig stehen -- ein sticky <th> klebt am oberen Rand
+   seines Scroll-Containers, und der darf dafür nicht aus dem Bild wandern. */
+html,body{height:100%}
+body{margin:0;overflow:hidden;background:var(--bg);color:var(--ink);
   font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-.wrap{max-width:1080px;margin:0 auto;padding:28px 18px 64px}
+.wrap{max-width:1080px;margin:0 auto;padding:20px 18px 14px;
+  height:100%;display:flex;flex-direction:column;gap:0}
+header,.stats,.note,.controls,.legend,.foot{flex:0 0 auto}
 header h1{margin:0 0 6px;font-size:clamp(22px,3.4vw,32px);letter-spacing:-.02em}
 header p{margin:0;color:var(--muted)}
-.stats{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
 .stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;
   padding:10px 14px;min-width:118px}
 .stat b{display:block;font-size:20px;letter-spacing:-.01em}
 .stat span{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
-.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:18px 0 12px;
-  position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 10px}
 input[type=search],select{background:var(--panel);color:var(--ink);border:1px solid var(--line);
   border-radius:8px;padding:9px 11px;font-size:14px}
 input[type=search]{flex:1 1 240px;min-width:180px}
-.tablewrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.tablewrap{flex:1 1 auto;min-height:160px;overflow:auto;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px}
 table{border-collapse:collapse;width:100%;min-width:800px;font-variant-numeric:tabular-nums}
 th,td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
-th{background:var(--panel);font-size:11px;text-transform:uppercase;
-  letter-spacing:.06em;color:var(--muted);font-weight:600}
+th{position:sticky;top:0;z-index:3;background:var(--panel);
+  font-size:11px;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--muted);font-weight:600;
+  box-shadow:inset 0 -1px 0 var(--line)}
 th:nth-child(3),td:nth-child(3),th:nth-child(4),td:nth-child(4){text-align:left}
 /* Jede Ligastufe bekommt einen eigenen, sehr blassen Hintergrund. Der
    Farbton ist derselbe wie beim Stufen-Abzeichen, nur stark aufgehellt --
@@ -99,10 +107,24 @@ td.delta{width:56px;font-size:13px}
 .legend{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
 .legend span{font-size:11px;padding:3px 9px;border-radius:999px;
   border:1px solid currentColor;font-weight:600}
-footer{margin-top:34px;color:var(--muted);font-size:13px;line-height:1.7}
-footer a{color:var(--accent)}
-.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--t3);
-  border-radius:8px;padding:12px 14px;margin:16px 0;font-size:14px;color:var(--muted)}
+.foot a{color:var(--accent)}
+.note,.foot{background:var(--panel);border:1px solid var(--line);
+  border-radius:8px;padding:10px 13px;margin:14px 0 0;font-size:13px;color:var(--muted)}
+.note{border-left:3px solid var(--t3)}
+.note summary,.foot summary{cursor:pointer;color:var(--ink);font-weight:600;
+  font-size:13px;list-style:none}
+.note summary::-webkit-details-marker,.foot summary::-webkit-details-marker{display:none}
+.note summary::before,.foot summary::before{content:"▸ ";color:var(--muted)}
+.note[open] summary::before,.foot[open] summary::before{content:"▾ "}
+.note p,.foot p{margin:8px 0 0}
+.foot{margin:10px 0 0;max-height:38vh;overflow:auto}
+/* Sehr flache Fenster: lieber normal scrollen als eine Tabelle ohne Platz. */
+@media (max-height:560px){
+  html,body{height:auto}
+  body{overflow:auto}
+  .wrap{height:auto;display:block}
+  .tablewrap{max-height:75vh}
+}
 </style>
 </head>
 <body>
@@ -143,7 +165,8 @@ __NOTE__
   <div class="empty" id="empty" hidden>Keine Treffer.</div>
 </div>
 
-<footer>
+<details class="foot">
+  <summary>Methodik, Quellen und Abdeckung</summary>
   <p><b>Wie sortiert wird.</b> Erstes Kriterium ist die Ligastufe — ein Regionalligist
   steht nie vor einem Drittligisten. Innerhalb einer Stufe entscheiden
   <b>Punkte pro Spiel</b>, dann Tordifferenz pro Spiel, dann Tore pro Spiel.
@@ -155,7 +178,7 @@ __NOTE__
   <p>Grundlage sind ausschließlich die Ligaspiele der laufenden Saison __SEASON__.
   Daten: <a href="https://www.openligadb.de/">OpenLigaDB</a>. Wappen von Wikimedia Commons.
   Erzeugt am __GENERATED__.</p>
-</footer>
+</details>
 </div>
 
 <script>
@@ -275,7 +298,10 @@ def write_site(out_dir: Path, ranking, meta) -> None:
     leagues = sorted({(r["tier"], r["league"]) for r in ranking})
     league_opts = _options((name, name) for _, name in leagues)
 
-    note = f'<div class="note">{meta["note"]}</div>' if meta.get("note") else ""
+    note = ""
+    if meta.get("note"):
+        note = ('<details class="note"><summary>' + meta["note_summary"]
+                + "</summary><p>" + meta["note"] + "</p></details>")
 
     html = TEMPLATE
     for key, value in {
