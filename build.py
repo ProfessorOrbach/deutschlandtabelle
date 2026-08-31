@@ -54,26 +54,26 @@ def main() -> int:
 
     found = {lg["name"] for lg in leagues}
     gaps = [name for name in EXPECTED_TIER4 if name not in found]
-    parts = []
-    if gaps:
-        parts.append("Auf Ligastufe 4 fehlen " + ", ".join(gaps)
-                     + " — für diese Staffeln stellt OpenLigaDB keine Daten bereit.")
+    verbaende = sorted({lg["verband"] for lg in leagues
+                        if lg.get("source") == "fussball.de" and lg.get("verband")})
+    note = None
+    note_summary = "Abdeckung"
     if external:
-        verbaende = sorted({lg["verband"] for lg in leagues
-                            if lg.get("source") == "fussball.de" and lg.get("verband")})
-        kreise = len({lg["name"].split(" · ")[-1] for lg in leagues
-                      if lg.get("source") == "fussball.de" and " · " in lg["name"]})
-        parts.append(
-            "Die Ligastufen 5 bis 12 sind <b>nicht bundesweit</b> erfasst, sondern "
-            f"für die Verbände {', '.join(verbaende)} — also ganz Nordrhein-Westfalen, "
-            f"über rund {kreise} Fußballkreise bis hinunter zur Kreisliga D. Ein "
-            "Kreisligist steht hier stellvertretend für zehntausende nicht erfasste "
-            "Vereine derselben Stufe. Beachte auch: die Verbände bauen ihre Pyramide "
-            "unterschiedlich — Westfalen schiebt zwischen Oberliga und Landesliga noch "
-            "die Verbandsliga ein und reicht deshalb bis Stufe 12.")
-    note = " ".join(parts) if parts else None
-    note_summary = ("Abdeckung: Ligastufen 5 bis 12 nur Nordrhein-Westfalen"
-                    if external else "Abdeckung")
+        note_summary = ("Ab Ligastufe 5 nur innerhalb eines Landesverbands "
+                        "sinnvoll vergleichbar")
+        note = (f"Erfasst sind alle {len(verbaende)} Landesverbände, von der "
+                "Bundesliga bis hinunter zur Kreisklasse. <b>Aber:</b> unterhalb "
+                "der Regionalliga gibt es zwischen den Verbänden keine sportliche "
+                "Verbindung — ein Kreisligist aus Oberberg und einer aus Sachsen "
+                "begegnen sich nie, weder direkt noch über eine Auf- und "
+                "Abstiegskette. Die bundesweite Rangfolge ordnet dort nur nach "
+                "Ligastufe und Punkten pro Spiel; ein sportliches Kräftemessen "
+                "ist sie nicht. Wer vergleichen will, wählt oben einen Verband. "
+                "Innerhalb eines Verbands ist die Rangfolge belastbar, weil dort "
+                "alle Staffeln über Auf- und Abstieg zusammenhängen.")
+    if gaps:
+        note = ((note or "") + " Auf Ligastufe 4 fehlen zudem "
+                + ", ".join(gaps) + ".")
 
     meta = {
         "generated": dt.datetime.now().strftime("%d.%m.%Y, %H:%M Uhr"),

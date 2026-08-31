@@ -57,54 +57,158 @@ COMP_TYPE = "1"       # Meisterschaften (keine Pokale, Turniere, Freundschaftssp
 
 @dataclass(frozen=True)
 class Verband:
-    """Ein Landesverband samt Zuordnung seiner Spielklassen auf Ligastufen.
+    """Ein Landesverband mit seiner Ligapyramide.
 
-    Die Pyramide ist nicht überall gleich: Westfalen schiebt zwischen Oberliga
-    und Landesliga noch die Verbandsliga (Westfalenliga) ein und kommt dadurch
-    bis Stufe 12, während Mittelrhein und Niederrhein bei 11 enden. Deshalb
-    braucht jeder Verband seine eigene Tabelle -- eine Heuristik über die
-    Spielklassen-Namen wäre hier schlicht falsch.
+    `klassen` sind die Spielklassen-IDs in Pyramidenreihenfolge, `start_tier`
+    ist die Ligastufe der obersten davon. Die WAM-Datei liefert die Klassen
+    bereits in dieser Reihenfolge -- in Schleswig-Holstein steht Landesliga
+    (ID 78) vor Verbandsliga (ID 77), die Sortierung ist also inhaltlich und
+    nicht numerisch. Deshalb reicht diese knappe Form für 144 Spielklassen.
 
-    Die Mannschaftsart "Herren" hat je Verband eine andere ID (95 / 343 / 41);
-    sie wird deshalb zur Laufzeit aus der kinds-Datei gelesen.
+    Die Pyramide ist nicht überall gleich tief: Bayern beginnt bei Stufe 4 mit
+    der eigenen Regionalliga, Hessen reicht bis Stufe 14. Und wo die Oberliga
+    einem Regionalverband gehört (NOFV, Rheinland-Pfalz/Saar,
+    Baden-Württemberg), beginnt der Landesverband erst auf Stufe 6.
+
+    Die Mannschaftsart "Herren" hat je Verband eine andere ID; sie wird zur
+    Laufzeit aus der kinds-Datei gelesen.
     """
     mandant: str
-    name: str                          # nur für die Fortschrittsausgabe
-    tiers: dict[str, int]
+    name: str
+    start_tier: int
+    klassen: tuple[str, ...]
     label: str | None = None           # Eintrag im Verbandsfilter; None = keiner
-    only: frozenset[str] | None = None # nur diese Wettbewerbe übernehmen
+    only: frozenset[str] | None = None  # nur diese Wettbewerbe übernehmen
+
+    @property
+    def tiers(self) -> dict[str, int]:
+        return {k: self.start_tier + i for i, k in enumerate(self.klassen)}
 
 
 VERBAENDE = [
-    # Ligastufe 4: Nord und Nordost kommen mit Einzelspielen aus OpenLigaDB und
-    # bleiben dort -- nur so funktioniert für sie die Vorwochen-Spalte. Von
-    # fussball.de kommen die drei Staffeln, die OpenLigaDB nicht führt.
-    # "Deutschland" verwaltet vier der fünf Regionalligen; die Regionalliga
-    # Bayern läuft beim BFV und hat deshalb einen eigenen Eintrag.
-    Verband("89", "Regionalliga (überregional)", {"4": 4},
-            only=frozenset({"Regionalliga West", "Regionalliga Südwest"})),
-    Verband("31", "Regionalliga Bayern", {"714": 4},
-            only=frozenset({"Regionalliga Bayern"})),
+    # Überregional: die vier Regionalligen, die der Mandant "Deutschland"
+    # führt (Nord und Nordost kommen mit Einzelspielen aus OpenLigaDB und
+    # bleiben dort), sowie die drei Oberligen ohne eigenen Landesverband.
+    Verband("89", "überregional", 4, ("4", "6"),
+            only=frozenset({"Regionalliga West", "Regionalliga Südwest",
+                            "Herren Oberliga Rheinland-Pfalz/Saar",
+                            "NOFV-Oberliga Nord", "NOFV-Oberliga Süd"})),
 
-    Verband("23", "Mittelrhein", {
-        "129": 5,   # Verbandsliga = Mittelrheinliga
-        "130": 6,   # Landesliga
-        "132": 7,   # Bezirksliga
-        "135": 8, "136": 9, "137": 10, "138": 11,   # Kreisliga A-D
-    }, label="Mittelrhein"),
-    Verband("22", "Niederrhein", {
-        "584": 5,   # Oberliga Niederrhein
-        "114": 6,   # Landesliga
-        "116": 7,   # Bezirksliga
-        "119": 8, "120": 9, "121": 10, "122": 11,   # Kreisliga A-D
-    }, label="Niederrhein"),
-    Verband("21", "Westfalen", {
-        "361": 5,   # Oberliga Westfalen
-        "93": 6,    # Verbandsliga = Westfalenliga
-        "94": 7,    # Landesliga
-        "96": 8,    # Bezirksliga
-        "99": 9, "100": 10, "101": 11, "102": 12,   # Kreisliga A-D
-    }, label="Westfalen"),
+    # --- Landesverbände ---------------------------------------------------
+    # Die Spielklassen stehen in der WAM-Datei in Pyramidenreihenfolge -- in
+    # Schleswig-Holstein etwa Landesliga vor Verbandsliga, also gerade nicht
+    # nach ID sortiert. Deshalb genügen Startstufe und Reihenfolge.
+    # Die Startstufe ist 5, wo der Verband seine Oberliga selbst betreibt,
+    # und 6, wo sie einem Regionalverband gehört (NOFV, Rheinland-Pfalz/Saar,
+    # Baden-Württemberg).
+    # 4 Regionalliga Bayern · 5 Bayernliga · 6 Landesliga · 7 Bezirksliga · 8
+    # Kreisliga · 9 Kreisklasse · 10 A Klasse · 11 B Klasse · 12 C Klasse
+    Verband("31", "Bayern", 4, (
+        "714", "520", "387", "390", "392", "393", "394", "395", "396"
+    ), label="Bayern"),
+    # 5 Verbandsliga · 6 Landesliga · 7 Bezirksliga · 8 1.Kreisliga (A) · 9
+    # 2.Kreisliga (B)
+    Verband("02", "Bremen", 5, (
+        "46", "47", "49", "51", "52"
+    ), label="Bremen"),
+    # 5 Verbandsliga · 6 Landesliga · 7 Bezirksliga · 8 Kreisliga · 9
+    # Kreisklasse
+    Verband("03", "Hamburg", 5, (
+        "65", "66", "67", "69", "74"
+    ), label="Hamburg"),
+    # 5 Hessenliga · 6 Verbandsliga · 7 Gruppenliga · 8 Kreisoberliga · 9
+    # Kreisliga A · 10 Kreisliga B · 11 Kreisliga C · 12 Kreisliga D · 13
+    # 1.Kreisklasse/Kreisklasse · 14 2.Kreisklasse
+    Verband("34", "Hessen", 5, (
+        "177", "594", "181", "627", "184", "185", "186", "187", "188", "411"
+    ), label="Hessen"),
+    # 5 Verbandsliga · 6 Landesliga · 7 Bezirksliga · 8 Kreisliga A · 9
+    # Kreisliga B · 10 Kreisliga C · 11 Kreisliga D
+    Verband("23", "Mittelrhein", 5, (
+        "129", "130", "132", "135", "136", "137", "138"
+    ), label="Mittelrhein"),
+    # 5 Oberliga Niederrhein · 6 Landesliga · 7 Bezirksliga · 8 Kreisliga A ·
+    # 9 Kreisliga B · 10 Kreisliga C · 11 Kreisliga D
+    Verband("22", "Niederrhein", 5, (
+        "584", "114", "116", "119", "120", "121", "122"
+    ), label="Niederrhein"),
+    # 5 Oberliga Niedersachsen · 6 Landesliga · 7 Bezirksliga · 8 Kreisliga ·
+    # 9 1.Kreisklasse · 10 2.Kreisklasse · 11 3.Kreisklasse · 12 4.Kreisklasse
+    # · 13 5.Kreisklasse
+    Verband("01", "Niedersachsen", 5, (
+        "597", "31", "32", "36", "38", "39", "40", "41", "42"
+    ), label="Niedersachsen"),
+    # 5 Oberliga Schleswig-Holstein · 6 Landesliga · 7 Verbandsliga · 8
+    # Kreisliga · 9 Kreisklasse A · 10 Kreisklasse B · 11 Kreisklasse C
+    Verband("04", "Schleswig-Holstein", 5, (
+        "595", "78", "77", "84", "85", "86", "87"
+    ), label="Schleswig-Holstein"),
+    # 5 Oberliga Westfalen · 6 Verbandsliga · 7 Landesliga · 8 Bezirksliga · 9
+    # Kreisliga A · 10 Kreisliga B · 11 Kreisliga C · 12 Kreisliga D
+    Verband("21", "Westfalen", 5, (
+        "361", "93", "94", "96", "99", "100", "101", "102"
+    ), label="Westfalen"),
+    # 5 Oberliga · 6 Verbandsliga · 7 Landesliga · 8 Bezirksliga · 9 Kreisliga
+    # A; Kreisliga · 10 Kreisliga B · 11 Kreisliga C
+    Verband("35", "Württemberg", 5, (
+        "631", "190", "191", "195", "198", "199", "200"
+    ), label="Württemberg"),
+    # 6 Verbandsliga · 7 Landesliga · 8 Kreisliga · 9 Kreisklasse A · 10
+    # Kreisklasse B · 11 Kreisklasse C
+    Verband("32", "Baden", 6, (
+        "145", "146", "150", "153", "154", "155"
+    ), label="Baden"),
+    # 6 Verbandsliga · 7 Landesliga · 8 Bezirksliga · 9 Kreisliga A · 10
+    # Kreisliga B · 11 Kreisliga C
+    Verband("66", "Berlin", 6, (
+        "305", "306", "310", "313", "314", "315"
+    ), label="Berlin"),
+    # 6 Verbandsliga · 7 Landesliga · 8 Landesklasse · 9 Kreisoberliga · 10
+    # Kreisliga · 11 1.Kreisklasse · 12 2.Kreisklasse
+    Verband("61", "Brandenburg", 6, (
+        "247", "248", "249", "735", "251", "252", "253"
+    ), label="Brandenburg"),
+    # 6 Verbandsliga · 7 Landesliga · 8 Landesklasse · 9 Kreisoberliga · 10
+    # Kreisliga · 11 1.Kreisklasse
+    Verband("62", "Mecklenburg-Vorpommern", 6, (
+        "256", "257", "629", "262", "263", "264"
+    ), label="Mecklenburg-Vorpommern"),
+    # 6 Rheinlandliga · 7 Bezirksliga · 8 Kreisliga A · 9 Kreisliga B · 10
+    # Kreisliga C
+    Verband("41", "Rheinland", 6, (
+        "207", "210", "213", "214", "215"
+    ), label="Rheinland"),
+    # 6 Saarland-Liga · 7 Verbandsliga · 8 Landesliga · 9 Bezirksliga · 10
+    # Kreisliga A / Kreisliga · 11 Kreisliga B / 1.Kreisklasse
+    Verband("43", "Saarland", 6, (
+        "626", "232", "233", "235", "238", "239"
+    ), label="Saarland"),
+    # 6 Landesliga · 7 Landesklasse · 8 Kreisoberliga · 9 1.Kreisliga (A) · 10
+    # 2.Kreisliga (B) · 11 3.Kreisliga (C) · 12 1.Kreisklasse · 13
+    # 2.Kreisklasse
+    Verband("63", "Sachsen", 6, (
+        "268", "815", "702", "273", "274", "275", "277", "278"
+    ), label="Sachsen"),
+    # 6 Verbandsliga · 7 Landesliga · 8 Landesklasse · 9 Kreisoberliga · 10
+    # Kreisliga · 11 1.Kreisklasse · 12 2.Kreisklasse · 13 3.Kreisklasse
+    Verband("64", "Sachsen-Anhalt", 6, (
+        "282", "283", "284", "286", "287", "288", "289", "290"
+    ), label="Sachsen-Anhalt"),
+    # 6 Verbandsliga · 7 Landesliga · 8 Bezirksliga · 9 1.Kreisliga (A) · 10
+    # 2.Kreisliga (B) · 11 3.Kreisliga (C)
+    Verband("33", "Südbaden", 6, (
+        "158", "159", "162", "165", "166", "167"
+    ), label="Südbaden"),
+    # 6 Verbandsliga · 7 Landesliga · 8 Bezirksliga (Verband) · 9 A-Klasse ·
+    # 10 B-Klasse · 11 C-Klasse
+    Verband("42", "Südwest", 6, (
+        "221", "222", "711", "713", "723", "724"
+    ), label="Südwest"),
+    # 6 Verbandsliga · 7 Landesklasse · 8 Kreisoberliga · 9 Kreisliga · 10
+    # 1.Kreisklasse · 11 2.Kreisklasse
+    Verband("65", "Thüringen", 6, (
+        "292", "294", "299", "300", "301", "302"
+    ), label="Thüringen"),
 ]
 
 

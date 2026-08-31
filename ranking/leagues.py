@@ -70,10 +70,10 @@ def registry(season: int | None = None) -> list[LeagueRef]:
             for sc, tier, name, verband in CORE + LOWER]
 
 
+# Ab Stufe 6 heißen die Ligen je Verband anders (Landesliga, Landesklasse,
+# Gruppenliga, A-Klasse ...), deshalb hier nur die Stufennummer.
 TIER_LABEL = {
     1: "1. Liga", 2: "2. Liga", 3: "3. Liga",
     4: "4. Liga (Regionalliga)", 5: "5. Liga (Oberliga)",
-    6: "6. Liga (Landesliga)", 7: "7. Liga (Bezirksliga)",
-    8: "8. Liga (Kreisliga A)", 9: "9. Liga (Kreisliga B)",
-    10: "10. Liga", 11: "11. Liga", 12: "12. Liga",
+    **{n: f"{n}. Ligastufe" for n in range(6, 15)},
 }

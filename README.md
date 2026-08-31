@@ -37,73 +37,80 @@ Woche noch kein Spiel hatten, zeigen „–" statt eines erfundenen Werts.
 
 | Stufe | Umfang | Quelle |
 |---|---|---|
-| 1–3 | bundesweit vollständig | OpenLigaDB |
-| 4 (Regionalliga) | **alle fünf Staffeln** — Nord und Nordost mit Einzelspielen aus OpenLigaDB, West, Südwest und Bayern von fussball.de | beide |
-| 5–12 | **ganz Nordrhein-Westfalen** — die Verbände Mittelrhein, Niederrhein und Westfalen, rund 42 Fußballkreise, von der Oberliga bis zur Kreisliga D | fussball.de |
+| 1–3 | bundesweit | OpenLigaDB |
+| 4 (Regionalliga) | alle fünf Staffeln — Nord und Nordost mit Einzelspielen aus OpenLigaDB, West, Südwest und Bayern von fussball.de | beide |
+| 5–14 | **alle 21 Landesverbände**, von der Oberliga bis zur Kreisklasse | fussball.de |
 
-Aktuell **5.350 Mannschaften in 360 Staffeln über 12 Ligastufen**.
+**26.836 Mannschaften in 1.952 Staffeln über 14 Ligastufen.** Bayern stellt mit 5.063
+Mannschaften den größten Verband, Bremen mit 125 den kleinsten. Stufe 14 gibt es nur in
+Hessen (2. Kreisklasse, 14 Mannschaften).
 
-Auf Stufe 4 bleiben Nord und Nordost bewusst bei OpenLigaDB: nur diese Quelle liefert
-Einzelspiele mit Datum, und nur damit funktioniert für sie die Vorwochen-Spalte. Die drei
-fehlenden Staffeln kommen über fussball.de dazu — vier davon führt der Mandant
-„Deutschland", die Regionalliga Bayern läuft beim BFV und hat deshalb einen eigenen
-Eintrag in `VERBAENDE`. Die Stufen 5–12 sind
-kein bundesweiter Schnitt, sondern ein regional vollständiger: innerhalb von NRW ist die
-Pyramide lückenlos, ein bayerischer Kreisligist fehlt. Das steht so auch auf der Seite.
+### Die Ligastufen-Zuordnung
 
-Warum ausgerechnet diese drei: sie hängen über die Regionalliga West zusammen, die ohnehin
-erfasst ist. Das Ranking bleibt dadurch sportlich begründet und ist nicht nur groß.
+145 Spielklassen auf Ligastufen abzubilden klang nach Einzelfallarbeit, ist aber
+weitgehend ableitbar: **die WAM-Datei listet die Spielklassen je Verband in
+Pyramidenreihenfolge.** Belegt durch Schleswig-Holstein, wo Landesliga (ID 78) vor
+Verbandsliga (ID 77) steht — die Reihenfolge ist also inhaltlich und nicht numerisch.
+Deshalb genügen je Verband die Startstufe und die Reihenfolge:
 
-**Die Pyramide ist nicht überall gleich.** Westfalen schiebt zwischen Oberliga und
-Landesliga noch die Verbandsliga (Westfalenliga) ein und reicht deshalb bis Stufe 12,
-Mittelrhein und Niederrhein enden bei 11. Jeder Verband braucht daher in
-`ranking/fussballde.py` seine eigene `tiers`-Tabelle — eine Heuristik über die
-Spielklassen-Namen wäre schlicht falsch. Auch die Mannschaftsart „Herren" hat je Verband
-eine andere ID (95 / 343 / 41); die wird zur Laufzeit ermittelt.
+* **Startstufe 5**, wo der Verband seine Oberliga selbst betreibt — Westfalen,
+  Niederrhein, Mittelrhein, Niedersachsen, Hessen, Schleswig-Holstein, Hamburg, Bremen,
+  Württemberg.
+* **Startstufe 6**, wo die Oberliga einem Regionalverband gehört — die Ostverbände
+  (NOFV), Rheinland/Saarland/Südwest (Oberliga Rheinland-Pfalz/Saar) und
+  Baden/Südbaden (Oberliga Baden-Württemberg).
+* **Startstufe 4** nur bei Bayern, das seine Regionalliga selbst führt.
+
+Die drei Oberligen ohne eigenen Landesverband — Rheinland-Pfalz/Saar und die beiden
+NOFV-Oberligen — liefert der Mandant „Deutschland" unter Spielklasse 6.
+
+Zwei Sonderfälle: Rheinlands „Reserveklasse" ist Parallelbetrieb und keine Pyramidenstufe,
+deshalb ausgeschlossen. Bei Sachsen sind „1./2./3. Kreisliga" und „1./2. Kreisklasse" der
+Reihenfolge nach auf die Stufen 9–13 gelegt; das folgt der WAM-Reihenfolge, ist aber die
+unsicherste Zuordnung im ganzen Satz.
+
+### Vergleichbarkeit
+
+Innerhalb eines Verbands ist die Rangfolge belastbar, weil dort alle Staffeln über Auf-
+und Abstieg zusammenhängen. **Zwischen Verbänden gilt das unterhalb der Regionalliga
+nicht** — ein Kreisligist aus Oberberg und einer aus Sachsen begegnen sich nie, auch
+nicht über eine Aufstiegskette. Die bundesweite Liste ordnet dort nur nach Ligastufe und
+Punkten pro Spiel. Die Seite sagt das im Hinweiskasten und in einer Zeile über der
+Tabelle, die zum Verbandsfilter führt.
 
 ### Zu fussball.de
 
-`ranking/fussballde.py` ist ein **Entwurf mit Vorbehalt**. Der Ergebnisdienst von
-oberberg-aktuell.de, der ursprünglich als Quelle vorgeschlagen war, enthält selbst keine
-Daten — er verlinkt ausschließlich auf fussball.de. Deren Nutzungsbedingungen untersagen
-automatisiertes Auslesen. Abschalten:
+`ranking/fussballde.py` ist ein **Entwurf mit Vorbehalt**. Die Nutzungsbedingungen von
+fussball.de untersagen automatisiertes Auslesen, und bundesweit sind das rund 3.500
+Abrufe je Kaltstart. Abschalten:
 
 ```bash
 python3 build.py --no-fussballde
 ```
 
-oder dauerhaft `ENABLED = False` in `ranking/fussballde.py`. Der saubere Weg für den
-Dauerbetrieb ist die DFBnet-Datenschnittstelle oder ein lizenzierter Anbieter, siehe
+oder dauerhaft `ENABLED = False` in `ranking/fussballde.py`. Für den Dauerbetrieb ist die
+DFBnet-Datenschnittstelle oder ein lizenzierter Anbieter der saubere Weg, siehe
 [PLAN.md §3](PLAN.md).
 
 **Staffel-Discovery über die WAM-Schnittstelle.** Der Matchkalender von fussball.de füllt
-seine Auswahllisten aus statischen JSON-Dateien. Damit lässt sich der Wettbewerbsbaum
-vollständig ablaufen, ohne eine einzige Staffel-ID von Hand zu pflegen:
+seine Auswahllisten aus statischen JSON-Dateien:
 
 ```
-wam_kinds_<mandant>_<saison>_<typ>.json
-    → Mannschaftsart → Spielklasse → Gebiet (die Fußballkreise)
-
+wam_base.json                                  → alle Mandanten (Verbände)
+wam_kinds_<mandant>_<saison>_<typ>.json        → Mannschaftsart → Spielklasse → Gebiet
 wam_competitions_<mandant>_<saison>_<typ>_<art>_<klasse>_<gebiet>.json
-    → {Staffel-URL: Name}, die URL enthält die Staffel-ID der laufenden Saison
+                                               → {Staffel-URL: Name}
 ```
 
-Der Adapter folgt damit dem Saisonwechsel und neu eingerichteten Staffeln von selbst.
-Ein Kaltstart über die drei Verbände sind rund 180 Discovery-Abrufe plus einer je
-Staffel, zusammen etwa zehn Minuten. Danach greift der Plattencache.
+Keine Staffel-ID ist von Hand gepflegt; der Adapter folgt Saisonwechseln und neuen
+Staffeln von selbst. Kaltstart rund eine Stunde, danach greift der Plattencache.
 
-**Einen weiteren Verband aufnehmen:** einen `Verband(...)`-Eintrag in `VERBAENDE`
-ergänzen. Die Mandanten-ID steht in `wam_base.json` (`21` = Westfalen, `31` = Bayern,
-`34` = Hessen …), die Spielklassen-IDs in `wam_kinds_<mandant>_<saison>_1.json`.
+**Einen Verband anpassen:** `VERBAENDE` in `ranking/fussballde.py`. Ein Eintrag ist
+Mandanten-ID, Name, Startstufe und die Spielklassen-IDs in Pyramidenreihenfolge.
 
 **Es gibt nur fertige Tabellen, keine Einzelspiele** — die Spielliste baut fussball.de
 erst im Browser per JavaScript auf. Diesen Staffeln fehlt deshalb die Vorwochen-Differenz;
-sie zeigen dauerhaft „–". Wer sie braucht, müsste Tagesschnappschüsse speichern statt sie
-nachzurechnen.
-
-`ranking/leagues.py` probiert für die oberen Stufen mehrere bekannte OpenLigaDB-Kürzel
-pro Staffel durch. Sobald jemand dort eine fehlende Staffel einstellt, taucht sie beim
-nächsten Lauf von selbst im Ranking auf.
+sie zeigen dauerhaft „–".
 
 ## Benutzung
 
@@ -154,7 +161,7 @@ ranking/render.py     HTML, JSON, CSV
   community-gepflegten Ligen abweichende Schreibweisen führt („Werder Bremen" /
   „SV Werder Bremen"). Die Reserve-Kennung bleibt dabei erhalten.
 * **Negative Punktzahlen sind echt.** Im Amateurbereich gibt es Punktabzüge, meist −3
-  oder −6. Derzeit betrifft das rund 100 der 5.350 Mannschaften; die Zahlen stammen so von
+  oder −6. Derzeit betrifft das 143 der 26.836 Mannschaften; die Zahlen stammen so von
   fussball.de und sind kein Parser-Fehler.
 * **Nur die Kopfzeile der Tabelle bleibt stehen.** Titel, Kennzahlen und Filter scrollen
   weg, die Spaltenüberschriften kleben am Fensterrand. Der Haken dabei: ein
@@ -173,13 +180,21 @@ ranking/render.py     HTML, JSON, CSV
   Unterhalb von 860 px greift außerdem `table-layout:fixed` — die automatische
   Tabellenbreite hält sich sonst nicht an den Container und schiebt die Verein-Spalte
   auf Maximalbreite.
+* **Die Tabelle lädt stückweise nach.** 26.836 Zeilen auf einmal wären rund 350.000
+  DOM-Knoten. Gerendert werden 400 Zeilen, beim Scrollen kommen weitere dazu; gefiltert
+  und sortiert wird weiterhin über den vollen Datensatz. Ergebnis: 10.471 statt 350.000
+  Knoten, 200 ms Ladezeit, 74 ms je Filterwechsel — genauso schnell wie vorher mit 5.350
+  Mannschaften.
 * **Die Seite trägt ihre Daten kompakt.** Zeilen stecken als Arrays statt als Objekte in
   der Seite, Staffel- und Verbandsnamen nur einmal in einer Nachschlagetabelle. Das drückt
-  `index.html` von 1,7 MB auf gut 430 KB; ein Filterwechsel über alle Zeilen dauert
-  rund 75 ms.
-* **Gleichnamige Vereine bleiben getrennt.** „TuS Brake" gibt es in Bielefeld und in
-  Lemgo — zwei verschiedene Vereine. Sie werden nicht verschmolzen, sind in der Liste
-  aber nur an der Liga-Spalte auseinanderzuhalten.
+  `index.html` auf etwa ein Viertel.
+* **Gleichnamige Vereine bleiben getrennt.** 64 Vereinsnamen sind mehrfach vergeben,
+  „SG Werratal" und „SV Bernried" sogar dreifach. Sie werden nicht verschmolzen, sind in
+  der Liste aber nur an der Liga-Spalte auseinanderzuhalten.
+* **`docs/` wiegt rund 12 MB.** Solange GitHub Pages direkt aus dem `main`-Branch
+  ausliefert, landet das bei jedem Build als neuer Commit im Repo. Sobald der
+  Actions-Workflow aktiv ist (siehe unten), wird `docs/` gebaut und deployt, ohne
+  committet zu werden — dann entfällt das Wachstum.
 * Innerhalb einer Ligastufe werden parallele Staffeln ohne Stärkekorrektur verglichen:
   2,4 Punkte pro Spiel in der Regionalliga Nord zählen genauso viel wie 2,4 in der
   Nordost-Staffel, und dasselbe gilt für Kreisliga B Staffel 2 gegen Staffel 3 oder
