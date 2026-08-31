@@ -44,10 +44,11 @@ def main() -> int:
 
     external = {}
     if not args.no_fussballde:
-        groups = fussballde.fetch(cache_dir)
+        groups = fussballde.fetch(cache_dir, season)
         external = load.merge_standings(teams, groups)
         leagues += [{"shortcut": g["staffel"], "tier": g["tier"], "name": g["name"],
-                     "matches": None, "source": "fussball.de"} for g in groups]
+                     "verband": g["verband"], "matches": None,
+                     "source": "fussball.de"} for g in groups]
 
     ranking = rank.build(matches, teams, external)
 
@@ -58,11 +59,15 @@ def main() -> int:
         parts.append("Auf Ligastufe 4 fehlen " + ", ".join(gaps)
                      + " — für diese Staffeln stellt OpenLigaDB keine Daten bereit.")
     if external:
-        parts.append("Die Ligastufen 5 bis 11 sind <b>nicht bundesweit</b> erfasst, "
-                     "sondern ausschließlich für den Kreis Berg (Oberberg): "
-                     "von der Mittelrheinliga bis zur Kreisliga D. Ein Kreisligist "
-                     "steht hier also stellvertretend für tausende nicht erfasste "
-                     "Vereine derselben Stufe.")
+        kreise = sorted({lg["name"].split(" · ")[-1] for lg in leagues
+                         if lg.get("source") == "fussball.de" and " · " in lg["name"]})
+        parts.append(
+            "Die Ligastufen 5 bis 11 sind <b>nicht bundesweit</b> erfasst, sondern "
+            "ausschließlich für den Fußball-Verband Mittelrhein — von der "
+            f"Mittelrheinliga bis zur Kreisliga D, über alle {len(kreise)} Kreise "
+            f"({', '.join(k.replace('Kreis ', '') for k in kreise)}). Ein Kreisligist "
+            "steht hier also stellvertretend für zehntausende nicht erfasste Vereine "
+            "derselben Stufe.")
     note = ("<b>Abdeckung.</b> " + " ".join(parts)) if parts else None
 
     meta = {

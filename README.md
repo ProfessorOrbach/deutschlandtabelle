@@ -39,19 +39,18 @@ Woche noch kein Spiel hatten, zeigen „–" statt eines erfundenen Werts.
 |---|---|---|
 | 1–3 | bundesweit vollständig | OpenLigaDB |
 | 4 (Regionalliga) | Nord und Nordost; West, Südwest, Bayern fehlen | OpenLigaDB |
-| 5 (Mittelrheinliga) | nur Mittelrhein | fussball.de |
-| 6–7 (Landes-, Bezirksliga) | für 2026/27 noch nicht veröffentlicht | fussball.de |
-| 8–11 (Kreisliga A–D) | nur Kreis Berg / Oberberg, 10 Staffeln | fussball.de |
+| 5–11 (Mittelrheinliga bis Kreisliga D) | **kompletter Fußball-Verband Mittelrhein**, alle 9 Kreise: Aachen, Berg, Bonn, Düren, Euskirchen, Heinsberg, Köln, Rhein-Erft, Sieg | fussball.de |
 
-Die Stufen 5–11 sind also **kein bundesweiter Schnitt**, sondern eine regionale
-Stichprobe: ein Kreisligist steht dort stellvertretend für tausende nicht erfasste
-Vereine derselben Stufe. Das steht so auch als Hinweis auf der Seite.
+Aktuell rund **1.280 Mannschaften in 85 Staffeln über 11 Ligastufen**. Die Stufen 5–11
+sind damit kein bundesweiter Schnitt, sondern ein regional vollständiger: innerhalb des
+Mittelrheins ist die Pyramide lückenlos, ein Kreisligist aus Bayern fehlt. Das steht so
+auch als Hinweis auf der Seite.
 
 ### Zu fussball.de
 
 `ranking/fussballde.py` ist ein **Entwurf mit Vorbehalt**. Der Ergebnisdienst von
-oberberg-aktuell.de, der als Quelle vorgeschlagen war, enthält selbst keine Daten —
-er verlinkt ausschließlich auf fussball.de. Deren Nutzungsbedingungen untersagen
+oberberg-aktuell.de, der ursprünglich als Quelle vorgeschlagen war, enthält selbst keine
+Daten — er verlinkt ausschließlich auf fussball.de. Deren Nutzungsbedingungen untersagen
 automatisiertes Auslesen. Abschalten:
 
 ```bash
@@ -62,16 +61,31 @@ oder dauerhaft `ENABLED = False` in `ranking/fussballde.py`. Der saubere Weg fü
 Dauerbetrieb ist die DFBnet-Datenschnittstelle oder ein lizenzierter Anbieter, siehe
 [PLAN.md §3](PLAN.md).
 
-Zwei technische Eigenheiten:
+**Staffel-Discovery über die WAM-Schnittstelle.** Der Matchkalender von fussball.de füllt
+seine Auswahllisten aus statischen JSON-Dateien. Damit lässt sich der Wettbewerbsbaum
+vollständig ablaufen, ohne eine einzige Staffel-ID von Hand zu pflegen:
 
-* **Staffel-IDs sind saisonspezifisch.** Als Anker dienen die IDs aus dem Oberberg-
-  Ergebnisdienst (Saison 2025/26); deren Seite verweist im `<link rel="canonical">`
-  auf die Nachfolgestaffel der laufenden Saison. Der Adapter folgt dem Saisonwechsel
-  damit von selbst.
-* **Es gibt nur fertige Tabellen, keine Einzelspiele** — die Spielliste baut
-  fussball.de erst im Browser per JavaScript auf. Diesen Staffeln fehlt deshalb die
-  Vorwochen-Differenz; sie zeigen dauerhaft „–". Wer sie braucht, müsste
-  Tagesschnappschüsse speichern statt sie nachzurechnen.
+```
+wam_kinds_<mandant>_<saison>_<typ>.json
+    → Mannschaftsart → Spielklasse → Gebiet (die Fußballkreise)
+
+wam_competitions_<mandant>_<saison>_<typ>_<art>_<klasse>_<gebiet>.json
+    → {Staffel-URL: Name}, die URL enthält die Staffel-ID der laufenden Saison
+```
+
+Der Adapter folgt damit dem Saisonwechsel und neu eingerichteten Staffeln von selbst.
+Ein kompletter Kaltstart sind rund 36 Discovery-Abrufe plus ein Tabellenabruf je
+Staffel, zusammen etwa zwei Minuten.
+
+**Auf einen anderen Landesverband umstellen:** `MANDANT` in `ranking/fussballde.py`
+ändern (`23` = Mittelrhein, `21` = Westfalen, `31` = Bayern …) und `TIER_BY_LEAGUE`
+anpassen — die Pyramide ist nicht überall gleich, Bayern hat unterhalb der Kreisliga
+noch Kreisklasse und A-Klasse.
+
+**Es gibt nur fertige Tabellen, keine Einzelspiele** — die Spielliste baut fussball.de
+erst im Browser per JavaScript auf. Diesen Staffeln fehlt deshalb die Vorwochen-Differenz;
+sie zeigen dauerhaft „–". Wer sie braucht, müsste Tagesschnappschüsse speichern statt sie
+nachzurechnen.
 
 `ranking/leagues.py` probiert für die oberen Stufen mehrere bekannte OpenLigaDB-Kürzel
 pro Staffel durch. Sobald jemand dort eine fehlende Staffel einstellt, taucht sie beim
@@ -125,7 +139,11 @@ ranking/render.py     HTML, JSON, CSV
 * Vereinsnamen werden über eine normalisierte Form zusammengeführt, weil OpenLigaDB in
   community-gepflegten Ligen abweichende Schreibweisen führt („Werder Bremen" /
   „SV Werder Bremen"). Die Reserve-Kennung bleibt dabei erhalten.
+* **Negative Punktzahlen sind echt.** Im Amateurbereich gibt es Punktabzüge, meist −3
+  oder −6. Derzeit betrifft das 20 der rund 1.280 Mannschaften; die Zahlen stammen so
+  von fussball.de und sind kein Parser-Fehler.
 * Innerhalb einer Ligastufe werden parallele Staffeln ohne Stärkekorrektur verglichen:
   2,4 Punkte pro Spiel in der Regionalliga Nord zählen genauso viel wie 2,4 in der
   Nordost-Staffel, und dasselbe gilt für Kreisliga B Staffel 2 gegen Staffel 3 oder
-  die drei D-Staffeln untereinander. Bewusst einfach und für jeden nachvollziehbar.
+  die neun Kreisliga-A-Staffeln der verschiedenen Kreise untereinander. Bewusst
+  einfach und für jeden nachvollziehbar.

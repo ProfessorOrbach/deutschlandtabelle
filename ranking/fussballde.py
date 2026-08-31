@@ -1,7 +1,7 @@
 """Adapter für fussball.de -- Staffeln unterhalb der Regionalliga.
 
 Hintergrund: OpenLigaDB endet faktisch bei Ligastufe 4. Der Ergebnisdienst von
-oberberg-aktuell.de führt zwar die Ligen des Kreises Berg auf, enthält aber
+oberberg-aktuell.de, der ursprünglich als Quelle vorgeschlagen war, enthält
 selbst keine Daten -- er verlinkt ausschließlich auf fussball.de. Von dort
 stammen die Zahlen hier.
 
@@ -11,10 +11,22 @@ automatisierte Auslesen. Dieser Adapter ist ein Entwurf und lässt sich mit
 produktiven Betrieb ist der saubere Weg die DFBnet-Datenschnittstelle oder ein
 lizenzierter Anbieter -- siehe PLAN.md §3.
 
-Technik: Die Staffel-IDs sind saisonspezifisch. Als Anker dienen die IDs der
-Saison 2025/26 aus dem Oberberg-Ergebnisdienst; deren Seite verweist im
-<link rel="canonical"> auf die Nachfolgestaffel der laufenden Saison. Dadurch
-folgt der Adapter dem Saisonwechsel von selbst.
+Staffel-Discovery über die WAM-Schnittstelle
+--------------------------------------------
+Der Matchkalender von fussball.de füllt seine Auswahllisten aus statischen
+JSON-Dateien. Damit lässt sich der Wettbewerbsbaum vollständig ablaufen, ohne
+Staffel-IDs von Hand zu pflegen:
+
+    wam_kinds_<mandant>_<saison>_<typ>.json
+        -> Mannschaftsart -> Spielklasse -> Gebiet (die Fußballkreise)
+
+    wam_competitions_<mandant>_<saison>_<typ>_<art>_<klasse>_<gebiet>.json
+        -> {Staffel-URL: Anzeigename}, die URL enthält die Staffel-ID
+           der laufenden Saison
+
+Dadurch folgt der Adapter dem Saisonwechsel und neu eingerichteten Staffeln von
+selbst. Für den kompletten Mittelrhein sind das rund 36 Discovery-Abrufe plus
+ein Tabellenabruf je Staffel.
 
 Geliefert werden fertige Tabellen, keine Einzelspiele: die Spielliste baut
 fussball.de erst im Browser per JavaScript auf. Deshalb fehlt diesen Staffeln
@@ -25,6 +37,7 @@ from __future__ import annotations
 
 import hashlib
 import html
+import json
 import re
 import sys
 import time
@@ -38,24 +51,24 @@ BASE = "https://www.fussball.de"
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 
-# Ligapyramide des Fußball-Verbands Mittelrhein, Kreis Berg (Oberberg).
-# (Anzeigename, Ligastufe, Anker-Staffel-ID aus Saison 2025/26)
-OBERBERG = [
-    ("Mittelrheinliga",        5,  "02TF9RU51O00000FVS5489BTVTLPPK10-G"),
-    ("Landesliga Staffel 1",   6,  "02TF9TPSSC00000AVS5489BTVTLPPK10-G"),
-    ("Bezirksliga Staffel 1",  7,  "02TF9TR5OG00000HVS5489BTVTLPPK10-G"),
-    ("Kreisliga A",            8,  "02TM13G8H400000CVS5489BTVT4H6CF2-G"),
-    ("Kreisliga B Staffel 2",  9,  "02TM14A96G00000BVS5489BTVT4H6CF2-G"),
-    ("Kreisliga B Staffel 3",  9,  "02TM14A9E400000AVS5489BTVT4H6CF2-G"),
-    ("Kreisliga C Staffel 4", 10,  "02TS3NSVBC000009VS5489BUVVJ8R9DS-G"),
-    ("Kreisliga C Staffel 5", 10,  "02TS3NSVMG00000AVS5489BUVVJ8R9DS-G"),
-    ("Kreisliga C Staffel 6", 10,  "02TS3NSVUO000009VS5489BUVVJ8R9DS-G"),
-    ("Kreisliga D Staffel 7", 11,  "02TS5BSF5S000009VS5489BUVVJ8R9DS-G"),
-    ("Kreisliga D Staffel 8", 11,  "02TS5BSFBK000009VS5489BUVVJ8R9DS-G"),
-    ("Kreisliga D Staffel 9", 11,  "02TS5BSFGG000009VS5489BUVVJ8R9DS-G"),
-]
+MANDANT = "23"        # Fußball-Verband Mittelrhein
+COMP_TYPE = "1"       # Meisterschaften (keine Pokale, Turniere, Freundschaftsspiele)
+TEAM_TYPE = "95"      # Herren
+VERBAND = "Mittelrhein"
 
-VERBAND = "FVM / Kreis Berg"
+# Spielklassen-ID -> Ligastufe. Die Zuordnung gilt für den Mittelrhein; andere
+# Landesverbände bauen ihre Pyramide anders (Bayern etwa mit Kreisklasse und
+# A-Klasse unterhalb der Kreisliga). Für eine Ausweitung braucht jeder Verband
+# seine eigene Tabelle.
+TIER_BY_LEAGUE = {
+    "129": 5,    # Verbandsliga = Mittelrheinliga
+    "130": 6,    # Landesliga
+    "132": 7,    # Bezirksliga
+    "135": 8,    # Kreisliga A
+    "136": 9,    # Kreisliga B
+    "137": 10,   # Kreisliga C
+    "138": 11,   # Kreisliga D
+}
 
 # fussball.de setzt in Vereinsnamen unsichtbare Trennzeichen, etwa
 # "SG Hämmern /<U+200B> Heide". Die müssen vor der Anzeige raus.
@@ -68,8 +81,13 @@ def _clean(fragment: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+def season_code(season: int) -> str:
+    """2026 -> '2627' (Schreibweise von fussball.de)."""
+    return f"{season % 100:02d}{(season + 1) % 100:02d}"
+
+
 class FussballDe:
-    def __init__(self, cache_dir: Path, min_interval: float = 1.2,
+    def __init__(self, cache_dir: Path, min_interval: float = 1.0,
                  ttl: float = 3 * 3600):
         self.cache_dir = Path(cache_dir)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
@@ -79,7 +97,7 @@ class FussballDe:
 
     def _get(self, url: str) -> str:
         key = hashlib.sha1(url.encode()).hexdigest()[:20]
-        blob = self.cache_dir / f"fde_{key}.html"
+        blob = self.cache_dir / f"fde_{key}.txt"
         if blob.exists() and (time.time() - blob.stat().st_mtime) < self.ttl:
             return blob.read_text(encoding="utf-8")
         wait = self.min_interval - (time.monotonic() - self._last)
@@ -100,15 +118,40 @@ class FussballDe:
             blob.write_text(text, encoding="utf-8")
         return text
 
-    def current_staffel(self, anchor_id: str) -> str | None:
-        """Staffel-ID der laufenden Saison über den Canonical-Link auflösen."""
-        page = self._get(f"{BASE}/spieltagsuebersicht/x/-/staffel/{anchor_id}")
-        found = re.search(r'<link rel="canonical" href="([^"]+)"', page)
-        if not found:
+    def _json(self, url: str):
+        raw = self._get(url)
+        try:
+            return json.loads(raw) if raw.strip() else None
+        except json.JSONDecodeError:
             return None
-        sid = re.search(r"/staffel/([0-9A-Z]+-[GC])", found.group(1))
-        return sid.group(1) if sid else None
 
+    # -- Discovery --------------------------------------------------------
+    def discover(self, season: int) -> list[dict]:
+        """Alle Herren-Meisterschaftsstaffeln des Verbands der laufenden Saison."""
+        sc = season_code(season)
+        kinds = self._json(f"{BASE}/wam_kinds_{MANDANT}_{sc}_{COMP_TYPE}.json")
+        if not kinds:
+            return []
+        areas_by_league = (kinds.get("Gebiet") or {}).get(TEAM_TYPE, {})
+        out: list[dict] = []
+        for league_id, tier in TIER_BY_LEAGUE.items():
+            for area_key, area_name in (areas_by_league.get(league_id) or {}).items():
+                area = area_key.lstrip("_")
+                data = self._json(
+                    f"{BASE}/wam_competitions_{MANDANT}_{sc}_{COMP_TYPE}"
+                    f"_{TEAM_TYPE}_{league_id}_{area}.json")
+                if not data:
+                    continue
+                for by_area in data.values():
+                    for comps in by_area.values():
+                        for url, name in comps.items():
+                            sid = re.search(r"/staffel/([0-9A-Z]+-[GC])", url)
+                            if sid:
+                                out.append({"tier": tier, "area": area_name,
+                                            "name": name, "staffel": sid.group(1)})
+        return out
+
+    # -- Tabelle ----------------------------------------------------------
     def table(self, staffel_id: str) -> list[dict]:
         """Tabelle einer Staffel: Platz, Mannschaft, Sp, G, U, V, Tore, Pkt."""
         page = self._get(f"{BASE}/ajax.table/-/staffel/{staffel_id}")
@@ -145,19 +188,41 @@ class FussballDe:
         return rows
 
 
-def fetch(cache_dir: Path, verbose: bool = True) -> list[dict]:
+def _label(entry: dict) -> str:
+    """Eindeutiger Anzeigename. "Kreisliga A" gibt es in jedem der neun Kreise,
+    deshalb muss der Kreis ab Stufe 8 mit in den Namen."""
+    if entry["tier"] >= 8:
+        return f"{entry['name']} · {entry['area']}"
+    return entry["name"]
+
+
+def fetch(cache_dir: Path, season: int, verbose: bool = True) -> list[dict]:
     """Liefert je Staffel {name, tier, verband, rows}. Leere Staffeln entfallen."""
     if not ENABLED:
         return []
     client = FussballDe(cache_dir)
-    out = []
-    for name, tier, anchor in OBERBERG:
-        sid = client.current_staffel(anchor)
-        rows = client.table(sid) if sid else []
-        if rows:
-            out.append({"name": name, "tier": tier, "verband": VERBAND,
-                        "staffel": sid, "rows": rows})
-        if verbose:
-            print(f"  {'ok ' if rows else '-- '}fussball.de  "
-                  f"{name:24.24s} {len(rows):4d} Mannschaften", file=sys.stderr)
+    entries = client.discover(season)
+    if verbose:
+        print(f"  fussball.de: {len(entries)} Staffeln im Verband {VERBAND} gefunden",
+              file=sys.stderr)
+
+    out: list[dict] = []
+    used: set[str] = set()
+    empty = 0
+    for entry in sorted(entries, key=lambda e: (e["tier"], e["area"], e["name"])):
+        rows = client.table(entry["staffel"])
+        if not rows:
+            empty += 1
+            continue
+        label = _label(entry)
+        if label in used:                       # Notnagel gegen Namensgleichheit
+            label = f"{label} ({entry['staffel'][:6]})"
+        used.add(label)
+        out.append({"name": label, "tier": entry["tier"],
+                    "verband": f"FVM / {entry['area']}",
+                    "staffel": entry["staffel"], "rows": rows})
+    if verbose:
+        teams = sum(len(g["rows"]) for g in out)
+        print(f"  fussball.de: {len(out)} Staffeln mit Daten, {teams} Mannschaften"
+              f" ({empty} Staffeln noch ohne Tabelle)", file=sys.stderr)
     return out

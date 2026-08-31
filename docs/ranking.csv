@@ -107,132 +107,1178 @@ rank,delta,name,tier,league,leaguePos,played,won,drawn,lost,goalsFor,goalsAgains
 106,,TuS BW Königsdorf,5,Mittelrheinliga,14,1,0,0,1,1,4,-3,0,0.0
 107,,1. FC Düren,5,Mittelrheinliga,15,1,0,0,1,2,6,-4,0,0.0
 108,,TuS Chlodwig Zülpich,5,Mittelrheinliga,16,1,0,0,1,0,4,-4,0,0.0
-109,,TuS Homburg-Bröltal,8,Kreisliga A,1,1,1,0,0,7,1,6,3,3.0
-110,,TuS Immekeppel,8,Kreisliga A,2,1,1,0,0,5,2,3,3,3.0
-111,,SV Altenberg,8,Kreisliga A,3,1,1,0,0,4,2,2,3,3.0
-112,,SV Union Rösrath,8,Kreisliga A,4,1,1,0,0,4,2,2,3,3.0
-113,,SSV Homburg-Nümbrecht II,8,Kreisliga A,5,1,1,0,0,4,3,1,3,3.0
-114,,Lindlar II,8,Kreisliga A,6,1,1,0,0,1,0,1,3,3.0
-115,,SSV Bergneustadt,8,Kreisliga A,7,1,1,0,0,1,0,1,3,3.0
-116,,RS19 Waldbröl,8,Kreisliga A,8,1,0,1,0,2,2,0,1,1.0
-117,,SSV Marienheide,8,Kreisliga A,9,1,0,1,0,2,2,0,1,1.0
-118,,FC Bensberg,8,Kreisliga A,10,1,0,0,1,3,4,-1,0,0.0
-119,,BSV Viktoria Bielstein 1920 e.V.,8,Kreisliga A,11,1,0,0,1,0,1,-1,0,0.0
-120,,VfR Marienhagen,8,Kreisliga A,12,1,0,0,1,0,1,-1,0,0.0
-121,,FC Borussia Derschlag,8,Kreisliga A,13,1,0,0,1,2,4,-2,0,0.0
-122,,TV Klaswipper,8,Kreisliga A,14,1,0,0,1,2,4,-2,0,0.0
-123,,SV Refrath/Frankenforst I,8,Kreisliga A,15,1,0,0,1,2,5,-3,0,0.0
-124,,Union Blau-Weiß Biesfeld,8,Kreisliga A,16,1,0,0,1,1,7,-6,0,0.0
-125,,SSV Jan Wellem 05 II,9,Kreisliga B Staffel 2,1,1,1,0,0,6,0,6,3,3.0
-126,,SV Frömmersbach,9,Kreisliga B Staffel 3,1,1,1,0,0,5,1,4,3,3.0
-127,,TV Hoffnungsthal II,9,Kreisliga B Staffel 2,2,1,1,0,0,4,0,4,3,3.0
-128,,SV Bernberg,9,Kreisliga B Staffel 3,2,1,1,0,0,5,2,3,3,3.0
-129,,TuS Weiershagen,9,Kreisliga B Staffel 3,3,1,1,0,0,5,2,3,3,3.0
-130,,DJK Wipperfeld,9,Kreisliga B Staffel 2,3,1,1,0,0,3,0,3,3,3.0
-131,,SSV Wildbergerhütte-Odenspiel,9,Kreisliga B Staffel 3,4,1,1,0,0,5,3,2,3,3.0
-132,,BV Drabenderhöhe,9,Kreisliga B Staffel 3,5,1,1,0,0,3,1,2,3,3.0
-133,,SV Blau-Weiß Hand e.V.,9,Kreisliga B Staffel 2,4,1,1,0,0,6,5,1,3,3.0
-134,,SG Olpe-Kürten,9,Kreisliga B Staffel 2,5,1,1,0,0,4,3,1,3,3.0
-135,,SV Bechen,9,Kreisliga B Staffel 2,6,1,1,0,0,4,3,1,3,3.0
-136,,DJK Dürscheid,9,Kreisliga B Staffel 2,7,1,0,1,0,2,2,0,1,1.0
-137,,FV Ermis,9,Kreisliga B Staffel 2,8,1,0,1,0,2,2,0,1,1.0
-138,,SSV Süng,9,Kreisliga B Staffel 2,9,1,0,1,0,1,1,0,1,1.0
-139,,SV Schnellenbach,9,Kreisliga B Staffel 3,6,1,0,1,0,1,1,0,1,1.0
-140,,TuS Untereschbach,9,Kreisliga B Staffel 2,10,1,0,1,0,1,1,0,1,1.0
-141,,VfL Gummersbach,9,Kreisliga B Staffel 3,7,1,0,1,0,1,1,0,1,1.0
-142,,FC Borussia Derschlag II,9,Kreisliga B Staffel 3,8,1,0,1,0,0,0,0,1,1.0
-143,,SV Morsbach,9,Kreisliga B Staffel 3,9,1,0,1,0,0,0,0,1,1.0
-144,,FC Wiedenest-Othetal,9,Kreisliga B Staffel 3,10,0,0,0,0,0,0,0,0,0.0
-145,,Ründeroth zg.,9,Kreisliga B Staffel 3,11,0,0,0,0,0,0,0,0,0.0
-146,,SG Overath-Vilkerath,9,Kreisliga B Staffel 2,11,1,0,0,1,5,6,-1,0,0.0
-147,,Frielingsdorf II,9,Kreisliga B Staffel 2,12,1,0,0,1,3,4,-1,0,0.0
-148,,SV Bergisch Gladbach 09 II,9,Kreisliga B Staffel 2,13,1,0,0,1,3,4,-1,0,0.0
-149,,Rossenbach,9,Kreisliga B Staffel 3,12,1,0,0,1,3,5,-2,0,0.0
-150,,TuS Elsenroth,9,Kreisliga B Staffel 3,13,1,0,0,1,1,3,-2,0,0.0
-151,,FV Wiehl II,9,Kreisliga B Staffel 3,14,1,0,0,1,2,5,-3,0,0.0
-152,,VfL Engelskirchen,9,Kreisliga B Staffel 3,15,1,0,0,1,2,5,-3,0,0.0
-153,,Heiligenhauser SV II,9,Kreisliga B Staffel 2,14,1,0,0,1,0,3,-3,0,0.0
-154,,SG Holpe-Wallerhausen,9,Kreisliga B Staffel 3,16,1,0,0,1,1,5,-4,0,0.0
-155,,SG Agathaberg,9,Kreisliga B Staffel 2,15,1,0,0,1,0,4,-4,0,0.0
-156,,SV Altenberg II,9,Kreisliga B Staffel 2,16,1,0,0,1,0,6,-6,0,0.0
-157,,Dieringhausen,10,Kreisliga C Staffel 5,1,1,1,0,0,7,1,6,3,3.0
-158,,SV Refrath/Frankenforst II,10,Kreisliga C Staffel 4,1,1,1,0,0,9,4,5,3,3.0
-159,,Heiligenhauser SV III,10,Kreisliga C Staffel 5,2,1,1,0,0,6,3,3,3,3.0
-160,,SF Asbachtal,10,Kreisliga C Staffel 6,1,1,1,0,0,5,2,3,3,3.0
-161,,VfB Kreuzberg,10,Kreisliga C Staffel 5,3,1,1,0,0,5,2,3,3,3.0
-162,,Gencler Birligi Bergisch Gladbach,10,Kreisliga C Staffel 4,2,1,1,0,0,4,1,3,3,3.0
-163,,SSV Wildbergerhütte-Odenspiel II,10,Kreisliga C Staffel 6,2,1,1,0,0,4,1,3,3,3.0
-164,,VfR Marienhagen II,10,Kreisliga C Staffel 6,3,1,1,0,0,4,1,3,3,3.0
-165,,TV Herkenrath 09 e.V.,10,Kreisliga C Staffel 4,3,1,1,0,0,3,0,3,3,3.0
-166,,BSV Viktoria Bielstein 1920 e.V. II,10,Kreisliga C Staffel 6,4,1,1,0,0,5,3,2,3,3.0
-167,,TuS Untereschbach II,10,Kreisliga C Staffel 4,4,1,1,0,0,5,3,2,3,3.0
-168,,Union Blau-Weiß Biesfeld II,10,Kreisliga C Staffel 4,5,1,1,0,0,4,2,2,3,3.0
-169,,FC Wiedenest-Othetal II,10,Kreisliga C Staffel 6,5,1,1,0,0,3,2,1,3,3.0
-170,,SV Linde,10,Kreisliga C Staffel 5,4,1,1,0,0,3,2,1,3,3.0
-171,,SC 27 Bergisch Gladbach,10,Kreisliga C Staffel 4,6,1,1,0,0,2,1,1,3,3.0
-172,,SSV Homburg-Nümbrecht III,10,Kreisliga C Staffel 6,6,1,1,0,0,2,1,1,3,3.0
-173,,SG Agathaberg II,10,Kreisliga C Staffel 5,5,1,0,1,0,4,4,0,1,1.0
-174,,VfR Wipperfürth 2,10,Kreisliga C Staffel 5,6,1,0,1,0,4,4,0,1,1.0
-175,,TV Klaswipper II,10,Kreisliga C Staffel 5,7,1,0,1,0,3,3,0,1,1.0
-176,,TuS Weiershagen 2,10,Kreisliga C Staffel 5,8,1,0,1,0,3,3,0,1,1.0
-177,,FC Bensberg II,10,Kreisliga C Staffel 4,7,1,0,1,0,1,1,0,1,1.0
-178,,SG Hunsheim,10,Kreisliga C Staffel 6,7,1,0,1,0,1,1,0,1,1.0
-179,,SSV Bergneustadt 2,10,Kreisliga C Staffel 6,8,1,0,1,0,1,1,0,1,1.0
-180,,TuS Marialinden II,10,Kreisliga C Staffel 4,8,1,0,1,0,1,1,0,1,1.0
-181,,Frielingsdorf III,10,Kreisliga C Staffel 5,9,0,0,0,0,0,0,0,0,0.0
-182,,VfL Berghausen-Gimborn,10,Kreisliga C Staffel 5,10,0,0,0,0,0,0,0,0,0.0
-183,,SG Olpe-Kürten 2,10,Kreisliga C Staffel 5,11,1,0,0,1,2,3,-1,0,0.0
-184,,TuS Homburg-Bröltal II,10,Kreisliga C Staffel 6,9,1,0,0,1,2,3,-1,0,0.0
-185,,SSV Jan Wellem 05 III,10,Kreisliga C Staffel 4,9,1,0,0,1,1,2,-1,0,0.0
-186,,TuS Reichshof 1883/1929 e.V.,10,Kreisliga C Staffel 6,10,1,0,0,1,1,2,-1,0,0.0
-187,,BV Drabenderhöhe II,10,Kreisliga C Staffel 6,11,1,0,0,1,3,5,-2,0,0.0
-188,,TuS Moitzfeld 1961 e.V.,10,Kreisliga C Staffel 4,10,1,0,0,1,3,5,-2,0,0.0
-189,,Bechen II,10,Kreisliga C Staffel 4,11,1,0,0,1,2,4,-2,0,0.0
-190,,Loope,10,Kreisliga C Staffel 5,12,1,0,0,1,3,6,-3,0,0.0
-191,,DJK Gummersbach,10,Kreisliga C Staffel 5,13,1,0,0,1,2,5,-3,0,0.0
-192,,RS19 Waldbröl II,10,Kreisliga C Staffel 6,12,1,0,0,1,2,5,-3,0,0.0
-193,,SSV Hochwald I,10,Kreisliga C Staffel 6,13,1,0,0,1,1,4,-3,0,0.0
-194,,SV Altenberg III,10,Kreisliga C Staffel 4,12,1,0,0,1,1,4,-3,0,0.0
-195,,SV Hermesdorf,10,Kreisliga C Staffel 6,14,1,0,0,1,1,4,-3,0,0.0
-196,,SV Union Rösrath II,10,Kreisliga C Staffel 4,13,1,0,0,1,0,3,-3,0,0.0
-197,,TuS Immekeppel II,10,Kreisliga C Staffel 4,14,1,0,0,1,4,9,-5,0,0.0
-198,,Ründeroth II,10,Kreisliga C Staffel 5,14,1,0,0,1,1,7,-6,0,0.0
-199,,SV Schnellenbach II,11,Kreisliga D Staffel 8,1,1,1,0,0,24,0,24,3,3.0
-200,,FV Wiehl III,11,Kreisliga D Staffel 9,1,1,1,0,0,9,1,8,3,3.0
-201,,TuS Egen,11,Kreisliga D Staffel 8,2,1,1,0,0,9,1,8,3,3.0
-202,,Morsbach II,11,Kreisliga D Staffel 9,2,1,1,0,0,6,1,5,3,3.0
-203,,SSV Süng II,11,Kreisliga D Staffel 8,3,1,1,0,0,5,0,5,3,3.0
-204,,Loope II,11,Kreisliga D Staffel 7,1,1,1,0,0,7,3,4,3,3.0
-205,,FC Wiedenest-Othetal III,11,Kreisliga D Staffel 9,3,1,1,0,0,4,0,4,3,3.0
-206,,Gencler Birligi Bergisch Gladbach II,11,Kreisliga D Staffel 7,2,1,1,0,0,5,2,3,3,3.0
-207,,SG Overath-Vilkerath II,11,Kreisliga D Staffel 7,3,1,1,0,0,5,2,3,3,3.0
-208,,SV Union Rösrath III,11,Kreisliga D Staffel 7,4,1,1,0,0,5,2,3,3,3.0
-209,,FC Borussia Derschlag III,11,Kreisliga D Staffel 9,4,1,1,0,0,3,0,3,3,3.0
-210,,SV Frömmersbach II,11,Kreisliga D Staffel 8,4,1,1,0,0,4,2,2,3,3.0
-211,,TuS Elsenroth II,11,Kreisliga D Staffel 9,5,1,1,0,0,4,2,2,3,3.0
-212,,Lindlar III,11,Kreisliga D Staffel 8,5,1,1,0,0,6,5,1,3,3.0
-213,,SV Blau-Weiß Hand e.V. II,11,Kreisliga D Staffel 7,5,1,1,0,0,4,3,1,3,3.0
-214,,Rossenbach II,11,Kreisliga D Staffel 9,6,1,1,0,0,2,1,1,3,3.0
-215,,TV Hoffnungsthal III,11,Kreisliga D Staffel 7,6,1,1,0,0,1,0,1,3,3.0
-216,,DJK Wipperfeld II,11,Kreisliga D Staffel 8,6,1,0,1,0,3,3,0,1,1.0
-217,,SV Thier,11,Kreisliga D Staffel 8,7,1,0,1,0,3,3,0,1,1.0
-218,,BSV Viktoria Bielstein 1920 e.V. III,11,Kreisliga D Staffel 9,7,0,0,0,0,0,0,0,0,0.0
-219,,DJK Gummersbach II,11,Kreisliga D Staffel 8,8,0,0,0,0,0,0,0,0,0.0
-220,,FC Bensberg III,11,Kreisliga D Staffel 7,7,0,0,0,0,0,0,0,0,0.0
-221,,VfL Engelskirchen II,11,Kreisliga D Staffel 8,9,1,0,0,1,5,6,-1,0,0.0
-222,,TuS Marialinden III,11,Kreisliga D Staffel 7,8,1,0,0,1,3,4,-1,0,0.0
-223,,VfL Gummersbach II,11,Kreisliga D Staffel 9,8,1,0,0,1,1,2,-1,0,0.0
-224,,DJK SSV Ommerborn Sand,11,Kreisliga D Staffel 7,9,1,0,0,1,0,1,-1,0,0.0
-225,,SV Bernberg II,11,Kreisliga D Staffel 9,9,1,0,0,1,2,4,-2,0,0.0
-226,,SV Linde II,11,Kreisliga D Staffel 8,10,1,0,0,1,2,4,-2,0,0.0
-227,,DJK Dürscheid II,11,Kreisliga D Staffel 7,10,1,0,0,1,2,5,-3,0,0.0
-228,,FV Ermis II,11,Kreisliga D Staffel 7,11,1,0,0,1,2,5,-3,0,0.0
-229,,SC 27 Bergisch Gladbach II,11,Kreisliga D Staffel 7,12,1,0,0,1,2,5,-3,0,0.0
-230,,SF Asbachtal II,11,Kreisliga D Staffel 9,10,1,0,0,1,0,3,-3,0,0.0
-231,,TuS Moitzfeld 1961 e.V. II,11,Kreisliga D Staffel 7,13,1,0,0,1,3,7,-4,0,0.0
-232,,TuS Homburg-Bröltal III,11,Kreisliga D Staffel 9,11,1,0,0,1,0,4,-4,0,0.0
-233,,SG Holpe-Wallerhausen II,11,Kreisliga D Staffel 9,12,1,0,0,1,1,6,-5,0,0.0
-234,,SG Hämmern / Heide,11,Kreisliga D Staffel 8,11,1,0,0,1,0,5,-5,0,0.0
-235,,SSV Marienheide II,11,Kreisliga D Staffel 8,12,1,0,0,1,1,9,-8,0,0.0
-236,,TuS Reichshof II,11,Kreisliga D Staffel 9,13,1,0,0,1,1,9,-8,0,0.0
-237,,SSV Bergneustadt III,11,Kreisliga D Staffel 8,13,1,0,0,1,0,24,-24,0,0.0
+109,,SC Blau-Weiß Köln,6,"Landesliga, Staffel 1",1,1,1,0,0,5,0,5,3,3.0
+110,,FV Bonn-Endenich,6,"Landesliga, Staffel 1",2,1,1,0,0,4,0,4,3,3.0
+111,,FV Bad Honnef,6,"Landesliga, Staffel 1",3,1,1,0,0,4,1,3,3,3.0
+112,,SSV Homburg-Nümbrecht,6,"Landesliga, Staffel 1",4,1,1,0,0,4,1,3,3,3.0
+113,,Türkischer SV Düren,6,"Landesliga, Staffel 2",1,1,1,0,0,4,1,3,3,3.0
+114,,FC Pesch,6,"Landesliga, Staffel 1",5,1,1,0,0,4,2,2,3,3.0
+115,,SV Eilendorf,6,"Landesliga, Staffel 2",2,1,1,0,0,4,2,2,3,3.0
+116,,Germania Lich-Steinstraß,6,"Landesliga, Staffel 2",3,1,1,0,0,3,1,2,3,3.0
+117,,SC Elsdorf,6,"Landesliga, Staffel 2",4,1,1,0,0,3,1,2,3,3.0
+118,,TuS Mondorf,6,"Landesliga, Staffel 1",6,1,1,0,0,3,1,2,3,3.0
+119,,GW Brauweiler,6,"Landesliga, Staffel 1",7,1,1,0,0,2,0,2,3,3.0
+120,,Eintracht Verlautenheide,6,"Landesliga, Staffel 2",5,1,1,0,0,3,2,1,3,3.0
+121,,SC Fliesteden,6,"Landesliga, Staffel 2",6,1,1,0,0,2,1,1,3,3.0
+122,,SC Rheinbach,6,"Landesliga, Staffel 1",8,1,1,0,0,2,1,1,3,3.0
+123,,Germania Eicherscheid,6,"Landesliga, Staffel 2",7,1,0,1,0,3,3,0,1,1.0
+124,,SV Helpenstein,6,"Landesliga, Staffel 2",8,1,0,1,0,3,3,0,1,1.0
+125,,Teutonia Weiden,6,"Landesliga, Staffel 2",9,1,0,1,0,1,1,0,1,1.0
+126,,Union Schafhausen,6,"Landesliga, Staffel 2",10,1,0,1,0,1,1,0,1,1.0
+127,,Rasensport Brand,6,"Landesliga, Staffel 2",11,1,0,0,1,2,3,-1,0,0.0
+128,,FC BW Friesdorf,6,"Landesliga, Staffel 1",9,1,0,0,1,1,2,-1,0,0.0
+129,,Germania Teveren,6,"Landesliga, Staffel 2",12,1,0,0,1,1,2,-1,0,0.0
+130,,SV Schlebusch,6,"Landesliga, Staffel 1",10,1,0,0,1,2,4,-2,0,0.0
+131,,Sportfreunde Düren,6,"Landesliga, Staffel 2",13,1,0,0,1,2,4,-2,0,0.0
+132,,SV Kurdistan Düren,6,"Landesliga, Staffel 2",14,1,0,0,1,1,3,-2,0,0.0
+133,,Sportfreunde Uevekoven,6,"Landesliga, Staffel 2",15,1,0,0,1,1,3,-2,0,0.0
+134,,TuS Marialinden,6,"Landesliga, Staffel 1",11,1,0,0,1,1,3,-2,0,0.0
+135,,TuS Oberpleis,6,"Landesliga, Staffel 1",12,1,0,0,1,0,2,-2,0,0.0
+136,,Deutz 05,6,"Landesliga, Staffel 1",13,1,0,0,1,1,4,-3,0,0.0
+137,,SV Breinig Breinigerberg,6,"Landesliga, Staffel 2",16,1,0,0,1,1,4,-3,0,0.0
+138,,SV Schönenbach,6,"Landesliga, Staffel 1",14,1,0,0,1,1,4,-3,0,0.0
+139,,FV Wiehl,6,"Landesliga, Staffel 1",15,1,0,0,1,0,4,-4,0,0.0
+140,,1. FC Spich,6,"Landesliga, Staffel 1",16,1,0,0,1,0,5,-5,0,0.0
+141,,SV Leuscheid,7,"Bezirksliga, Staffel 2",1,1,1,0,0,7,0,7,3,3.0
+142,,Germania Hilfarth,7,"Bezirksliga, Staffel 4",1,1,1,0,0,7,1,6,3,3.0
+143,,TV Hoffnungsthal,7,"Bezirksliga, Staffel 1",1,1,1,0,0,5,1,4,3,3.0
+144,,FC Rheinsüd Köln,7,"Bezirksliga, Staffel 2",2,1,1,0,0,4,0,4,3,3.0
+145,,VfR Wipperfürth,7,"Bezirksliga, Staffel 1",2,1,1,0,0,4,0,4,3,3.0
+146,,Horremer SV,7,"Bezirksliga, Staffel 3",1,1,1,0,0,5,2,3,3,3.0
+147,,SSV Jan Wellem,7,"Bezirksliga, Staffel 1",3,1,1,0,0,4,1,3,3,3.0
+148,,DJK Südwest Köln,7,"Bezirksliga, Staffel 1",4,1,1,0,0,4,2,2,3,3.0
+149,,Kohlscheider BC,7,"Bezirksliga, Staffel 4",2,1,1,0,0,4,2,2,3,3.0
+150,,SV Wachtberg,7,"Bezirksliga, Staffel 2",3,1,1,0,0,4,2,2,3,3.0
+151,,Concordia Oidtweiler,7,"Bezirksliga, Staffel 4",3,1,1,0,0,3,1,2,3,3.0
+152,,FC Hürth II,7,"Bezirksliga, Staffel 1",5,1,1,0,0,3,1,2,3,3.0
+153,,SC Alemannia Lendersdorf,7,"Bezirksliga, Staffel 3",2,1,1,0,0,3,1,2,3,3.0
+154,,SC Fortuna Bonn,7,"Bezirksliga, Staffel 2",4,1,1,0,0,3,1,2,3,3.0
+155,,SC Weiler-Volkhoven,7,"Bezirksliga, Staffel 1",6,1,1,0,0,3,1,2,3,3.0
+156,,SV Frielingsdorf,7,"Bezirksliga, Staffel 1",7,1,1,0,0,3,1,2,3,3.0
+157,,DJK FV Haaren,7,"Bezirksliga, Staffel 4",4,1,1,0,0,2,0,2,3,3.0
+158,,Dynamo Erkelenz,7,"Bezirksliga, Staffel 4",5,1,1,0,0,2,0,2,3,3.0
+159,,SV Weiden,7,"Bezirksliga, Staffel 3",3,1,1,0,0,2,0,2,3,3.0
+160,,TuRa Oberdrees,7,"Bezirksliga, Staffel 2",5,1,1,0,0,2,0,2,3,3.0
+161,,SV Falke Bergrath,7,"Bezirksliga, Staffel 4",6,1,1,0,0,4,3,1,3,3.0
+162,,SV Lövenich/Widdersdorf,7,"Bezirksliga, Staffel 3",4,1,1,0,0,4,3,1,3,3.0
+163,,Marokkanischer SV Bonn,7,"Bezirksliga, Staffel 2",6,1,1,0,0,3,2,1,3,3.0
+164,,RG Wesseling,7,"Bezirksliga, Staffel 2",7,1,1,0,0,3,2,1,3,3.0
+165,,F.C. Viktoria Birkesdorf,7,"Bezirksliga, Staffel 3",5,1,1,0,0,2,1,1,3,3.0
+166,,SV Rhenania Bessenich,7,"Bezirksliga, Staffel 3",6,1,1,0,0,2,1,1,3,3.0
+167,,TuS 08 Langerwehe,7,"Bezirksliga, Staffel 3",7,1,1,0,0,2,1,1,3,3.0
+168,,VfR Würselen,7,"Bezirksliga, Staffel 4",7,1,1,0,0,2,1,1,3,3.0
+169,,FC Hertha Rheidt,7,"Bezirksliga, Staffel 2",8,1,0,1,0,2,2,0,1,1.0
+170,,TUS Buisdorf,7,"Bezirksliga, Staffel 2",9,1,0,1,0,2,2,0,1,1.0
+171,,CfB Ford Niehl,7,"Bezirksliga, Staffel 1",8,1,0,1,0,1,1,0,1,1.0
+172,,Frechen 20 II,7,"Bezirksliga, Staffel 3",8,1,0,1,0,1,1,0,1,1.0
+173,,Heiligenhauser SV,7,"Bezirksliga, Staffel 1",9,1,0,1,0,1,1,0,1,1.0
+174,,TuS Chlodwig Zülpich II,7,"Bezirksliga, Staffel 3",9,1,0,1,0,1,1,0,1,1.0
+175,,Ay-Yildiz Spor Hückelhoven zg.,7,"Bezirksliga, Staffel 4",8,0,0,0,0,0,0,0,0,0.0
+176,,FC Roetgen,7,"Bezirksliga, Staffel 4",9,0,0,0,0,0,0,0,0,0.0
+177,,FC Eschweiler,7,"Bezirksliga, Staffel 4",10,1,0,0,1,3,4,-1,0,0.0
+178,,JSG Erft 01 Euskirchen,7,"Bezirksliga, Staffel 3",10,1,0,0,1,3,4,-1,0,0.0
+179,,SC Volmershoven-Heidgen,7,"Bezirksliga, Staffel 2",10,1,0,0,1,2,3,-1,0,0.0
+180,,Sportfreunde Troisdorf,7,"Bezirksliga, Staffel 2",11,1,0,0,1,2,3,-1,0,0.0
+181,,VfL Sindorf,7,"Bezirksliga, Staffel 3",11,1,0,0,1,1,2,-1,0,0.0
+182,,VfL Vichttal II,7,"Bezirksliga, Staffel 4",11,1,0,0,1,1,2,-1,0,0.0
+183,,VfVuJ Winden,7,"Bezirksliga, Staffel 3",12,1,0,0,1,1,2,-1,0,0.0
+184,,Viktoria Arnoldsweiler,7,"Bezirksliga, Staffel 3",13,1,0,0,1,1,2,-1,0,0.0
+185,,SG Union 94 Würm-Lindern,7,"Bezirksliga, Staffel 4",12,1,0,0,1,2,4,-2,0,0.0
+186,,SV Bergfried Leverkusen,7,"Bezirksliga, Staffel 1",10,1,0,0,1,2,4,-2,0,0.0
+187,,VfR Hangelar,7,"Bezirksliga, Staffel 2",12,1,0,0,1,2,4,-2,0,0.0
+188,,Kreuzauer SC,7,"Bezirksliga, Staffel 3",14,1,0,0,1,1,3,-2,0,0.0
+189,,Rot-Weiß Merl,7,"Bezirksliga, Staffel 2",13,1,0,0,1,1,3,-2,0,0.0
+190,,SC 09 Erkelenz,7,"Bezirksliga, Staffel 4",13,1,0,0,1,1,3,-2,0,0.0
+191,,SV Eintracht Hohkeppel II,7,"Bezirksliga, Staffel 1",11,1,0,0,1,1,3,-2,0,0.0
+192,,Schwarz-Weiß Köln,7,"Bezirksliga, Staffel 1",12,1,0,0,1,1,3,-2,0,0.0
+193,,SpVg Rheindörfer Nord,7,"Bezirksliga, Staffel 1",13,1,0,0,1,1,3,-2,0,0.0
+194,,1. FC Niederkassel,7,"Bezirksliga, Staffel 2",14,1,0,0,1,0,2,-2,0,0.0
+195,,Alemannia Mariadorf,7,"Bezirksliga, Staffel 4",14,1,0,0,1,0,2,-2,0,0.0
+196,,Rhenania Richterich,7,"Bezirksliga, Staffel 4",15,1,0,0,1,0,2,-2,0,0.0
+197,,SG Dahlem-Schmidtheim,7,"Bezirksliga, Staffel 3",15,1,0,0,1,0,2,-2,0,0.0
+198,,SV Rheidt,7,"Bezirksliga, Staffel 3",16,1,0,0,1,2,5,-3,0,0.0
+199,,SpVg. Köln-Flittard,7,"Bezirksliga, Staffel 1",14,1,0,0,1,1,4,-3,0,0.0
+200,,Deutz 05 II,7,"Bezirksliga, Staffel 1",15,1,0,0,1,1,5,-4,0,0.0
+201,,SV Bergheim,7,"Bezirksliga, Staffel 2",15,1,0,0,1,0,4,-4,0,0.0
+202,,TuS Lindlar,7,"Bezirksliga, Staffel 1",16,1,0,0,1,0,4,-4,0,0.0
+203,,TV Konzen,7,"Bezirksliga, Staffel 4",16,1,0,0,1,1,7,-6,0,0.0
+204,,SC Uckerath,7,"Bezirksliga, Staffel 2",16,1,0,0,1,0,7,-7,0,0.0
+205,,SC Germania Geyen,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,1,1,1,0,0,10,1,9,3,3.0
+206,,Gremberg-Humboldt I,8,Kreisliga A · Kreis Köln,1,1,1,0,0,9,2,7,3,3.0
+207,,TuS Birk,8,Kreisliga A Staffel 1 · Kreis Sieg,1,1,1,0,0,7,0,7,3,3.0
+208,,TuS Homburg-Bröltal,8,Kreisliga A · Kreis Berg,1,1,1,0,0,7,1,6,3,3.0
+209,,SV Fortuna Müllekoven,8,Kreisliga A Staffel 1 · Kreis Sieg,2,1,1,0,0,6,0,6,3,3.0
+210,,Spfr. Ippendorf,8,Kreisliga A · Kreis Bonn,1,1,1,0,0,6,0,6,3,3.0
+211,,SC Jülich 1910/97/Hoengen e.V.,8,Kreisliga A · Kreis Düren,1,1,1,0,0,6,1,5,3,3.0
+212,,TSV Weiß,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,2,1,1,0,0,6,1,5,3,3.0
+213,,SC Kellersberg,8,Kreisliga A · Kreis Aachen,1,1,1,0,0,5,0,5,3,3.0
+214,,SV Rott,8,Kreisliga A · Kreis Aachen,2,1,1,0,0,6,2,4,3,3.0
+215,,SV Niederaußem,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,3,1,1,0,0,5,1,4,3,3.0
+216,,BSV Roleber,8,Kreisliga A · Kreis Bonn,2,1,1,0,0,4,0,4,3,3.0
+217,,Borussia Kalk I,8,Kreisliga A · Kreis Köln,2,1,1,0,0,4,0,4,3,3.0
+218,,SC Germania Erftstadt-Lechenich,8,Kreisliga A · Kreis Euskirchen,1,1,1,0,0,4,0,4,3,3.0
+219,,SC Selfkant,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",1,1,1,0,0,4,0,4,3,3.0
+220,,Pulheimer SC,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,4,1,1,0,0,6,3,3,3,3.0
+221,,Wahlscheider SV,8,Kreisliga A Staffel 1 · Kreis Sieg,3,1,1,0,0,6,3,3,3,3.0
+222,,SC 1919 Merzenich,8,Kreisliga A · Kreis Düren,2,1,1,0,0,5,2,3,3,3.0
+223,,TuS Immekeppel,8,Kreisliga A · Kreis Berg,2,1,1,0,0,5,2,3,3,3.0
+224,,Poll I,8,Kreisliga A · Kreis Köln,3,1,1,0,0,4,1,3,3,3.0
+225,,SG Flamersheim / Kirchheim,8,Kreisliga A · Kreis Euskirchen,2,1,1,0,0,4,1,3,3,3.0
+226,,SV Beuel 06,8,Kreisliga A · Kreis Bonn,3,1,1,0,0,4,1,3,3,3.0
+227,,SV Sötenich,8,Kreisliga A · Kreis Euskirchen,3,1,1,0,0,4,1,3,3,3.0
+228,,TuS Lammersdorf,8,Kreisliga A · Kreis Aachen,3,1,1,0,0,4,1,3,3,3.0
+229,,SC Berger Preuß,8,Kreisliga A · Kreis Aachen,4,1,1,0,0,3,0,3,3,3.0
+230,,FC Kosova e.V.,8,Kreisliga A Staffel 1 · Kreis Sieg,4,1,1,0,0,4,2,2,3,3.0
+231,,SV Altenberg,8,Kreisliga A · Kreis Berg,3,1,1,0,0,4,2,2,3,3.0
+232,,SV Union Rösrath,8,Kreisliga A · Kreis Berg,4,1,1,0,0,4,2,2,3,3.0
+233,,SV Wormersdorf,8,Kreisliga A · Kreis Bonn,4,1,1,0,0,4,2,2,3,3.0
+234,,Zündorf I,8,Kreisliga A · Kreis Köln,4,1,1,0,0,4,2,2,3,3.0
+235,,FC Dollendorf-Ripsdorf,8,Kreisliga A · Kreis Euskirchen,4,1,1,0,0,3,1,2,3,3.0
+236,,FV Vaalserquartier,8,Kreisliga A · Kreis Aachen,5,1,1,0,0,3,1,2,3,3.0
+237,,Hambacher Spielverein 1,8,Kreisliga A · Kreis Düren,3,1,1,0,0,3,1,2,3,3.0
+238,,SV Ennert,8,Kreisliga A · Kreis Bonn,5,1,1,0,0,3,1,2,3,3.0
+239,,SV Frauenberg,8,Kreisliga A · Kreis Euskirchen,5,1,1,0,0,3,1,2,3,3.0
+240,,BC Oberzier,8,Kreisliga A · Kreis Düren,4,1,1,0,0,2,0,2,3,3.0
+241,,SC Fortuna Bonn II,8,Kreisliga A · Kreis Bonn,6,1,1,0,0,2,0,2,3,3.0
+242,,Eintracht Verlautenheide II,8,Kreisliga A · Kreis Aachen,6,1,1,0,0,5,4,1,3,3.0
+243,,SV Grün-Weiß Welldorf-Güsten,8,Kreisliga A · Kreis Düren,5,1,1,0,0,5,4,1,3,3.0
+244,,SSV Homburg-Nümbrecht II,8,Kreisliga A · Kreis Berg,5,1,1,0,0,4,3,1,3,3.0
+245,,TuS Rheinland Dremmen,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",2,1,1,0,0,4,3,1,3,3.0
+246,,FC Germania Rurich 1919 e.V.,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",3,1,1,0,0,3,2,1,3,3.0
+247,,FC Union Schafhausen II,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",4,1,1,0,0,3,2,1,3,3.0
+248,,SV Hertha Buschhoven,8,Kreisliga A · Kreis Bonn,7,1,1,0,0,3,2,1,3,3.0
+249,,SV Viktoria Rot Weiß Waldenrath/Straeten,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",5,1,1,0,0,3,2,1,3,3.0
+250,,Bedburger BV,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,5,1,1,0,0,2,1,1,3,3.0
+251,,FC Viktoria Manheim,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,6,1,1,0,0,2,1,1,3,3.0
+252,,FSV Neunkirchen-Seelscheid II,8,Kreisliga A Staffel 1 · Kreis Sieg,5,1,1,0,0,2,1,1,3,3.0
+253,,Hilal-Maroc Bergheim,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,7,1,1,0,0,2,1,1,3,3.0
+254,,SV 1910 Brachelen,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",6,1,1,0,0,2,1,1,3,3.0
+255,,SV Golkrath,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",7,1,1,0,0,2,1,1,3,3.0
+256,,SV Klinkum,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",8,1,1,0,0,2,1,1,3,3.0
+257,,SV Siersdorf,8,Kreisliga A · Kreis Düren,6,1,1,0,0,2,1,1,3,3.0
+258,,SV Vorgebirge,8,Kreisliga A · Kreis Bonn,8,1,1,0,0,2,1,1,3,3.0
+259,,TFC Köln I,8,Kreisliga A · Kreis Köln,5,1,1,0,0,2,1,1,3,3.0
+260,,Viktoria Gruhlwerk 1,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,8,1,1,0,0,2,1,1,3,3.0
+261,,Lindlar II,8,Kreisliga A · Kreis Berg,6,1,1,0,0,1,0,1,3,3.0
+262,,SSV Bergneustadt,8,Kreisliga A · Kreis Berg,7,1,1,0,0,1,0,1,3,3.0
+263,,SSV Weilerswist,8,Kreisliga A · Kreis Euskirchen,6,1,1,0,0,1,0,1,3,3.0
+264,,SV Breinig Breinigerberg II,8,Kreisliga A · Kreis Aachen,7,1,1,0,0,1,0,1,3,3.0
+265,,DJK Südwest II,8,Kreisliga A · Kreis Köln,6,1,0,1,0,3,3,0,1,1.0
+266,,Dellbrück I,8,Kreisliga A · Kreis Köln,7,1,0,1,0,3,3,0,1,1.0
+267,,Lindenthal-Hohenlind II,8,Kreisliga A · Kreis Köln,8,1,0,1,0,3,3,0,1,1.0
+268,,Zollstock I,8,Kreisliga A · Kreis Köln,9,1,0,1,0,3,3,0,1,1.0
+269,,RS19 Waldbröl,8,Kreisliga A · Kreis Berg,8,1,0,1,0,2,2,0,1,1.0
+270,,SSV Marienheide,8,Kreisliga A · Kreis Berg,9,1,0,1,0,2,2,0,1,1.0
+271,,SV Allner-Bödingen,8,Kreisliga A Staffel 1 · Kreis Sieg,6,1,0,1,0,2,2,0,1,1.0
+272,,TSV Wolsdorf,8,Kreisliga A Staffel 1 · Kreis Sieg,7,1,0,1,0,2,2,0,1,1.0
+273,,1. FC Spich II,8,Kreisliga A Staffel 1 · Kreis Sieg,8,1,0,1,0,1,1,0,1,1.0
+274,,SC Uckerath II,8,Kreisliga A Staffel 1 · Kreis Sieg,9,1,0,1,0,1,1,0,1,1.0
+275,,FC Golzheim,8,Kreisliga A · Kreis Düren,7,1,0,1,0,0,0,0,1,1.0
+276,,SC Salingia 08 Barmen,8,Kreisliga A · Kreis Düren,8,1,0,1,0,0,0,0,1,1.0
+277,,1. FC Niederkassel U23,8,Kreisliga A Staffel 1 · Kreis Sieg,10,0,0,0,0,0,0,0,0,0.0
+278,,Casa España I,8,Kreisliga A · Kreis Köln,10,0,0,0,0,0,0,0,0,0.0
+279,,JSV Frenz,8,Kreisliga A · Kreis Düren,9,0,0,0,0,0,0,0,0,0.0
+280,,Olympia I,8,Kreisliga A · Kreis Köln,11,0,0,0,0,0,0,0,0,0.0
+281,,SF Aegidienberg,8,Kreisliga A Staffel 1 · Kreis Sieg,11,0,0,0,0,0,0,0,0,0.0
+282,,SV SW Huchem-Stammeln,8,Kreisliga A · Kreis Düren,10,0,0,0,0,0,0,0,0,0.0
+283,,TSV Schönau,8,Kreisliga A · Kreis Euskirchen,7,0,0,0,0,0,0,0,0,0.0
+284,,Jugendsport Wenau,8,Kreisliga A · Kreis Düren,11,1,0,0,1,4,5,-1,0,0.0
+285,,Rasensport Brand II,8,Kreisliga A · Kreis Aachen,8,1,0,0,1,4,5,-1,0,0.0
+286,,FC Bensberg,8,Kreisliga A · Kreis Berg,10,1,0,0,1,3,4,-1,0,0.0
+287,,FSV 09 Geilenkirchen,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",9,1,0,0,1,3,4,-1,0,0.0
+288,,FC Eintracht Kempen,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",10,1,0,0,1,2,3,-1,0,0.0
+289,,SV Adler Effeld 1916 e.V.,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",11,1,0,0,1,2,3,-1,0,0.0
+290,,SV Roland Millich 1930 e.V.,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",12,1,0,0,1,2,3,-1,0,0.0
+291,,TuS Roisdorf I,8,Kreisliga A · Kreis Bonn,9,1,0,0,1,2,3,-1,0,0.0
+292,,BC 09 Oberbruch,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",13,1,0,0,1,1,2,-1,0,0.0
+293,,BW Kerpen,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,9,1,0,0,1,1,2,-1,0,0.0
+294,,Blau-Weiß Köln II,8,Kreisliga A · Kreis Köln,12,1,0,0,1,1,2,-1,0,0.0
+295,,FC Düren 77 e.V.,8,Kreisliga A · Kreis Düren,12,1,0,0,1,1,2,-1,0,0.0
+296,,Niersquelle Kuckum,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",14,1,0,0,1,1,2,-1,0,0.0
+297,,SC Brühl,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,10,1,0,0,1,1,2,-1,0,0.0
+298,,SC Rheinbach 1913 e.V. 2,8,Kreisliga A · Kreis Bonn,10,1,0,0,1,1,2,-1,0,0.0
+299,,SV Breberen,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",15,1,0,0,1,1,2,-1,0,0.0
+300,,SV Erfa 09 Gymnich,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,11,1,0,0,1,1,2,-1,0,0.0
+301,,TFC Inter Troisdorf,8,Kreisliga A Staffel 1 · Kreis Sieg,12,1,0,0,1,1,2,-1,0,0.0
+302,,Alemannia Aachen II,8,Kreisliga A · Kreis Aachen,9,1,0,0,1,0,1,-1,0,0.0
+303,,BSV Viktoria Bielstein 1920 e.V.,8,Kreisliga A · Kreis Berg,11,1,0,0,1,0,1,-1,0,0.0
+304,,TuS Mechernich,8,Kreisliga A · Kreis Euskirchen,8,1,0,0,1,0,1,-1,0,0.0
+305,,VfR Marienhagen,8,Kreisliga A · Kreis Berg,12,1,0,0,1,0,1,-1,0,0.0
+306,,FC Borussia Derschlag,8,Kreisliga A · Kreis Berg,13,1,0,0,1,2,4,-2,0,0.0
+307,,FC Pesch II,8,Kreisliga A · Kreis Köln,13,1,0,0,1,2,4,-2,0,0.0
+308,,Oberkasseler FV,8,Kreisliga A · Kreis Bonn,11,1,0,0,1,2,4,-2,0,0.0
+309,,TV Klaswipper,8,Kreisliga A · Kreis Berg,14,1,0,0,1,2,4,-2,0,0.0
+310,,TuS Mondorf II,8,Kreisliga A Staffel 1 · Kreis Sieg,13,1,0,0,1,2,4,-2,0,0.0
+311,,Burtscheider TV,8,Kreisliga A · Kreis Aachen,10,1,0,0,1,1,3,-2,0,0.0
+312,,SG Bürvenich / Schwerfen / Sinzenich,8,Kreisliga A · Kreis Euskirchen,9,1,0,0,1,1,3,-2,0,0.0
+313,,SV Niederbachem,8,Kreisliga A · Kreis Bonn,12,1,0,0,1,1,3,-2,0,0.0
+314,,SV Schöneseiffen 1950 e.V.,8,Kreisliga A · Kreis Euskirchen,10,1,0,0,1,1,3,-2,0,0.0
+315,,SV Viktoria Koslar,8,Kreisliga A · Kreis Düren,13,1,0,0,1,1,3,-2,0,0.0
+316,,SG Nörvenich-Hochkirchen,8,Kreisliga A · Kreis Düren,14,1,0,0,1,0,2,-2,0,0.0
+317,,SSV Bornheim II,8,Kreisliga A · Kreis Bonn,13,1,0,0,1,0,2,-2,0,0.0
+318,,Horremer SV II,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,12,1,0,0,1,3,6,-3,0,0.0
+319,,RW Hütte,8,Kreisliga A Staffel 1 · Kreis Sieg,14,1,0,0,1,3,6,-3,0,0.0
+320,,SV Refrath/Frankenforst I,8,Kreisliga A · Kreis Berg,15,1,0,0,1,2,5,-3,0,0.0
+321,,Spvg. SW 1896 Düren,8,Kreisliga A · Kreis Düren,15,1,0,0,1,2,5,-3,0,0.0
+322,,FC Pech,8,Kreisliga A · Kreis Bonn,14,1,0,0,1,1,4,-3,0,0.0
+323,,Mülheim Nord I,8,Kreisliga A · Kreis Köln,14,1,0,0,1,1,4,-3,0,0.0
+324,,SSV Golbach,8,Kreisliga A · Kreis Euskirchen,11,1,0,0,1,1,4,-3,0,0.0
+325,,SV Eilendorf II,8,Kreisliga A · Kreis Aachen,11,1,0,0,1,1,4,-3,0,0.0
+326,,SV SW Nierfeld,8,Kreisliga A · Kreis Euskirchen,12,1,0,0,1,1,4,-3,0,0.0
+327,,Rhenania Würselen/Euchen,8,Kreisliga A · Kreis Aachen,12,1,0,0,1,0,3,-3,0,0.0
+328,,SV St. Jöris,8,Kreisliga A · Kreis Aachen,13,1,0,0,1,2,6,-4,0,0.0
+329,,RW Ahrem,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,13,1,0,0,1,1,5,-4,0,0.0
+330,,1. FC Heinsberg-Lieck,8,"Kreisliga A, Staffel 1 · Kreis Heinsberg",16,1,0,0,1,0,4,-4,0,0.0
+331,,Bliesheimer BC,8,Kreisliga A · Kreis Euskirchen,13,1,0,0,1,0,4,-4,0,0.0
+332,,Sinnersdorf I,8,Kreisliga A · Kreis Köln,15,1,0,0,1,0,4,-4,0,0.0
+333,,TB 1906 Witterschlick,8,Kreisliga A · Kreis Bonn,15,1,0,0,1,0,4,-4,0,0.0
+334,,Borussia Freialdenhoven,8,Kreisliga A · Kreis Düren,16,1,0,0,1,1,6,-5,0,0.0
+335,,Grenzwacht Pannesheide,8,Kreisliga A · Kreis Aachen,14,1,0,0,1,1,6,-5,0,0.0
+336,,TuS BW Königsdorf 2,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,14,1,0,0,1,1,6,-5,0,0.0
+337,,SG Stolberg,8,Kreisliga A · Kreis Aachen,15,1,0,0,1,0,5,-5,0,0.0
+338,,Union Blau-Weiß Biesfeld,8,Kreisliga A · Kreis Berg,16,1,0,0,1,1,7,-6,0,0.0
+339,,FC Adler Meindorf,8,Kreisliga A Staffel 1 · Kreis Sieg,15,1,0,0,1,0,6,-6,0,0.0
+340,,SSV Walberberg I,8,Kreisliga A · Kreis Bonn,16,1,0,0,1,0,6,-6,0,0.0
+341,,Stammheim I,8,Kreisliga A · Kreis Köln,16,1,0,0,1,2,9,-7,0,0.0
+342,,TuS 07 Oberlar,8,Kreisliga A Staffel 1 · Kreis Sieg,16,1,0,0,1,0,7,-7,0,0.0
+343,,F.C. Rot-Weiß Berrendorf,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,15,1,0,0,1,1,10,-9,0,0.0
+344,,BCV Glesch-Paffendorf I,8,Kreisliga A Staffel 1 · Kreis Rhein-Erft,16,1,0,0,1,1,2,-1,-3,-3.0
+345,,Rondorf I,9,Kreisliga B Staffel 1 · Kreis Köln,1,1,1,0,0,12,0,12,3,3.0
+346,,SC Alemannia Lendersdorf II,9,Kreisliga B Staffel 3 · Kreis Düren,1,1,1,0,0,12,0,12,3,3.0
+347,,FC Germania Teveren II,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",1,1,1,0,0,13,2,11,3,3.0
+348,,Vorwärts Spoho I,9,Kreisliga B Staffel 1 · Kreis Köln,2,1,1,0,0,12,1,11,3,3.0
+349,,VfL Eintracht Warden,9,Kreisliga B Staffel 1 · Kreis Aachen,1,2,2,0,0,23,2,21,6,3.0
+350,,SC Roitzheim,9,Kreisliga B 1 · Kreis Euskirchen,1,1,1,0,0,9,0,9,3,3.0
+351,,SV Weiden II,9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,1,1,1,0,0,8,0,8,3,3.0
+352,,Eintracht Kornelimünster,9,Kreisliga B Staffel 2 · Kreis Aachen,1,1,1,0,0,8,1,7,3,3.0
+353,,GW Brauweiler 2,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,1,1,1,0,0,8,1,7,3,3.0
+354,,Kaster/Königshoven,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,2,1,1,0,0,6,0,6,3,3.0
+355,,SSV Jan Wellem 05 II,9,Kreisliga B 2 · Kreis Berg,1,1,1,0,0,6,0,6,3,3.0
+356,,FC Rhenania Immendorf,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",2,1,1,0,0,7,2,5,3,3.0
+357,,TuS Schmidt,9,Kreisliga B Staffel 3 · Kreis Düren,2,1,1,0,0,7,2,5,3,3.0
+358,,SG Vossenack-Hürtgen,9,Kreisliga B Staffel 3 · Kreis Düren,3,1,1,0,0,6,1,5,3,3.0
+359,,SG Hellenthal,9,Kreisliga B 2 · Kreis Euskirchen,1,1,1,0,0,5,0,5,3,3.0
+360,,SV Scherpenseel-Grotenrath,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",3,1,1,0,0,5,0,5,3,3.0
+361,,TuS DJK Dreiborn,9,Kreisliga B 2 · Kreis Euskirchen,2,1,1,0,0,5,0,5,3,3.0
+362,,Casa Espana II,9,Kreisliga B Staffel 1 · Kreis Köln,3,1,1,0,0,5,1,4,3,3.0
+363,,DJK Gillrath,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",4,1,1,0,0,5,1,4,3,3.0
+364,,SV Frömmersbach,9,Kreisliga B 3 · Kreis Berg,1,1,1,0,0,5,1,4,3,3.0
+365,,SV Türkspor Bergheim,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,3,1,1,0,0,5,1,4,3,3.0
+366,,TuS Eudenbach,9,Kreisliga B Staffel 3 · Kreis Sieg,1,1,1,0,0,5,1,4,3,3.0
+367,,TuS Oberpleis II,9,Kreisliga B Staffel 3 · Kreis Sieg,2,1,1,0,0,5,1,4,3,3.0
+368,,FV Preußen Bonn,9,Kreisliga B Gruppe 1 · Kreis Bonn,1,1,1,0,0,4,0,4,3,3.0
+369,,SG Holzweiler-Katzem,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",1,1,1,0,0,4,0,4,3,3.0
+370,,SpVg Nöthen-Pesch-Harzheim,9,Kreisliga B 2 · Kreis Euskirchen,3,1,1,0,0,4,0,4,3,3.0
+371,,TV Hoffnungsthal II,9,Kreisliga B 2 · Kreis Berg,2,1,1,0,0,4,0,4,3,3.0
+372,,SV Merken,9,Kreisliga B Staffel 2 · Kreis Düren,1,1,1,0,0,6,3,3,3,3.0
+373,,Alkenrath I,9,Kreisliga B Staffel 2 · Kreis Köln,1,1,1,0,0,5,2,3,3,3.0
+374,,FC 06 Rurdorf,9,Kreisliga B Staffel 1 · Kreis Düren,1,1,1,0,0,5,2,3,3,3.0
+375,,NK Croatia Bonn e.V.,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",1,1,1,0,0,5,2,3,3,3.0
+376,,SV Bernberg,9,Kreisliga B 3 · Kreis Berg,2,1,1,0,0,5,2,3,3,3.0
+377,,SV Niederzier I,9,Kreisliga B Staffel 1 · Kreis Düren,2,1,1,0,0,5,2,3,3,3.0
+378,,SV Nordeifel,9,Kreisliga B Staffel 2 · Kreis Aachen,2,1,1,0,0,5,2,3,3,3.0
+379,,TuS Weiershagen,9,Kreisliga B 3 · Kreis Berg,3,1,1,0,0,5,2,3,3,3.0
+380,,1. FC Krauthausen,9,Kreisliga B Staffel 1 · Kreis Düren,3,1,1,0,0,4,1,3,3,3.0
+381,,FC Hertha Rheidt II,9,Kreisliga B Staffel 2 · Kreis Sieg,1,1,1,0,0,4,1,3,3,3.0
+382,,FC Roetgen II,9,Kreisliga B Staffel 2 · Kreis Aachen,3,1,1,0,0,4,1,3,3,3.0
+383,,Merheim I,9,Kreisliga B Staffel 2 · Kreis Köln,2,1,1,0,0,4,1,3,3,3.0
+384,,TuS Mechernich 2,9,Kreisliga B 2 · Kreis Euskirchen,4,1,1,0,0,4,1,3,3,3.0
+385,,Weiler-Volkhoven II,9,Kreisliga B Staffel 1 · Kreis Köln,4,1,1,0,0,4,1,3,3,3.0
+386,,DJK Wipperfeld,9,Kreisliga B 2 · Kreis Berg,3,1,1,0,0,3,0,3,3,3.0
+387,,FRECHEN 20 (U21),9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,2,1,1,0,0,3,0,3,3,3.0
+388,,SV Ennert II,9,Kreisliga B Gruppe 1 · Kreis Bonn,2,1,1,0,0,3,0,3,3,3.0
+389,,SV Fortuna Müllekoven II,9,Kreisliga B Staffel 2 · Kreis Sieg,2,1,1,0,0,3,0,3,3,3.0
+390,,SV Niederbachem II,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",2,1,1,0,0,3,0,3,3,3.0
+391,,VfR 1910 Unterbruch,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",5,1,1,0,0,3,0,3,3,3.0
+392,,SV Kohlscheid,9,Kreisliga B Staffel 1 · Kreis Aachen,2,2,2,0,0,6,1,5,6,3.0
+393,,TuS rrh. I,9,Kreisliga B Staffel 2 · Kreis Köln,3,1,1,0,0,7,5,2,3,3.0
+394,,Germania Mülheim I,9,Kreisliga B Staffel 2 · Kreis Köln,4,1,1,0,0,5,3,2,3,3.0
+395,,Inter Euskirchen,9,Kreisliga B 1 · Kreis Euskirchen,2,1,1,0,0,5,3,2,3,3.0
+396,,SSV Wildbergerhütte-Odenspiel,9,Kreisliga B 3 · Kreis Berg,4,1,1,0,0,5,3,2,3,3.0
+397,,SV Blatzheim,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,4,1,1,0,0,5,3,2,3,3.0
+398,,TV Rheindorf II,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",3,1,1,0,0,5,3,2,3,3.0
+399,,1. FC Düren II,9,Kreisliga B Staffel 2 · Kreis Düren,2,1,1,0,0,4,2,2,3,3.0
+400,,RW Lessenich,9,Kreisliga B Gruppe 1 · Kreis Bonn,3,1,1,0,0,4,2,2,3,3.0
+401,,SC Glessen,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,5,1,1,0,0,4,2,2,3,3.0
+402,,SSV Berzdorf,9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,3,1,1,0,0,4,2,2,3,3.0
+403,,SV Menden,9,Kreisliga B Staffel 2 · Kreis Sieg,3,1,1,0,0,4,2,2,3,3.0
+404,,Spvgg. Hurst-Rosbach,9,Kreisliga B Staffel 3 · Kreis Sieg,3,1,1,0,0,4,2,2,3,3.0
+405,,VfR Forst,9,Kreisliga B Staffel 2 · Kreis Aachen,4,1,1,0,0,4,2,2,3,3.0
+406,,1. FC Spich U23,9,Kreisliga B Staffel 2 · Kreis Sieg,4,1,1,0,0,3,1,2,3,3.0
+407,,BV Drabenderhöhe,9,Kreisliga B 3 · Kreis Berg,5,1,1,0,0,3,1,2,3,3.0
+408,,SC Amicitia 1908 Schleiden e.V.,9,Kreisliga B Staffel 1 · Kreis Düren,4,1,1,0,0,3,1,2,3,3.0
+409,,SG Rotbachtal/Strempt,9,Kreisliga B 2 · Kreis Euskirchen,5,1,1,0,0,3,1,2,3,3.0
+410,,SV BW Oedekoven,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",4,1,1,0,0,3,1,2,3,3.0
+411,,Sportfreunde Troisdorf 05 II,9,Kreisliga B Staffel 2 · Kreis Sieg,5,1,1,0,0,3,1,2,3,3.0
+412,,Trabzonspor I,9,Kreisliga B Staffel 1 · Kreis Köln,5,1,1,0,0,3,1,2,3,3.0
+413,,TuS Birk II,9,Kreisliga B Staffel 3 · Kreis Sieg,4,1,1,0,0,3,1,2,3,3.0
+414,,Wahn-Grengel I,9,Kreisliga B Staffel 2 · Kreis Köln,5,1,1,0,0,3,1,2,3,3.0
+415,,DJK Westwacht Aachen,9,Kreisliga B Staffel 2 · Kreis Aachen,5,1,1,0,0,2,0,2,3,3.0
+416,,FC Wanderlust Süsterseel,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",6,1,1,0,0,2,0,2,3,3.0
+417,,JSV Baesweiler,9,Kreisliga B Staffel 1 · Kreis Aachen,8,1,1,0,0,2,0,2,3,3.0
+418,,SC Ederen,9,Kreisliga B Staffel 1 · Kreis Düren,5,1,1,0,0,2,0,2,3,3.0
+419,,TuS Winterscheid,9,Kreisliga B Staffel 3 · Kreis Sieg,5,1,1,0,0,2,0,2,3,3.0
+420,,Godesberger FV,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",5,1,1,0,0,6,5,1,3,3.0
+421,,SV Blau-Weiß Hand e.V.,9,Kreisliga B 2 · Kreis Berg,4,1,1,0,0,6,5,1,3,3.0
+422,,FC Rheinsüd Köln III,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,6,1,1,0,0,5,4,1,3,3.0
+423,,SV Metternich 1945 e.V.,9,Kreisliga B 1 · Kreis Euskirchen,3,1,1,0,0,5,4,1,3,3.0
+424,,SV Wachtberg II,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",6,1,1,0,0,5,4,1,3,3.0
+425,,SG Monschauer Land,9,Kreisliga B Staffel 2 · Kreis Aachen,6,1,1,0,0,4,3,1,3,3.0
+426,,SG Olpe-Kürten,9,Kreisliga B 2 · Kreis Berg,5,1,1,0,0,4,3,1,3,3.0
+427,,SV Bechen,9,Kreisliga B 2 · Kreis Berg,6,1,1,0,0,4,3,1,3,3.0
+428,,Sportfreunde Uevekoven II,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",2,1,1,0,0,4,3,1,3,3.0
+429,,Westhoven-Ensen I,9,Kreisliga B Staffel 2 · Kreis Köln,6,1,1,0,0,4,3,1,3,3.0
+430,,ASC Akhtamar Frechen,9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,4,1,1,0,0,3,2,1,3,3.0
+431,,Badorf/Pingsdorf,9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,5,1,1,0,0,3,2,1,3,3.0
+432,,Niersquelle Kuckum II,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",3,1,1,0,0,3,2,1,3,3.0
+433,,Olympias Eitorf,9,Kreisliga B Staffel 3 · Kreis Sieg,6,1,1,0,0,3,2,1,3,3.0
+434,,SC 1923 Meschenich,9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,6,1,1,0,0,3,2,1,3,3.0
+435,,SG Vettweiß-Füssenich-Geich,9,Kreisliga B Staffel 3 · Kreis Düren,4,1,1,0,0,3,2,1,3,3.0
+436,,TPSK I,9,Kreisliga B Staffel 1 · Kreis Köln,6,1,1,0,0,3,2,1,3,3.0
+437,,TuS Germania Kückhoven,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",4,1,1,0,0,3,2,1,3,3.0
+438,,FV Salia Sechtem,9,Kreisliga B Gruppe 1 · Kreis Bonn,4,1,1,0,0,2,1,1,3,3.0
+439,,SG Neffeltal,9,Kreisliga B Staffel 3 · Kreis Düren,5,1,1,0,0,2,1,1,3,3.0
+440,,SV Boluspor Bonn II,9,Kreisliga B Gruppe 1 · Kreis Bonn,5,1,1,0,0,2,1,1,3,3.0
+441,,SV Lohmar,9,Kreisliga B Staffel 3 · Kreis Sieg,7,1,1,0,0,2,1,1,3,3.0
+442,,SVG Aphoven-Laffeld,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",7,1,1,0,0,2,1,1,3,3.0
+443,,FSV Neunkirchen-Seelscheid III,9,Kreisliga B Staffel 3 · Kreis Sieg,8,1,1,0,0,1,0,1,3,3.0
+444,,Germania Freund,9,Kreisliga B Staffel 2 · Kreis Aachen,7,1,1,0,0,1,0,1,3,3.0
+445,,SC West I,9,Kreisliga B Staffel 1 · Kreis Köln,7,1,1,0,0,1,0,1,3,3.0
+446,,SG Flamersheim / Kirchheim 2,9,Kreisliga B 2 · Kreis Euskirchen,6,1,1,0,0,1,0,1,3,3.0
+447,,SpVgg Lülsdorf-Ranzel I,9,Kreisliga B Staffel 2 · Kreis Sieg,6,1,1,0,0,1,0,1,3,3.0
+448,,Türk Genc I,9,Kreisliga B Staffel 2 · Kreis Köln,7,1,1,0,0,1,0,1,3,3.0
+449,,Umutspor Troisdorf,9,Kreisliga B Staffel 2 · Kreis Sieg,7,1,1,0,0,1,0,1,3,3.0
+450,,Viktoria Arnoldsweiler II,9,Kreisliga B Staffel 2 · Kreis Düren,3,1,1,0,0,1,0,1,3,3.0
+451,,FV Eschweiler,9,Kreisliga B Staffel 1 · Kreis Aachen,3,2,1,1,0,9,3,6,4,2.0
+452,,SC Sparta Bardenberg,9,Kreisliga B Staffel 1 · Kreis Aachen,4,2,1,1,0,8,6,2,4,2.0
+453,,VfR Linden-Neusen,9,Kreisliga B Staffel 1 · Kreis Aachen,5,2,1,1,0,4,2,2,4,2.0
+454,,Kohlscheider BC II,9,Kreisliga B Staffel 1 · Kreis Aachen,6,2,1,1,0,6,5,1,4,2.0
+455,,Union Ritzerfeld,9,Kreisliga B Staffel 1 · Kreis Aachen,7,2,1,1,0,4,3,1,4,2.0
+456,,VfR Würselen II,9,Kreisliga B Staffel 1 · Kreis Aachen,9,2,1,0,1,6,5,1,3,1.5
+457,,D-H-O,9,Kreisliga B 1 · Kreis Euskirchen,4,1,0,1,0,5,5,0,1,1.0
+458,,TuS 1927 Vernich e.V.,9,Kreisliga B 1 · Kreis Euskirchen,5,1,0,1,0,5,5,0,1,1.0
+459,,Borussia Kalk II,9,Kreisliga B Staffel 2 · Kreis Köln,8,1,0,1,0,4,4,0,1,1.0
+460,,Bürrig I,9,Kreisliga B Staffel 2 · Kreis Köln,9,1,0,1,0,4,4,0,1,1.0
+461,,SC Germania Geyen 2,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,7,1,0,1,0,4,4,0,1,1.0
+462,,VfR Stommeln,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,8,1,0,1,0,4,4,0,1,1.0
+463,,FC Golzheim II,9,Kreisliga B Staffel 2 · Kreis Düren,4,1,0,1,0,3,3,0,1,1.0
+464,,FC Schwadorf,9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,7,1,0,1,0,3,3,0,1,1.0
+465,,GKSC Hürth,9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,8,1,0,1,0,3,3,0,1,1.0
+466,,Rhenania Mariaweiler I,9,Kreisliga B Staffel 2 · Kreis Düren,5,1,0,1,0,3,3,0,1,1.0
+467,,SG Billig/Veytal,9,Kreisliga B 1 · Kreis Euskirchen,6,1,0,1,0,3,3,0,1,1.0
+468,,VfB Blessem,9,Kreisliga B 1 · Kreis Euskirchen,7,1,0,1,0,3,3,0,1,1.0
+469,,CSV Düren,9,Kreisliga B Staffel 2 · Kreis Düren,6,1,0,1,0,2,2,0,1,1.0
+470,,DJK Arminia Eilendorf,9,Kreisliga B Staffel 2 · Kreis Aachen,8,1,0,1,0,2,2,0,1,1.0
+471,,DJK Dürscheid,9,Kreisliga B 2 · Kreis Berg,7,1,0,1,0,2,2,0,1,1.0
+472,,FC Germania Bauchem,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",8,1,0,1,0,2,2,0,1,1.0
+473,,FC Inden/Altdorf 09/21,9,Kreisliga B Staffel 2 · Kreis Düren,7,1,0,1,0,2,2,0,1,1.0
+474,,FV Ermis,9,Kreisliga B 2 · Kreis Berg,8,1,0,1,0,2,2,0,1,1.0
+475,,SV SW Schwanenberg,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",5,1,0,1,0,2,2,0,1,1.0
+476,,TV Konzen II,9,Kreisliga B Staffel 2 · Kreis Aachen,9,1,0,1,0,2,2,0,1,1.0
+477,,TuS Jahn Hilfarth,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",6,1,0,1,0,2,2,0,1,1.0
+478,,VfR Übach-Palenberg,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",9,1,0,1,0,2,2,0,1,1.0
+479,,1. JFS Köln I,9,Kreisliga B Staffel 1 · Kreis Köln,8,1,0,1,0,1,1,0,1,1.0
+480,,BC Efferen,9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,9,1,0,1,0,1,1,0,1,1.0
+481,,Blau-Weiß Köln III,9,Kreisliga B Staffel 1 · Kreis Köln,9,1,0,1,0,1,1,0,1,1.0
+482,,Bonner SC II,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",7,1,0,1,0,1,1,0,1,1.0
+483,,FC Germania Rurich 1919 e.V. II,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",7,1,0,1,0,1,1,0,1,1.0
+484,,SC Wegberg,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",8,1,0,1,0,1,1,0,1,1.0
+485,,SSV Süng,9,Kreisliga B 2 · Kreis Berg,9,1,0,1,0,1,1,0,1,1.0
+486,,SV Helpenstein II,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",9,1,0,1,0,1,1,0,1,1.0
+487,,SV Schnellenbach,9,Kreisliga B 3 · Kreis Berg,6,1,0,1,0,1,1,0,1,1.0
+488,,TV Rheindorf,9,Kreisliga B Gruppe 1 · Kreis Bonn,6,1,0,1,0,1,1,0,1,1.0
+489,,TuS Untereschbach,9,Kreisliga B 2 · Kreis Berg,10,1,0,1,0,1,1,0,1,1.0
+490,,VfL Alfter,9,Kreisliga B Gruppe 1 · Kreis Bonn,7,1,0,1,0,1,1,0,1,1.0
+491,,VfL Erp,9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,10,1,0,1,0,1,1,0,1,1.0
+492,,VfL Gummersbach,9,Kreisliga B 3 · Kreis Berg,7,1,0,1,0,1,1,0,1,1.0
+493,,VfL Meckenheim,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",8,1,0,1,0,1,1,0,1,1.0
+494,,Viktoria Kleingladbach,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",10,1,0,1,0,1,1,0,1,1.0
+495,,FC Borussia Derschlag II,9,Kreisliga B 3 · Kreis Berg,8,1,0,1,0,0,0,0,1,1.0
+496,,SV Morsbach,9,Kreisliga B 3 · Kreis Berg,9,1,0,1,0,0,0,0,1,1.0
+497,,SV Sportfreunde Hörn,9,Kreisliga B Staffel 1 · Kreis Aachen,10,2,0,1,1,2,3,-1,1,0.5
+498,,FSG Merkstein,9,Kreisliga B Staffel 1 · Kreis Aachen,11,2,0,1,1,3,5,-2,1,0.5
+499,,VfJ Laurensberg,9,Kreisliga B Staffel 1 · Kreis Aachen,12,2,0,1,1,1,4,-3,1,0.5
+500,,SV Grün-Weiß Karken,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",11,1,1,0,0,6,0,6,0,0.0
+501,,Sportfreunde 1919 Düren II,9,Kreisliga B Staffel 2 · Kreis Düren,8,1,1,0,0,5,2,3,0,0.0
+502,,1. FC Niederkassel III,9,Kreisliga B Staffel 2 · Kreis Sieg,8,0,0,0,0,0,0,0,0,0.0
+503,,BC Oberzier II,9,Kreisliga B Staffel 1 · Kreis Düren,6,0,0,0,0,0,0,0,0,0.0
+504,,FC Rhenania Girbelsrath,9,Kreisliga B Staffel 2 · Kreis Düren,9,0,0,0,0,0,0,0,0,0.0
+505,,FC Wiedenest-Othetal,9,Kreisliga B 3 · Kreis Berg,10,0,0,0,0,0,0,0,0,0.0
+506,,FV Bad Honnef II,9,Kreisliga B Staffel 2 · Kreis Sieg,9,0,0,0,0,0,0,0,0,0.0
+507,,Lions Sports-Club Bonn,9,Kreisliga B Gruppe 1 · Kreis Bonn,8,0,0,0,0,0,0,0,0,0.0
+508,,RW Röttgen,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",9,0,0,0,0,0,0,0,0,0.0
+509,,Ründeroth zg.,9,Kreisliga B 3 · Kreis Berg,11,0,0,0,0,0,0,0,0,0.0
+510,,SC Fliesteden II,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,9,0,0,0,0,0,0,0,0,0.0
+511,,SC Stetternich,9,Kreisliga B Staffel 1 · Kreis Düren,7,0,0,0,0,0,0,0,0,0.0
+512,,SC Widdig 1922 e.V.,9,Kreisliga B Gruppe 1 · Kreis Bonn,9,0,0,0,0,0,0,0,0,0.0
+513,,SG Germania Binsfeld 1948 e.V.,9,Kreisliga B Staffel 3 · Kreis Düren,6,0,0,0,0,0,0,0,0,0.0
+514,,SG Germania Burgwart,9,Kreisliga B Staffel 3 · Kreis Düren,7,0,0,0,0,0,0,0,0,0.0
+515,,SG Nordeifel,9,Kreisliga B Staffel 3 · Kreis Düren,8,0,0,0,0,0,0,0,0,0.0
+516,,SG Sportfreunde 69 Marmagen-Nettersheim,9,Kreisliga B 2 · Kreis Euskirchen,7,0,0,0,0,0,0,0,0,0.0
+517,,SSC Firmenich,9,Kreisliga B 1 · Kreis Euskirchen,8,0,0,0,0,0,0,0,0,0.0
+518,,SV Boluspor Bonn,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",10,0,0,0,0,0,0,0,0,0.0
+519,,SV GW Welldorf-Güsten II,9,Kreisliga B Staffel 1 · Kreis Düren,8,0,0,0,0,0,0,0,0,0.0
+520,,SV Morschenich,9,Kreisliga B Staffel 2 · Kreis Düren,10,0,0,0,0,0,0,0,0,0.0
+521,,SV Vorgebirge II zg.,9,Kreisliga B Gruppe 1 · Kreis Bonn,10,0,0,0,0,0,0,0,0,0.0
+522,,Sportfreunde Wüschheim-Büllesheim,9,Kreisliga B 1 · Kreis Euskirchen,9,0,0,0,0,0,0,0,0,0.0
+523,,Spvg. Aldenhoven/Pattern zg.,9,Kreisliga B Staffel 1 · Kreis Düren,9,0,0,0,0,0,0,0,0,0.0
+524,,TSC Euskirchen,9,Kreisliga B 1 · Kreis Euskirchen,10,0,0,0,0,0,0,0,0,0.0
+525,,VTA Bonn,9,Kreisliga B Gruppe 1 · Kreis Bonn,11,0,0,0,0,0,0,0,0,0.0
+526,,VfR Bachem II zg.,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,10,0,0,0,0,0,0,0,0,0.0
+527,,VfVuJ02 Winden II,9,Kreisliga B Staffel 3 · Kreis Düren,9,0,0,0,0,0,0,0,0,0.0
+528,,RW Dünstekoven,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",11,1,0,0,1,5,6,-1,0,0.0
+529,,SG Overath-Vilkerath,9,Kreisliga B 2 · Kreis Berg,11,1,0,0,1,5,6,-1,0,0.0
+530,,SC Alt.-Ersdorf,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",12,1,0,0,1,4,5,-1,0,0.0
+531,,SV Weiden III,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,11,1,0,0,1,4,5,-1,0,0.0
+532,,TuS Dom-Esch,9,Kreisliga B 1 · Kreis Euskirchen,11,1,0,0,1,4,5,-1,0,0.0
+533,,FC Inde Hahn,9,Kreisliga B Staffel 2 · Kreis Aachen,10,1,0,0,1,3,4,-1,0,0.0
+534,,Frielingsdorf II,9,Kreisliga B 2 · Kreis Berg,12,1,0,0,1,3,4,-1,0,0.0
+535,,Roland West I,9,Kreisliga B Staffel 2 · Kreis Köln,10,1,0,0,1,3,4,-1,0,0.0
+536,,SG Union 94 Würm-Lindern II,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",12,1,0,0,1,3,4,-1,0,0.0
+537,,SV Bergisch Gladbach 09 II,9,Kreisliga B 2 · Kreis Berg,13,1,0,0,1,3,4,-1,0,0.0
+538,,1.FC Wassenberg-Orsbeck,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",13,1,0,0,1,2,3,-1,0,0.0
+539,,BC Stotzheim I,9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,11,1,0,0,1,2,3,-1,0,0.0
+540,,DJK Südwest III,9,Kreisliga B Staffel 1 · Kreis Köln,10,1,0,0,1,2,3,-1,0,0.0
+541,,FC Borussia Hückelhoven,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",14,1,0,0,1,2,3,-1,0,0.0
+542,,FC Montania Berg,9,Kreisliga B Staffel 3 · Kreis Düren,10,1,0,0,1,2,3,-1,0,0.0
+543,,GW Brauweiler 3 (U23),9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,12,1,0,0,1,2,3,-1,0,0.0
+544,,Glückauf Habbelrath-Grefrath,9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,13,1,0,0,1,2,3,-1,0,0.0
+545,,Wahlscheider SV II,9,Kreisliga B Staffel 3 · Kreis Sieg,9,1,0,0,1,2,3,-1,0,0.0
+546,,1. JFC Brüser Berg,9,Kreisliga B Gruppe 1 · Kreis Bonn,12,1,0,0,1,1,2,-1,0,0.0
+547,,SG Rodebachtal,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",10,1,0,0,1,1,2,-1,0,0.0
+548,,SG Voreifel/Nideggen,9,Kreisliga B Staffel 3 · Kreis Düren,11,1,0,0,1,1,2,-1,0,0.0
+549,,SV Beuel 06 II,9,Kreisliga B Gruppe 1 · Kreis Bonn,13,1,0,0,1,1,2,-1,0,0.0
+550,,VfR Marienfeld,9,Kreisliga B Staffel 3 · Kreis Sieg,10,1,0,0,1,1,2,-1,0,0.0
+551,,Bröltaler SC,9,Kreisliga B Staffel 3 · Kreis Sieg,11,1,0,0,1,0,1,-1,0,0.0
+552,,GW Lichtenbusch,9,Kreisliga B Staffel 2 · Kreis Aachen,11,1,0,0,1,0,1,-1,0,0.0
+553,,SG Keldenich-Scheven I,9,Kreisliga B 2 · Kreis Euskirchen,8,1,0,0,1,0,1,-1,0,0.0
+554,,SSV Kaldauen,9,Kreisliga B Staffel 2 · Kreis Sieg,10,1,0,0,1,0,1,-1,0,0.0
+555,,Schwarz-Weiß Köln II,9,Kreisliga B Staffel 1 · Kreis Köln,11,1,0,0,1,0,1,-1,0,0.0
+556,,Siegburger TV,9,Kreisliga B Staffel 2 · Kreis Sieg,11,1,0,0,1,0,1,-1,0,0.0
+557,,TuS 08 Langerwehe II,9,Kreisliga B Staffel 2 · Kreis Düren,11,1,0,0,1,0,1,-1,0,0.0
+558,,Zündorf II,9,Kreisliga B Staffel 2 · Kreis Köln,11,1,0,0,1,0,1,-1,0,0.0
+559,,Rath-Heumar I,9,Kreisliga B Staffel 2 · Kreis Köln,12,1,0,0,1,5,7,-2,0,0.0
+560,,Bergfried Leverkusen II,9,Kreisliga B Staffel 2 · Kreis Köln,13,1,0,0,1,3,5,-2,0,0.0
+561,,FC Emir Sultan Spor,9,Kreisliga B Staffel 1 · Kreis Aachen,13,1,0,0,1,3,5,-2,0,0.0
+562,,Rossenbach,9,Kreisliga B 3 · Kreis Berg,12,1,0,0,1,3,5,-2,0,0.0
+563,,SC Fortuna Bonn III,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",13,1,0,0,1,3,5,-2,0,0.0
+564,,SG Frechen 46 I,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,12,1,0,0,1,3,5,-2,0,0.0
+565,,SSV Eintr. Lommersum,9,Kreisliga B 1 · Kreis Euskirchen,12,1,0,0,1,3,5,-2,0,0.0
+566,,FC Bergheim 2000,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,13,1,0,0,1,2,4,-2,0,0.0
+567,,SV Buchholz 05,9,Kreisliga B Staffel 3 · Kreis Sieg,12,1,0,0,1,2,4,-2,0,0.0
+568,,SV Rot-Weiß Kriegsdorf,9,Kreisliga B Staffel 2 · Kreis Sieg,12,1,0,0,1,2,4,-2,0,0.0
+569,,Spfr. Ippendorf II,9,Kreisliga B Gruppe 1 · Kreis Bonn,14,1,0,0,1,2,4,-2,0,0.0
+570,,Spvg. SW 1896 Düren II,9,Kreisliga B Staffel 2 · Kreis Düren,12,1,0,0,1,2,4,-2,0,0.0
+571,,VfL 05 Aachen,9,Kreisliga B Staffel 2 · Kreis Aachen,12,1,0,0,1,2,4,-2,0,0.0
+572,,VfR Bachem I,9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,14,1,0,0,1,2,4,-2,0,0.0
+573,,FC Concordia Oidtweiler II,9,Kreisliga B Staffel 1 · Kreis Aachen,14,1,0,0,1,1,3,-2,0,0.0
+574,,FC Flying Albatros I,9,Kreisliga B Staffel 2 · Kreis Sieg,13,1,0,0,1,1,3,-2,0,0.0
+575,,Hellas Köln I,9,Kreisliga B Staffel 1 · Kreis Köln,12,1,0,0,1,1,3,-2,0,0.0
+576,,Hellas Troisdorf,9,Kreisliga B Staffel 2 · Kreis Sieg,14,1,0,0,1,1,3,-2,0,0.0
+577,,SC West II,9,Kreisliga B Staffel 2 · Kreis Köln,14,1,0,0,1,1,3,-2,0,0.0
+578,,SSV Plittersdorf,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",14,1,0,0,1,1,3,-2,0,0.0
+579,,SV Jülich 1912 e.V.,9,Kreisliga B Staffel 1 · Kreis Düren,10,1,0,0,1,1,3,-2,0,0.0
+580,,SV Öttershagen,9,Kreisliga B Staffel 3 · Kreis Sieg,13,1,0,0,1,1,3,-2,0,0.0
+581,,TuS Elsenroth,9,Kreisliga B 3 · Kreis Berg,13,1,0,0,1,1,3,-2,0,0.0
+582,,VFL Kommern,9,Kreisliga B 2 · Kreis Euskirchen,9,1,0,0,1,1,3,-2,0,0.0
+583,,Eintracht Verlautenheide III,9,Kreisliga B Staffel 1 · Kreis Aachen,15,2,0,0,2,1,5,-4,0,0.0
+584,,SC Salingia 08 Barmen II,9,Kreisliga B Staffel 1 · Kreis Düren,11,1,0,0,1,0,2,-2,0,0.0
+585,,SG Waldfeucht-Bocket-Braunsrath,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",11,1,0,0,1,0,2,-2,0,0.0
+586,,SV Leuscheid II,9,Kreisliga B Staffel 3 · Kreis Sieg,14,1,0,0,1,0,2,-2,0,0.0
+587,,VfR Venwegen,9,Kreisliga B Staffel 2 · Kreis Aachen,13,1,0,0,1,0,2,-2,0,0.0
+588,,FC Viktoria Schlich,9,Kreisliga B Staffel 2 · Kreis Düren,13,1,0,0,1,3,6,-3,0,0.0
+589,,1. FC Godesberg,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",15,1,0,0,1,2,5,-3,0,0.0
+590,,Borussia Brand,9,Kreisliga B Staffel 2 · Kreis Aachen,14,1,0,0,1,2,5,-3,0,0.0
+591,,Brück I,9,Kreisliga B Staffel 2 · Kreis Köln,15,1,0,0,1,2,5,-3,0,0.0
+592,,FV Wiehl II,9,Kreisliga B 3 · Kreis Berg,14,1,0,0,1,2,5,-3,0,0.0
+593,,SG Türkischer SV Düren II,9,Kreisliga B Staffel 2 · Kreis Düren,14,1,0,0,1,2,5,-3,0,0.0
+594,,SSV Körrenzig 1919 e.V.,9,Kreisliga B Staffel 1 · Kreis Düren,12,1,0,0,1,2,5,-3,0,0.0
+595,,SpVgg. Jackerath-Opherten,9,Kreisliga B Staffel 1 · Kreis Düren,13,1,0,0,1,2,5,-3,0,0.0
+596,,VfL Engelskirchen,9,Kreisliga B 3 · Kreis Berg,15,1,0,0,1,2,5,-3,0,0.0
+597,,Bosna I,9,Kreisliga B Staffel 1 · Kreis Köln,13,1,0,0,1,1,4,-3,0,0.0
+598,,FC Walheim,9,Kreisliga B Staffel 2 · Kreis Aachen,15,1,0,0,1,1,4,-3,0,0.0
+599,,Germania Kirchberg,9,Kreisliga B Staffel 1 · Kreis Düren,14,1,0,0,1,1,4,-3,0,0.0
+600,,SG25,9,Kreisliga B 2 · Kreis Euskirchen,10,1,0,0,1,1,4,-3,0,0.0
+601,,TuS Buisdorf II,9,Kreisliga B Staffel 2 · Kreis Sieg,15,1,0,0,1,1,4,-3,0,0.0
+602,,FC Randerath/Porselen,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",12,1,0,0,1,0,3,-3,0,0.0
+603,,FV Bonn-Endenich 1908 II,9,Kreisliga B Gruppe 1 · Kreis Bonn,15,1,0,0,1,0,3,-3,0,0.0
+604,,Heiligenhauser SV II,9,Kreisliga B 2 · Kreis Berg,14,1,0,0,1,0,3,-3,0,0.0
+605,,SC Volmershoven-Heidgen 2,9,"Kreisliga B, Gruppe 2 · Kreis Bonn",16,1,0,0,1,0,3,-3,0,0.0
+606,,Spvg Wesseling-Urfeld,9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,15,1,0,0,1,0,3,-3,0,0.0
+607,,VfR Hangelar II,9,Kreisliga B Staffel 2 · Kreis Sieg,16,1,0,0,1,0,3,-3,0,0.0
+608,,FC Concordia Haaren,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",13,1,0,0,1,1,5,-4,0,0.0
+609,,Pulheimer SC 2,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,14,1,0,0,1,1,5,-4,0,0.0
+610,,Roland West II,9,Kreisliga B Staffel 1 · Kreis Köln,14,1,0,0,1,1,5,-4,0,0.0
+611,,SG Holpe-Wallerhausen,9,Kreisliga B 3 · Kreis Berg,16,1,0,0,1,1,5,-4,0,0.0
+612,,SV Birlinghoven,9,Kreisliga B Staffel 3 · Kreis Sieg,15,1,0,0,1,1,5,-4,0,0.0
+613,,TuS Herchen 1922,9,Kreisliga B Staffel 3 · Kreis Sieg,16,1,0,0,1,1,5,-4,0,0.0
+614,,SG Agathaberg,9,Kreisliga B 2 · Kreis Berg,15,1,0,0,1,0,4,-4,0,0.0
+615,,SG Houverath/Mutscheid,9,Kreisliga B 2 · Kreis Euskirchen,11,1,0,0,1,0,4,-4,0,0.0
+616,,TuS Germania Hersel,9,Kreisliga B Gruppe 1 · Kreis Bonn,16,1,0,0,1,0,4,-4,0,0.0
+617,,Viktoria Doveren e.V.,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",15,1,0,0,1,0,4,-4,0,0.0
+618,,Rhenania Würselen/Euchen II,9,Kreisliga B Staffel 1 · Kreis Aachen,16,2,0,0,2,2,11,-9,0,0.0
+619,,SV Viktoria Rot Weiß Waldenrath/Straeten II,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",14,1,0,0,1,2,7,-5,0,0.0
+620,,TuS Germania Birgel,9,Kreisliga B Staffel 3 · Kreis Düren,12,1,0,0,1,2,7,-5,0,0.0
+621,,JVC Columbia 03 Drove,9,Kreisliga B Staffel 3 · Kreis Düren,13,1,0,0,1,1,6,-5,0,0.0
+622,,BC 09 Oberbruch II,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",15,1,0,0,1,0,5,-5,0,0.0
+623,,SG Oleftal,9,Kreisliga B 2 · Kreis Euskirchen,12,1,0,0,1,0,5,-5,0,0.0
+624,,SV Nierfeld II,9,Kreisliga B 2 · Kreis Euskirchen,13,1,0,0,1,0,5,-5,0,0.0
+625,,FC GW Etzweiler e.V.,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,15,1,0,0,1,0,6,-6,0,0.0
+626,,SV Altenberg II,9,Kreisliga B 2 · Kreis Berg,16,1,0,0,1,0,6,-6,0,0.0
+627,,VfR Granterath,9,"Kreisliga B, Staffel 1 · Kreis Heinsberg",16,1,0,0,1,0,6,-6,0,0.0
+628,,1. FC Quadrath-Ichendorf,9,Kreisliga B Staffel 2 · Kreis Rhein-Erft,16,1,0,0,1,1,8,-7,0,0.0
+629,,FV Vaalserquartier II,9,Kreisliga B Staffel 2 · Kreis Aachen,16,1,0,0,1,1,8,-7,0,0.0
+630,,FC Rheinsüd Köln II,9,Kreisliga B Staffel 3 · Kreis Rhein-Erft,16,1,0,0,1,0,8,-8,0,0.0
+631,,SG Rotbachtal/Strempt II,9,Kreisliga B 1 · Kreis Euskirchen,13,1,0,0,1,0,9,-9,0,0.0
+632,,SG Übach-Boscheln /JFC Alsdorf,9,"Kreisliga B, Staffel 2 · Kreis Heinsberg",16,1,0,0,1,2,13,-11,0,0.0
+633,,Bürrig II,9,Kreisliga B Staffel 1 · Kreis Köln,15,1,0,0,1,1,12,-11,0,0.0
+634,,DSK Köln I,9,Kreisliga B Staffel 1 · Kreis Köln,16,1,0,0,1,0,12,-12,0,0.0
+635,,SG Nörvenich-Hochkirchen II,9,Kreisliga B Staffel 3 · Kreis Düren,14,1,0,0,1,0,12,-12,0,0.0
+636,,FC Rhenania Lohn,9,Kreisliga B Staffel 1 · Kreis Aachen,17,1,0,0,1,1,19,-18,0,0.0
+637,,Flittard II,9,Kreisliga B Staffel 2 · Kreis Köln,16,1,0,0,1,1,4,-3,-3,-3.0
+638,,FC Düren 77 e.V. II,10,Kreisliga C Staffel 2 · Kreis Düren,1,1,1,0,0,22,0,22,3,3.0
+639,,SV Falke Bergrath II,10,Kreisliga C Staffel 2 · Kreis Aachen,1,1,1,0,0,20,2,18,3,3.0
+640,,RSV 1957 Arloff-Kirspenich,10,Kreisliga C 2 · Kreis Euskirchen,1,1,1,0,0,14,0,14,3,3.0
+641,,VfVuJ02 Winden III,10,Kreisliga C Staffel 3 · Kreis Düren,1,1,1,0,0,13,1,12,3,3.0
+642,,Hambacher Spielverein 2,10,Kreisliga C Staffel 1 · Kreis Düren,1,1,1,0,0,12,2,10,3,3.0
+643,,DJK FV Haaren II,10,Kreisliga C Staffel 1 · Kreis Aachen,1,1,1,0,0,10,0,10,3,3.0
+644,,Alemannia Mariadorf II,10,Kreisliga C Staffel 2 · Kreis Aachen,2,1,1,0,0,10,1,9,3,3.0
+645,,SV Frauenberg 2,10,Kreisliga C 1 · Kreis Euskirchen,1,1,1,0,0,9,0,9,3,3.0
+646,,TSV Schönau II,10,Kreisliga C 2 · Kreis Euskirchen,2,1,1,0,0,11,3,8,3,3.0
+647,,Spvg Glück-Auf Ofden,10,Kreisliga C Staffel 2 · Kreis Aachen,3,1,1,0,0,9,1,8,3,3.0
+648,,Ditib Chorweiler I,10,Kreisliga C Staffel 1 · Kreis Köln,1,1,1,0,0,8,0,8,3,3.0
+649,,SC Villip,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",1,1,1,0,0,8,0,8,3,3.0
+650,,VTA Bonn II,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",1,1,1,0,0,8,0,8,3,3.0
+651,,Rhenania Würselen/Euchen III,10,Kreisliga C Staffel 2 · Kreis Aachen,4,1,1,0,0,7,0,7,3,3.0
+652,,TV Rott,10,Kreisliga C Staffel 5 · Kreis Sieg,4,1,1,0,0,7,0,7,3,3.0
+653,,Dieringhausen,10,Kreisliga C 5 · Kreis Berg,1,1,1,0,0,7,1,6,3,3.0
+654,,1. FC Niederkassel IV,10,Kreisliga C Staffel 4 · Kreis Sieg,1,2,2,0,0,12,0,12,6,3.0
+655,,SC 1920 Myhl,10,"Kreisliga C,  Staffel 2 · Kreis Heinsberg",1,1,1,0,0,6,0,6,3,3.0
+656,,TuS 09 Rot-Weiß Frelenberg,10,"Kreisliga C,  Staffel 3 · Kreis Heinsberg",1,1,1,0,0,6,0,6,3,3.0
+657,,SV Bergheim II,10,Kreisliga C Staffel 4 · Kreis Sieg,2,2,2,0,0,13,2,11,6,3.0
+658,,TuS Altenrath I,10,Kreisliga C Staffel 5 · Kreis Sieg,1,2,2,0,0,11,0,11,6,3.0
+659,,SV Refrath/Frankenforst II,10,Kreisliga C 4 · Kreis Berg,1,1,1,0,0,9,4,5,3,3.0
+660,,Fühlingen I,10,Kreisliga C Staffel 1 · Kreis Köln,2,1,1,0,0,7,2,5,3,3.0
+661,,Roland West III,10,Kreisliga C Staffel 1 · Kreis Köln,3,1,1,0,0,6,1,5,3,3.0
+662,,SV 09 Eitorf,10,Kreisliga C Staffel 6 · Kreis Sieg,1,2,2,0,0,12,2,10,6,3.0
+663,,SV GW Mühleip,10,Kreisliga C Staffel 6 · Kreis Sieg,6,1,1,0,0,6,1,5,3,3.0
+664,,SV Rheidt 2,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,1,1,1,0,0,6,1,5,3,3.0
+665,,VfR Linden-Neusen II,10,Kreisliga C Staffel 1 · Kreis Aachen,2,1,1,0,0,6,1,5,3,3.0
+666,,"""Grün-Weiss"" Sparta Gerderath",10,"Kreisliga C,  Staffel 1 · Kreis Heinsberg",1,1,1,0,0,5,0,5,3,3.0
+667,,SG Dahlem-Schmidtheim II,10,Kreisliga C 2 · Kreis Euskirchen,3,1,1,0,0,5,0,5,3,3.0
+668,,VfJ Laurensberg II,10,Kreisliga C Staffel 1 · Kreis Aachen,3,1,1,0,0,5,0,5,3,3.0
+669,,FC Sankt Augustin I,10,Kreisliga C Staffel 5 · Kreis Sieg,5,1,1,0,0,7,3,4,3,3.0
+670,,SC Alemannia Lendersdorf III,10,Kreisliga C Staffel 2 · Kreis Düren,2,1,1,0,0,7,3,4,3,3.0
+671,,JVC Columbia 03 Drove II,10,Kreisliga C Staffel 2 · Kreis Düren,3,1,1,0,0,6,2,4,3,3.0
+672,,Schwarz-Rot Aachen,10,Kreisliga C Staffel 1 · Kreis Aachen,4,1,1,0,0,6,2,4,3,3.0
+673,,TuS Chlodwig Zülpich 3,10,Kreisliga C 1 · Kreis Euskirchen,2,1,1,0,0,6,2,4,3,3.0
+674,,Club Galicia Bonn,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",1,1,1,0,0,5,1,4,3,3.0
+675,,Hitdorf I,10,Kreisliga C Staffel 3 · Kreis Köln,1,1,1,0,0,5,1,4,3,3.0
+676,,Rheindörfer Nord II,10,Kreisliga C Staffel 1 · Kreis Köln,4,1,1,0,0,5,1,4,3,3.0
+677,,SG Voreifel/Nideggen II,10,Kreisliga C Staffel 3 · Kreis Düren,2,1,1,0,0,5,1,4,3,3.0
+678,,VFL Nieder.-Mülh.-Wichter,10,Kreisliga C 1 · Kreis Euskirchen,3,1,1,0,0,5,1,4,3,3.0
+679,,VfL Sindorf II,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,2,1,1,0,0,5,1,4,3,3.0
+680,,FC Flerzheim,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",2,1,1,0,0,4,0,4,3,3.0
+681,,SC Villip 2,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",2,1,1,0,0,4,0,4,3,3.0
+682,,SG Stockheim - Rommelsheim,10,Kreisliga C Staffel 2 · Kreis Düren,4,1,1,0,0,4,0,4,3,3.0
+683,,SSV Plittersdorf 2,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",2,1,1,0,0,4,0,4,3,3.0
+684,,SV Lövenich/Widdersdorf U23,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,1,1,1,0,0,4,0,4,3,3.0
+685,,Viktoria Thorr,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,3,1,1,0,0,4,0,4,3,3.0
+686,,SV Menden II,10,Kreisliga C Staffel 5 · Kreis Sieg,2,2,2,0,0,9,2,7,6,3.0
+687,,TSV Germania Windeck,10,Kreisliga C Staffel 6 · Kreis Sieg,2,2,2,0,0,7,0,7,6,3.0
+688,,TuRa Oberdrees 2,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",3,1,1,0,0,8,5,3,3,3.0
+689,,Heiligenhauser SV III,10,Kreisliga C 5 · Kreis Berg,2,1,1,0,0,6,3,3,3,3.0
+690,,SF Asbachtal,10,Kreisliga C 6 · Kreis Berg,1,1,1,0,0,5,2,3,3,3.0
+691,,SSV Kaldauen U23,10,Kreisliga C Staffel 5 · Kreis Sieg,3,2,2,0,0,10,4,6,6,3.0
+692,,SSV Walberberg II,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",3,1,1,0,0,5,2,3,3,3.0
+693,,TuS 08 Jüngersdorf-St. I,10,Kreisliga C Staffel 2 · Kreis Düren,5,1,1,0,0,5,2,3,3,3.0
+694,,VfB Kreuzberg,10,Kreisliga C 5 · Kreis Berg,3,1,1,0,0,5,2,3,3,3.0
+695,,Ford Niehl II,10,Kreisliga C Staffel 1 · Kreis Köln,5,1,1,0,0,4,1,3,3,3.0
+696,,Gencler Birligi Bergisch Gladbach,10,Kreisliga C 4 · Kreis Berg,2,1,1,0,0,4,1,3,3,3.0
+697,,JSV Köln 96 II,10,Kreisliga C Staffel 2 · Kreis Köln,1,1,1,0,0,4,1,3,3,3.0
+698,,Lindenthal-Hohenlind IV,10,Kreisliga C Staffel 2 · Kreis Köln,2,1,1,0,0,4,1,3,3,3.0
+699,,SSV Wildbergerhütte-Odenspiel II,10,Kreisliga C 6 · Kreis Berg,2,1,1,0,0,4,1,3,3,3.0
+700,,SV Breinig Breinigerberg III,10,Kreisliga C Staffel 3 · Kreis Aachen,1,1,1,0,0,4,1,3,3,3.0
+701,,SV Concordia Weyer,10,Kreisliga C 2 · Kreis Euskirchen,4,1,1,0,0,4,1,3,3,3.0
+702,,Sportfreunde Uevekoven III,10,"Kreisliga C,  Staffel 1 · Kreis Heinsberg",2,1,1,0,0,4,1,3,3,3.0
+703,,TuS Mechernich 3,10,Kreisliga C 2 · Kreis Euskirchen,5,1,1,0,0,4,1,3,3,3.0
+704,,VfR Marienhagen II,10,Kreisliga C 6 · Kreis Berg,3,1,1,0,0,4,1,3,3,3.0
+705,,Germania Impekoven 1,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",3,1,1,0,0,3,0,3,3,3.0
+706,,Rondorf II,10,Kreisliga C Staffel 2 · Kreis Köln,3,1,1,0,0,3,0,3,3,3.0
+707,,SV Immerath,10,"Kreisliga C,  Staffel 1 · Kreis Heinsberg",3,1,1,0,0,3,0,3,3,3.0
+708,,TV Herkenrath 09 e.V.,10,Kreisliga C 4 · Kreis Berg,3,1,1,0,0,3,0,3,3,3.0
+709,,FC Kosova e.V. II,10,Kreisliga C Staffel 4 · Kreis Sieg,3,2,2,0,0,8,3,5,6,3.0
+710,,SC Uckerath III,10,Kreisliga C Staffel 6 · Kreis Sieg,3,2,2,0,0,8,3,5,6,3.0
+711,,SV SW Schwanenberg II,10,"Kreisliga C,  Staffel 1 · Kreis Heinsberg",4,1,1,0,0,6,4,2,3,3.0
+712,,Vingst 05 I,10,Kreisliga C Staffel 3 · Kreis Köln,2,1,1,0,0,6,4,2,3,3.0
+713,,BSV Viktoria Bielstein 1920 e.V. II,10,Kreisliga C 6 · Kreis Berg,4,1,1,0,0,5,3,2,3,3.0
+714,,Germania Mülheim II,10,Kreisliga C Staffel 3 · Kreis Köln,3,1,1,0,0,5,3,2,3,3.0
+715,,TuS Untereschbach II,10,Kreisliga C 4 · Kreis Berg,4,1,1,0,0,5,3,2,3,3.0
+716,,Alkenrath II,10,Kreisliga C Staffel 3 · Kreis Köln,4,1,1,0,0,4,2,2,3,3.0
+717,,FC Concordia Birgelen,10,"Kreisliga C,  Staffel 2 · Kreis Heinsberg",2,1,1,0,0,4,2,2,3,3.0
+718,,FC Constantia 09 Gereonsweiler,10,Kreisliga C Staffel 1 · Kreis Düren,2,1,1,0,0,4,2,2,3,3.0
+719,,SC Friesheim,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,2,1,1,0,0,4,2,2,3,3.0
+720,,SC Wißkirchen,10,Kreisliga C 1 · Kreis Euskirchen,4,1,1,0,0,4,2,2,3,3.0
+721,,SG Waldfeucht-Bocket-Braunsrath II,10,"Kreisliga C,  Staffel 3 · Kreis Heinsberg",2,1,1,0,0,4,2,2,3,3.0
+722,,SV 1912 e.V. Baal,10,"Kreisliga C,  Staffel 1 · Kreis Heinsberg",5,1,1,0,0,4,2,2,3,3.0
+723,,SV Germania Eicherscheid II,10,Kreisliga C Staffel 3 · Kreis Aachen,2,1,1,0,0,4,2,2,3,3.0
+724,,SV Rödingen-Höllen,10,Kreisliga C Staffel 1 · Kreis Düren,3,1,1,0,0,4,2,2,3,3.0
+725,,SpVgg. Vochem,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,3,1,1,0,0,4,2,2,3,3.0
+726,,Union Blau-Weiß Biesfeld II,10,Kreisliga C 4 · Kreis Berg,5,1,1,0,0,4,2,2,3,3.0
+727,,CSV Düren 2,10,Kreisliga C Staffel 2 · Kreis Düren,6,1,1,0,0,3,1,2,3,3.0
+728,,FC Dollendorf-Ripsdorf II,10,Kreisliga C 2 · Kreis Euskirchen,6,1,1,0,0,3,1,2,3,3.0
+729,,FC Montania Berg 2,10,Kreisliga C Staffel 3 · Kreis Düren,3,1,1,0,0,3,1,2,3,3.0
+730,,FC Union Schafhausen III,10,"Kreisliga C,  Staffel 2 · Kreis Heinsberg",3,1,1,0,0,3,1,2,3,3.0
+731,,JSC Blau-Weiss Aachen,10,Kreisliga C Staffel 3 · Kreis Aachen,3,1,1,0,0,3,1,2,3,3.0
+732,,SC Berger Preuß II,10,Kreisliga C Staffel 2 · Kreis Aachen,5,1,1,0,0,3,1,2,3,3.0
+733,,SV Adendorf,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",4,1,1,0,0,3,1,2,3,3.0
+734,,SV Rot -Weiß Kriegsdorf II,10,Kreisliga C Staffel 4 · Kreis Sieg,4,2,2,0,0,6,2,4,6,3.0
+735,,SV Scherpenseel-Grotenrath II,10,"Kreisliga C,  Staffel 3 · Kreis Heinsberg",3,1,1,0,0,3,1,2,3,3.0
+736,,TuS Odendorf 1919 e.V.,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",5,1,1,0,0,3,1,2,3,3.0
+737,,VfB 05 I,10,Kreisliga C Staffel 3 · Kreis Köln,5,1,1,0,0,3,1,2,3,3.0
+738,,SV GW Welldorf-Güsten III,10,Kreisliga C Staffel 1 · Kreis Düren,4,1,1,0,0,2,0,2,3,3.0
+739,,SV Niederaußem 2,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,4,1,1,0,0,2,0,2,3,3.0
+740,,SF Aegidienberg II,10,Kreisliga C Staffel 6 · Kreis Sieg,4,2,2,0,0,6,3,3,6,3.0
+741,,Fortuna Liblar,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,4,1,1,0,0,7,6,1,3,3.0
+742,,Oberkasseler FV III,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",4,1,1,0,0,5,4,1,3,3.0
+743,,Poll II,10,Kreisliga C Staffel 3 · Kreis Köln,6,1,1,0,0,4,3,1,3,3.0
+744,,SV Sportfreunde Hörn III,10,Kreisliga C Staffel 1 · Kreis Aachen,5,1,1,0,0,4,3,1,3,3.0
+745,,Sportfreunde Wüschheim-Büllesheim 2,10,Kreisliga C 1 · Kreis Euskirchen,5,1,1,0,0,4,3,1,3,3.0
+746,,Urbach I,10,Kreisliga C Staffel 3 · Kreis Köln,7,1,1,0,0,4,3,1,3,3.0
+747,,Agrippina I,10,Kreisliga C Staffel 2 · Kreis Köln,4,1,1,0,0,3,2,1,3,3.0
+748,,BC Efferen II,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,5,1,1,0,0,3,2,1,3,3.0
+749,,Erfa 09 Gymnich II,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,5,1,1,0,0,3,2,1,3,3.0
+750,,FC Wiedenest-Othetal II,10,Kreisliga C 6 · Kreis Berg,5,1,1,0,0,3,2,1,3,3.0
+751,,Jugendsport Wenau II,10,Kreisliga C Staffel 2 · Kreis Düren,7,1,1,0,0,3,2,1,3,3.0
+752,,RW Hütte 2,10,Kreisliga C Staffel 4 · Kreis Sieg,8,1,1,0,0,3,2,1,3,3.0
+753,,Raderthal I,10,Kreisliga C Staffel 2 · Kreis Köln,5,1,1,0,0,3,2,1,3,3.0
+754,,SV Kelz,10,Kreisliga C Staffel 3 · Kreis Düren,4,1,1,0,0,3,2,1,3,3.0
+755,,SV Linde,10,Kreisliga C 5 · Kreis Berg,4,1,1,0,0,3,2,1,3,3.0
+756,,BSV Gey,10,Kreisliga C Staffel 3 · Kreis Düren,5,1,1,0,0,2,1,1,3,3.0
+757,,Burtscheider TV II,10,Kreisliga C Staffel 3 · Kreis Aachen,4,1,1,0,0,2,1,1,3,3.0
+758,,Dynamo Erkelenz 2014 e.V. II,10,"Kreisliga C,  Staffel 1 · Kreis Heinsberg",6,1,1,0,0,2,1,1,3,3.0
+759,,Munzurspor SV Aachen,10,Kreisliga C Staffel 1 · Kreis Aachen,6,1,1,0,0,2,1,1,3,3.0
+760,,SC 27 Bergisch Gladbach,10,Kreisliga C 4 · Kreis Berg,6,1,1,0,0,2,1,1,3,3.0
+761,,SC Stetternich 2,10,Kreisliga C Staffel 1 · Kreis Düren,5,1,1,0,0,2,1,1,3,3.0
+762,,SG Billig/Veytal II,10,Kreisliga C 1 · Kreis Euskirchen,6,1,1,0,0,2,1,1,3,3.0
+763,,SSV Homburg-Nümbrecht III,10,Kreisliga C 6 · Kreis Berg,6,1,1,0,0,2,1,1,3,3.0
+764,,SV Sportfreunde Hörn II,10,Kreisliga C Staffel 3 · Kreis Aachen,5,1,1,0,0,2,1,1,3,3.0
+765,,TSV Wolsdorf II,10,Kreisliga C Staffel 5 · Kreis Sieg,6,1,1,0,0,2,1,1,3,3.0
+766,,TV Rheindorf III,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",5,1,1,0,0,2,1,1,3,3.0
+767,,SV Siersdorf II,10,Kreisliga C Staffel 1 · Kreis Düren,6,1,1,0,0,1,0,1,3,3.0
+768,,TuS Langel I,10,Kreisliga C Staffel 2 · Kreis Köln,6,1,1,0,0,1,0,1,3,3.0
+769,,VfL Alfter 2,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",6,1,1,0,0,1,0,1,3,3.0
+770,,Siegburger SV 04 III,10,Kreisliga C Staffel 4 · Kreis Sieg,5,2,1,1,0,17,2,15,4,2.0
+771,,Bröltaler SC II,10,Kreisliga C Staffel 6 · Kreis Sieg,5,2,1,1,0,6,4,2,4,2.0
+772,,TuS 07 Oberlar II,10,Kreisliga C Staffel 4 · Kreis Sieg,6,2,1,0,1,16,5,11,3,1.5
+773,,TV Rott II,10,Kreisliga C Staffel 4 · Kreis Sieg,7,2,1,0,1,10,6,4,3,1.5
+774,,SSV Happerschoß,10,Kreisliga C Staffel 6 · Kreis Sieg,7,2,1,0,1,9,5,4,3,1.5
+775,,FC Genclerbirligi Eitorf,10,Kreisliga C Staffel 6 · Kreis Sieg,8,2,1,0,1,8,4,4,3,1.5
+776,,SV Allner-Bödingen II,10,Kreisliga C Staffel 6 · Kreis Sieg,9,2,1,0,1,6,4,2,3,1.5
+777,,TuS Eudenbach II,10,Kreisliga C Staffel 6 · Kreis Sieg,10,2,1,0,1,7,7,0,3,1.5
+778,,FC Adler Meindorf II,10,Kreisliga C Staffel 5 · Kreis Sieg,7,2,1,0,1,7,10,-3,3,1.5
+779,,SpVgg Lülsdorf-Ranzel II,10,Kreisliga C Staffel 4 · Kreis Sieg,9,2,1,0,1,3,11,-8,3,1.5
+780,,FC Pech II,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",6,1,0,1,0,5,5,0,1,1.0
+781,,SC Alt.-Ersdorf II,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",7,1,0,1,0,5,5,0,1,1.0
+782,,Arriba Perú e.V.,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",7,1,0,1,0,4,4,0,1,1.0
+783,,SG Agathaberg II,10,Kreisliga C 5 · Kreis Berg,5,1,0,1,0,4,4,0,1,1.0
+784,,SV Boluspor Bonn III,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",8,1,0,1,0,4,4,0,1,1.0
+785,,TSG Bonn,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",4,1,0,1,0,4,4,0,1,1.0
+786,,VfL Lengsdorf,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",5,1,0,1,0,4,4,0,1,1.0
+787,,VfR Wipperfürth 2,10,Kreisliga C 5 · Kreis Berg,6,1,0,1,0,4,4,0,1,1.0
+788,,DJK Gillrath II,10,"Kreisliga C,  Staffel 3 · Kreis Heinsberg",4,1,0,1,0,3,3,0,1,1.0
+789,,FC BW Friesdorf II,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",6,1,0,1,0,3,3,0,1,1.0
+790,,FSV 09 Geilenkirchen III,10,"Kreisliga C,  Staffel 3 · Kreis Heinsberg",5,1,0,1,0,3,3,0,1,1.0
+791,,SSV Bornheim III,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",9,1,0,1,0,3,3,0,1,1.0
+792,,SV Bonner Kickers,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",10,1,0,1,0,3,3,0,1,1.0
+793,,SV Hertha Buschhoven II,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",8,1,0,1,0,3,3,0,1,1.0
+794,,SV Wachtberg III,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",9,1,0,1,0,3,3,0,1,1.0
+795,,TV Klaswipper II,10,Kreisliga C 5 · Kreis Berg,7,1,0,1,0,3,3,0,1,1.0
+796,,TuS Pützchen 05 e.V.,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",7,1,0,1,0,3,3,0,1,1.0
+797,,TuS Weiershagen 2,10,Kreisliga C 5 · Kreis Berg,8,1,0,1,0,3,3,0,1,1.0
+798,,1.FC Wassenberg-Orsbeck II,10,"Kreisliga C,  Staffel 2 · Kreis Heinsberg",4,1,0,1,0,2,2,0,1,1.0
+799,,FSV 09 Geilenkirchen II,10,"Kreisliga C,  Staffel 2 · Kreis Heinsberg",5,1,0,1,0,2,2,0,1,1.0
+800,,Kreuzauer Sport-Club 05 II,10,Kreisliga C Staffel 3 · Kreis Düren,6,1,0,1,0,2,2,0,1,1.0
+801,,SC Alemannia Straß,10,Kreisliga C Staffel 3 · Kreis Düren,7,1,0,1,0,2,2,0,1,1.0
+802,,SC Kellersberg II,10,Kreisliga C Staffel 2 · Kreis Aachen,6,1,0,1,0,2,2,0,1,1.0
+803,,SC Roitzheim II,10,Kreisliga C 1 · Kreis Euskirchen,7,1,0,1,0,2,2,0,1,1.0
+804,,SG Erfthöhen 98 eV,10,Kreisliga C 2 · Kreis Euskirchen,7,1,0,1,0,2,2,0,1,1.0
+805,,SG Germania Burgwart II,10,Kreisliga C Staffel 3 · Kreis Düren,8,1,0,1,0,2,2,0,1,1.0
+806,,SG Keldenich-Scheven II,10,Kreisliga C 2 · Kreis Euskirchen,8,1,0,1,0,2,2,0,1,1.0
+807,,SG Ülpenich-Nemmenich-Elsig 2,10,Kreisliga C 2 · Kreis Euskirchen,9,1,0,1,0,2,2,0,1,1.0
+808,,SV Schöneseiffen 1950 e.V. II,10,Kreisliga C 2 · Kreis Euskirchen,10,1,0,1,0,2,2,0,1,1.0
+809,,Sportfreunde Üdingen,10,Kreisliga C Staffel 3 · Kreis Düren,9,1,0,1,0,2,2,0,1,1.0
+810,,TuS Dom-Esch II,10,Kreisliga C 1 · Kreis Euskirchen,8,1,0,1,0,2,2,0,1,1.0
+811,,Union Ritzerfeld II,10,Kreisliga C Staffel 2 · Kreis Aachen,7,1,0,1,0,2,2,0,1,1.0
+812,,ASG Uni Bonn II,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",8,1,0,1,0,1,1,0,1,1.0
+813,,ASV Sankt Augustin II,10,Kreisliga C Staffel 4 · Kreis Sieg,10,1,0,1,0,1,1,0,1,1.0
+814,,Badorf/Pingsdorf 2,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,6,1,0,1,0,1,1,0,1,1.0
+815,,Cologne 11 I,10,Kreisliga C Staffel 1 · Kreis Köln,6,1,0,1,0,1,1,0,1,1.0
+816,,FC Bensberg II,10,Kreisliga C 4 · Kreis Berg,7,1,0,1,0,1,1,0,1,1.0
+817,,FC Hürth III,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,7,1,0,1,0,1,1,0,1,1.0
+818,,JSV Köln 96 I,10,Kreisliga C Staffel 1 · Kreis Köln,7,1,0,1,0,1,1,0,1,1.0
+819,,Makkabi Köln I,10,Kreisliga C Staffel 2 · Kreis Köln,7,1,0,1,0,1,1,0,1,1.0
+820,,SG Hunsheim,10,Kreisliga C 6 · Kreis Berg,7,1,0,1,0,1,1,0,1,1.0
+821,,SSV Bergneustadt 2,10,Kreisliga C 6 · Kreis Berg,8,1,0,1,0,1,1,0,1,1.0
+822,,SSV Berzdorf II,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,8,1,0,1,0,1,1,0,1,1.0
+823,,SV Beuel 06 III,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",9,1,0,1,0,1,1,0,1,1.0
+824,,SV Breberen II,10,"Kreisliga C,  Staffel 3 · Kreis Heinsberg",6,1,0,1,0,1,1,0,1,1.0
+825,,SV Kendenich,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,9,1,0,1,0,1,1,0,1,1.0
+826,,SV Niederzier II,10,Kreisliga C Staffel 1 · Kreis Düren,7,1,0,1,0,1,1,0,1,1.0
+827,,SVG Birgden-Langbroich-Schierwaldenrath,10,"Kreisliga C,  Staffel 3 · Kreis Heinsberg",7,1,0,1,0,1,1,0,1,1.0
+828,,Siegburger SV 04 U23,10,Kreisliga C Staffel 5 · Kreis Sieg,8,1,0,1,0,1,1,0,1,1.0
+829,,SpVgg. Jackerath-Opherten II,10,Kreisliga C Staffel 1 · Kreis Düren,8,1,0,1,0,1,1,0,1,1.0
+830,,TuS Marialinden II,10,Kreisliga C 4 · Kreis Berg,8,1,0,1,0,1,1,0,1,1.0
+831,,Vorwärts Spoho II,10,Kreisliga C Staffel 2 · Kreis Köln,8,1,0,1,0,1,1,0,1,1.0
+832,,FC Randerath/Porselen II,10,"Kreisliga C,  Staffel 2 · Kreis Heinsberg",6,1,0,1,0,0,0,0,1,1.0
+833,,SV SW Merzbach,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",10,1,0,1,0,0,0,0,1,1.0
+834,,TB 1906 Witterschlick II,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",11,1,0,1,0,0,0,0,1,1.0
+835,,TuS Rheinland Dremmen II,10,"Kreisliga C,  Staffel 2 · Kreis Heinsberg",7,1,0,1,0,0,0,0,1,1.0
+836,,Wahlscheider SV III,10,Kreisliga C Staffel 5 · Kreis Sieg,9,2,0,1,1,2,3,-1,1,0.5
+837,,SV Buchholz 05 II,10,Kreisliga C Staffel 6 · Kreis Sieg,11,2,0,1,1,1,5,-4,1,0.5
+838,,TuS Herchen II,10,Kreisliga C Staffel 6 · Kreis Sieg,12,1,1,0,0,5,4,1,0,0.0
+839,,1. FC Hardtberg zg.,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",10,0,0,0,0,0,0,0,0,0.0
+840,,Adler Büsbach,10,Kreisliga C Staffel 3 · Kreis Aachen,6,0,0,0,0,0,0,0,0,0.0
+841,,BCV Glesch-Paffendorf II,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,6,0,0,0,0,0,0,0,0,0.0
+842,,BSV Roleber II,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",11,0,0,0,0,0,0,0,0,0.0
+843,,BW Kerpen II zg.,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,7,0,0,0,0,0,0,0,0,0.0
+844,,Casa España III,10,Kreisliga C Staffel 2 · Kreis Köln,9,0,0,0,0,0,0,0,0,0.0
+845,,DJK Arminia Eilendorf II,10,Kreisliga C Staffel 3 · Kreis Aachen,7,0,0,0,0,0,0,0,0,0.0
+846,,Deutz 05 III,10,Kreisliga C Staffel 3 · Kreis Köln,8,0,0,0,0,0,0,0,0,0.0
+847,,FC Hertha Bonn,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",12,0,0,0,0,0,0,0,0,0.0
+848,,FC Rhenania Lohn II zg.,10,Kreisliga C Staffel 2 · Kreis Aachen,8,0,0,0,0,0,0,0,0,0.0
+849,,FC Victoria Pier-Schophoven,10,Kreisliga C Staffel 1 · Kreis Düren,9,0,0,0,0,0,0,0,0,0.0
+850,,FSV Columbia Donnerberg,10,Kreisliga C Staffel 3 · Kreis Aachen,8,0,0,0,0,0,0,0,0,0.0
+851,,Fortuna Beggendorf,10,Kreisliga C Staffel 2 · Kreis Aachen,9,0,0,0,0,0,0,0,0,0.0
+852,,Frielingsdorf III,10,Kreisliga C 5 · Kreis Berg,9,0,0,0,0,0,0,0,0,0.0
+853,,GW Broicher Siedlung,10,Kreisliga C Staffel 2 · Kreis Aachen,10,0,0,0,0,0,0,0,0,0.0
+854,,GW Lichtenbusch II,10,Kreisliga C Staffel 3 · Kreis Aachen,9,0,0,0,0,0,0,0,0,0.0
+855,,Hellas Köln II zg.,10,Kreisliga C Staffel 1 · Kreis Köln,8,0,0,0,0,0,0,0,0,0.0
+856,,MSV Ahe,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,8,0,0,0,0,0,0,0,0,0.0
+857,,Olympia II,10,Kreisliga C Staffel 2 · Kreis Köln,10,0,0,0,0,0,0,0,0,0.0
+858,,Ossendorf I,10,Kreisliga C Staffel 1 · Kreis Köln,9,0,0,0,0,0,0,0,0,0.0
+859,,RW Ahrem 3 zg.,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,9,0,0,0,0,0,0,0,0,0.0
+860,,Rhen. Bessenich II,10,Kreisliga C 1 · Kreis Euskirchen,9,0,0,0,0,0,0,0,0,0.0
+861,,SC 08 Elsdorf II zg.,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,10,0,0,0,0,0,0,0,0,0.0
+862,,SC Selfkant II,10,"Kreisliga C,  Staffel 3 · Kreis Heinsberg",8,0,0,0,0,0,0,0,0,0.0
+863,,SG Germania Binsfeld 1948 e.V. 2,10,Kreisliga C Staffel 2 · Kreis Düren,8,0,0,0,0,0,0,0,0,0.0
+864,,SG Nordeifel II,10,Kreisliga C Staffel 3 · Kreis Düren,10,0,0,0,0,0,0,0,0,0.0
+865,,SG Rothe Erde | Nirm,10,Kreisliga C Staffel 1 · Kreis Aachen,7,0,0,0,0,0,0,0,0,0.0
+866,,SSV Eintr. Lommersum II,10,Kreisliga C 1 · Kreis Euskirchen,10,0,0,0,0,0,0,0,0,0.0
+867,,STV Lövenich 1919 e.V.,10,"Kreisliga C,  Staffel 1 · Kreis Heinsberg",7,0,0,0,0,0,0,0,0,0.0
+868,,SV 1910 Brachelen II,10,"Kreisliga C,  Staffel 3 · Kreis Heinsberg",9,0,0,0,0,0,0,0,0,0.0
+869,,SV 1936 Ophoven,10,"Kreisliga C,  Staffel 2 · Kreis Heinsberg",8,0,0,0,0,0,0,0,0,0.0
+870,,SVG Birgden-Langbroich-Schierwaldenrath II zg.,10,"Kreisliga C,  Staffel 2 · Kreis Heinsberg",9,0,0,0,0,0,0,0,0,0.0
+871,,Schwarz-Weiß Köln III,10,Kreisliga C Staffel 1 · Kreis Köln,10,0,0,0,0,0,0,0,0,0.0
+872,,Suryoye I,10,Kreisliga C Staffel 1 · Kreis Köln,11,0,0,0,0,0,0,0,0,0.0
+873,,TSV Schönau III,10,Kreisliga C 1 · Kreis Euskirchen,11,0,0,0,0,0,0,0,0,0.0
+874,,TuS Oberpleis III,10,Kreisliga C Staffel 5 · Kreis Sieg,10,0,0,0,0,0,0,0,0,0.0
+875,,Umutspor Troisdorf III zg.,10,Kreisliga C Staffel 5 · Kreis Sieg,11,0,0,0,0,0,0,0,0,0.0
+876,,VfJ Ratheim,10,"Kreisliga C,  Staffel 2 · Kreis Heinsberg",10,0,0,0,0,0,0,0,0,0.0
+877,,VfJ Ratheim II,10,"Kreisliga C,  Staffel 3 · Kreis Heinsberg",10,0,0,0,0,0,0,0,0,0.0
+878,,VfL Berghausen-Gimborn,10,Kreisliga C 5 · Kreis Berg,10,0,0,0,0,0,0,0,0,0.0
+879,,VfL Vichttal III,10,Kreisliga C Staffel 3 · Kreis Aachen,10,0,0,0,0,0,0,0,0,0.0
+880,,WB Urfeld,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,10,0,0,0,0,0,0,0,0,0.0
+881,,Westwacht Aachen II,10,Kreisliga C Staffel 1 · Kreis Aachen,8,0,0,0,0,0,0,0,0,0.0
+882,,RW Ahrem 2,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,11,1,0,0,1,6,7,-1,0,0.0
+883,,SV Vorgebirge III,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",11,1,0,0,1,4,5,-1,0,0.0
+884,,FC Cro Sokoli Aachen,10,Kreisliga C Staffel 1 · Kreis Aachen,9,1,0,0,1,3,4,-1,0,0.0
+885,,JSV Köln 96 III,10,Kreisliga C Staffel 3 · Kreis Köln,9,1,0,0,1,3,4,-1,0,0.0
+886,,SC Enzen-Dürscheven 1946 e.V.,10,Kreisliga C 1 · Kreis Euskirchen,12,1,0,0,1,3,4,-1,0,0.0
+887,,SC Leverkusen I,10,Kreisliga C Staffel 3 · Kreis Köln,10,1,0,0,1,3,4,-1,0,0.0
+888,,BC Stotzheim II,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,12,1,0,0,1,2,3,-1,0,0.0
+889,,Fortuna Köln III,10,Kreisliga C Staffel 2 · Kreis Köln,11,1,0,0,1,2,3,-1,0,0.0
+890,,Nippes GW I,10,Kreisliga C Staffel 2 · Kreis Köln,12,1,0,0,1,2,3,-1,0,0.0
+891,,SG Olpe-Kürten 2,10,Kreisliga C 5 · Kreis Berg,11,1,0,0,1,2,3,-1,0,0.0
+892,,Spvg BBT,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,11,1,0,0,1,2,3,-1,0,0.0
+893,,TuS 08 Langerwehe III,10,Kreisliga C Staffel 2 · Kreis Düren,9,1,0,0,1,2,3,-1,0,0.0
+894,,TuS Homburg-Bröltal II,10,Kreisliga C 6 · Kreis Berg,9,1,0,0,1,2,3,-1,0,0.0
+895,,TuS Schmidt 2,10,Kreisliga C Staffel 3 · Kreis Düren,11,1,0,0,1,2,3,-1,0,0.0
+896,,Hellas Troisdorf II,10,Kreisliga C Staffel 4 · Kreis Sieg,11,2,0,0,2,3,5,-2,0,0.0
+897,,Bliesheimer BC 2,10,Kreisliga C 1 · Kreis Euskirchen,13,1,0,0,1,1,2,-1,0,0.0
+898,,FC Eschweiler II,10,Kreisliga C Staffel 3 · Kreis Aachen,11,1,0,0,1,1,2,-1,0,0.0
+899,,FC Inden/Altdorf 09/21 2,10,Kreisliga C Staffel 1 · Kreis Düren,10,1,0,0,1,1,2,-1,0,0.0
+900,,FC Jawanan Bonn,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",12,1,0,0,1,1,2,-1,0,0.0
+901,,FV Vaalserquartier III,10,Kreisliga C Staffel 1 · Kreis Aachen,10,1,0,0,1,1,2,-1,0,0.0
+902,,SC 09 Erkelenz II,10,"Kreisliga C,  Staffel 1 · Kreis Heinsberg",8,1,0,0,1,1,2,-1,0,0.0
+903,,SC Siegfried Sievernich,10,Kreisliga C Staffel 3 · Kreis Düren,12,1,0,0,1,1,2,-1,0,0.0
+904,,SG Stolberg II,10,Kreisliga C Staffel 3 · Kreis Aachen,12,1,0,0,1,1,2,-1,0,0.0
+905,,SSV Jan Wellem 05 III,10,Kreisliga C 4 · Kreis Berg,9,1,0,0,1,1,2,-1,0,0.0
+906,,TuS Reichshof 1883/1929 e.V.,10,Kreisliga C 6 · Kreis Berg,10,1,0,0,1,1,2,-1,0,0.0
+907,,FV Salia Sechtem II,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",13,1,0,0,1,0,1,-1,0,0.0
+908,,Nippes 12 I,10,Kreisliga C Staffel 2 · Kreis Köln,13,1,0,0,1,0,1,-1,0,0.0
+909,,Rasensport Tetz,10,Kreisliga C Staffel 1 · Kreis Düren,11,1,0,0,1,0,1,-1,0,0.0
+910,,TuS Schladern,10,Kreisliga C Staffel 6 · Kreis Sieg,13,2,0,0,2,7,10,-3,0,0.0
+911,,Gremberg-Humboldt II,10,Kreisliga C Staffel 3 · Kreis Köln,11,1,0,0,1,4,6,-2,0,0.0
+912,,SG Holzweiler-Katzem II,10,"Kreisliga C,  Staffel 1 · Kreis Heinsberg",9,1,0,0,1,4,6,-2,0,0.0
+913,,BV Drabenderhöhe II,10,Kreisliga C 6 · Kreis Berg,11,1,0,0,1,3,5,-2,0,0.0
+914,,Botan I,10,Kreisliga C Staffel 3 · Kreis Köln,12,1,0,0,1,3,5,-2,0,0.0
+915,,TuS Moitzfeld 1961 e.V.,10,Kreisliga C 4 · Kreis Berg,10,1,0,0,1,3,5,-2,0,0.0
+916,,Bechen II,10,Kreisliga C 4 · Kreis Berg,11,1,0,0,1,2,4,-2,0,0.0
+917,,FC Eintracht Kempen II,10,"Kreisliga C,  Staffel 2 · Kreis Heinsberg",11,1,0,0,1,2,4,-2,0,0.0
+918,,FC Germania Bauchem II,10,"Kreisliga C,  Staffel 3 · Kreis Heinsberg",11,1,0,0,1,2,4,-2,0,0.0
+919,,Mevlana I,10,Kreisliga C Staffel 3 · Kreis Köln,13,1,0,0,1,2,4,-2,0,0.0
+920,,RG Wesseling II,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,13,1,0,0,1,2,4,-2,0,0.0
+921,,SG Monschauer Land II,10,Kreisliga C Staffel 3 · Kreis Aachen,13,1,0,0,1,2,4,-2,0,0.0
+922,,SSV Weilerswist II,10,Kreisliga C 1 · Kreis Euskirchen,14,1,0,0,1,2,4,-2,0,0.0
+923,,SV 1910 Jülich-Selgersdorf,10,Kreisliga C Staffel 1 · Kreis Düren,12,1,0,0,1,2,4,-2,0,0.0
+924,,SV SG Venrath 1932 e.V,10,"Kreisliga C,  Staffel 1 · Kreis Heinsberg",10,1,0,0,1,2,4,-2,0,0.0
+925,,Umutspor Troisdorf II,10,Kreisliga C Staffel 4 · Kreis Sieg,12,1,0,0,1,2,4,-2,0,0.0
+926,,VfR Fischenich 1930 e.V.,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,14,1,0,0,1,2,4,-2,0,0.0
+927,,SV Lohmar II,10,Kreisliga C Staffel 5 · Kreis Sieg,13,2,0,0,2,3,7,-4,0,0.0
+928,,BSC Schevenhütte,10,Kreisliga C Staffel 3 · Kreis Aachen,14,1,0,0,1,1,3,-2,0,0.0
+929,,Bürrig III,10,Kreisliga C Staffel 3 · Kreis Köln,14,1,0,0,1,1,3,-2,0,0.0
+930,,FC Borussia Derichsweiler I,10,Kreisliga C Staffel 2 · Kreis Düren,10,1,0,0,1,1,3,-2,0,0.0
+931,,Kohlscheider BC III,10,Kreisliga C Staffel 2 · Kreis Aachen,11,1,0,0,1,1,3,-2,0,0.0
+932,,RW Lessenich II,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",12,1,0,0,1,1,3,-2,0,0.0
+933,,SG Hellenthal 2,10,Kreisliga C 2 · Kreis Euskirchen,11,1,0,0,1,1,3,-2,0,0.0
+934,,SG Vettweiß-Füssenich-Geich II,10,Kreisliga C Staffel 3 · Kreis Düren,13,1,0,0,1,1,3,-2,0,0.0
+935,,SSV BW Kirchhoven,10,"Kreisliga C,  Staffel 2 · Kreis Heinsberg",12,1,0,0,1,1,3,-2,0,0.0
+936,,VfL Meckenheim 2,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",13,1,0,0,1,1,3,-2,0,0.0
+937,,VfR Übach-Palenberg II,10,"Kreisliga C,  Staffel 3 · Kreis Heinsberg",12,1,0,0,1,1,3,-2,0,0.0
+938,,SV Kaster,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,12,1,0,0,1,0,2,-2,0,0.0
+939,,Schwarz-Weiß Titz,10,Kreisliga C Staffel 1 · Kreis Düren,13,1,0,0,1,0,2,-2,0,0.0
+940,,VfR Hangelar III,10,Kreisliga C Staffel 4 · Kreis Sieg,13,2,0,0,2,2,7,-5,0,0.0
+941,,VfR Marienfeld II,10,Kreisliga C Staffel 6 · Kreis Sieg,14,2,0,0,2,2,7,-5,0,0.0
+942,,ISC AlHilal Bonn,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",14,1,0,0,1,5,8,-3,0,0.0
+943,,Loope,10,Kreisliga C 5 · Kreis Berg,12,1,0,0,1,3,6,-3,0,0.0
+944,,ASG Uni Bonn,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",14,1,0,0,1,2,5,-3,0,0.0
+945,,DJK Gummersbach,10,Kreisliga C 5 · Kreis Berg,13,1,0,0,1,2,5,-3,0,0.0
+946,,FC Bergwacht Berzbuir,10,Kreisliga C Staffel 2 · Kreis Düren,11,1,0,0,1,2,5,-3,0,0.0
+947,,RS19 Waldbröl II,10,Kreisliga C 6 · Kreis Berg,12,1,0,0,1,2,5,-3,0,0.0
+948,,Nippes 78 I,10,Kreisliga C Staffel 1 · Kreis Köln,12,1,0,0,1,1,4,-3,0,0.0
+949,,SG Bürvenich / Schwerfen / Sinzenich II,10,Kreisliga C 2 · Kreis Euskirchen,12,1,0,0,1,1,4,-3,0,0.0
+950,,SSV Hochwald I,10,Kreisliga C 6 · Kreis Berg,13,1,0,0,1,1,4,-3,0,0.0
+951,,SV Altenberg III,10,Kreisliga C 4 · Kreis Berg,12,1,0,0,1,1,4,-3,0,0.0
+952,,SV Hermesdorf,10,Kreisliga C 6 · Kreis Berg,14,1,0,0,1,1,4,-3,0,0.0
+953,,SV Nordeifel II,10,Kreisliga C Staffel 3 · Kreis Aachen,15,1,0,0,1,1,4,-3,0,0.0
+954,,SpVg. Porz II,10,Kreisliga C Staffel 2 · Kreis Köln,14,1,0,0,1,1,4,-3,0,0.0
+955,,VFL Kommern 2,10,Kreisliga C 2 · Kreis Euskirchen,13,1,0,0,1,1,4,-3,0,0.0
+956,,Wahn-Grengel II,10,Kreisliga C Staffel 2 · Kreis Köln,15,1,0,0,1,1,4,-3,0,0.0
+957,,Oberkasseler FV II,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",13,1,0,0,1,0,3,-3,0,0.0
+958,,SV Union Rösrath II,10,Kreisliga C 4 · Kreis Berg,13,1,0,0,1,0,3,-3,0,0.0
+959,,TuS Germania Kückhoven II,10,"Kreisliga C,  Staffel 1 · Kreis Heinsberg",11,1,0,0,1,0,3,-3,0,0.0
+960,,Vingst 05 II,10,Kreisliga C Staffel 2 · Kreis Köln,16,1,0,0,1,0,3,-3,0,0.0
+961,,ASV Sankt Augustin I,10,Kreisliga C Staffel 5 · Kreis Sieg,12,1,0,0,1,3,7,-4,0,0.0
+962,,SC 1919 Merzenich 2,10,Kreisliga C Staffel 2 · Kreis Düren,12,1,0,0,1,3,7,-4,0,0.0
+963,,BSV Wissersheim,10,Kreisliga C Staffel 2 · Kreis Düren,13,1,0,0,1,2,6,-4,0,0.0
+964,,Ditib Aachen,10,Kreisliga C Staffel 1 · Kreis Aachen,11,1,0,0,1,2,6,-4,0,0.0
+965,,SV GW Mühleip II,10,Kreisliga C Staffel 5 · Kreis Sieg,14,2,0,0,2,4,12,-8,0,0.0
+966,,SpVg Nöthen-Pesch-Harzheim II,10,Kreisliga C 1 · Kreis Euskirchen,15,1,0,0,1,2,6,-4,0,0.0
+967,,Dellbrück II,10,Kreisliga C Staffel 3 · Kreis Köln,15,1,0,0,1,1,5,-4,0,0.0
+968,,FC Eintracht Geislar,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",14,1,0,0,1,1,5,-4,0,0.0
+969,,Kirch-Grottenherten 1,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,13,1,0,0,1,1,5,-4,0,0.0
+970,,SG Neffeltal II,10,Kreisliga C Staffel 3 · Kreis Düren,14,1,0,0,1,1,5,-4,0,0.0
+971,,VfB Blessem II,10,Kreisliga C 1 · Kreis Euskirchen,16,1,0,0,1,1,5,-4,0,0.0
+972,,Weiler-Volkhoven III,10,Kreisliga C Staffel 1 · Kreis Köln,13,1,0,0,1,1,5,-4,0,0.0
+973,,FC Borussia Buir,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,14,1,0,0,1,0,4,-4,0,0.0
+974,,SC Rheinbach 1913 e.V. 3,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",15,1,0,0,1,0,4,-4,0,0.0
+975,,SV BW Oedekoven 2,10,"Kreisliga C, Gruppe 2 · Kreis Bonn",15,1,0,0,1,0,4,-4,0,0.0
+976,,TSV Weiß 2,10,Kreisliga C Staffel 5 · Kreis Rhein-Erft,15,1,0,0,1,0,4,-4,0,0.0
+977,,TuS Germania Birgel II,10,Kreisliga C Staffel 2 · Kreis Düren,14,1,0,0,1,0,4,-4,0,0.0
+978,,VFL Lannesdorf,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",15,1,0,0,1,0,4,-4,0,0.0
+979,,SV Öttershagen II,10,Kreisliga C Staffel 6 · Kreis Sieg,15,2,0,0,2,0,9,-9,0,0.0
+980,,TuS Immekeppel II,10,Kreisliga C 4 · Kreis Berg,14,1,0,0,1,4,9,-5,0,0.0
+981,,Lindenthal-Hohenlind III,10,Kreisliga C Staffel 1 · Kreis Köln,14,1,0,0,1,2,7,-5,0,0.0
+982,,Afrika Köln I,10,Kreisliga C Staffel 1 · Kreis Köln,15,1,0,0,1,1,6,-5,0,0.0
+983,,Horremer SV III,10,Kreisliga C Staffel 4 · Kreis Rhein-Erft,15,1,0,0,1,1,6,-5,0,0.0
+984,,SV Eilendorf III,10,Kreisliga C Staffel 1 · Kreis Aachen,12,1,0,0,1,1,6,-5,0,0.0
+985,,SV Höhe,10,Kreisliga C Staffel 6 · Kreis Sieg,16,2,0,0,2,1,11,-10,0,0.0
+986,,Bosna Aachen,10,Kreisliga C Staffel 1 · Kreis Aachen,13,1,0,0,1,0,5,-5,0,0.0
+987,,SSC Satzvey,10,Kreisliga C 2 · Kreis Euskirchen,14,1,0,0,1,0,5,-5,0,0.0
+988,,VfR Granterath 1919 II,10,"Kreisliga C,  Staffel 1 · Kreis Heinsberg",12,1,0,0,1,0,5,-5,0,0.0
+989,,TFC Inter Troisdorf II,10,Kreisliga C Staffel 4 · Kreis Sieg,14,2,0,0,2,2,13,-11,0,0.0
+990,,TuS Birk III,10,Kreisliga C Staffel 5 · Kreis Sieg,15,2,0,0,2,1,12,-11,0,0.0
+991,,Ründeroth II,10,Kreisliga C 5 · Kreis Berg,14,1,0,0,1,1,7,-6,0,0.0
+992,,Spvgg. Hurst-Rosbach II,10,Kreisliga C Staffel 6 · Kreis Sieg,17,2,0,0,2,2,14,-12,0,0.0
+993,,FC Concordia Haaren II,10,"Kreisliga C,  Staffel 3 · Kreis Heinsberg",13,1,0,0,1,0,6,-6,0,0.0
+994,,SV Adler Effeld 1916 e.V. II,10,"Kreisliga C,  Staffel 2 · Kreis Heinsberg",13,1,0,0,1,0,6,-6,0,0.0
+995,,Grenzwacht Pannesheide II,10,Kreisliga C Staffel 2 · Kreis Aachen,12,1,0,0,1,0,7,-7,0,0.0
+996,,Kaller SC,10,Kreisliga C 2 · Kreis Euskirchen,15,1,0,0,1,3,11,-8,0,0.0
+997,,Rhenania Eschweiler,10,Kreisliga C Staffel 2 · Kreis Aachen,13,1,0,0,1,1,9,-8,0,0.0
+998,,1. JFC Brüser Berg 2,10,"Kreisliga C, Gruppe 1 · Kreis Bonn",16,1,0,0,1,0,8,-8,0,0.0
+999,,FC Chorweiler I,10,Kreisliga C Staffel 1 · Kreis Köln,16,1,0,0,1,0,8,-8,0,0.0
+1000,,FC Concordia Oidtweiler III,10,Kreisliga C Staffel 2 · Kreis Aachen,14,1,0,0,1,1,10,-9,0,0.0
+1001,,D-H-O 2,10,Kreisliga C 1 · Kreis Euskirchen,17,1,0,0,1,0,9,-9,0,0.0
+1002,,SC 1919 Merzenich 3,10,Kreisliga C Staffel 1 · Kreis Düren,14,1,0,0,1,2,12,-10,0,0.0
+1003,,Rhenania Richterich II,10,Kreisliga C Staffel 1 · Kreis Aachen,14,1,0,0,1,0,10,-10,0,0.0
+1004,,TuS Altenrath II,10,Kreisliga C Staffel 4 · Kreis Sieg,16,2,0,0,2,1,22,-21,0,0.0
+1005,,SG Vossenack-Hürtgen II,10,Kreisliga C Staffel 3 · Kreis Düren,15,1,0,0,1,1,13,-12,0,0.0
+1006,,FC Sankt Augustin II,10,Kreisliga C Staffel 4 · Kreis Sieg,15,1,0,0,1,1,15,-14,0,0.0
+1007,,SpVg Nöthen-Pesch-Harzheim III,10,Kreisliga C 2 · Kreis Euskirchen,16,1,0,0,1,0,14,-14,0,0.0
+1008,,Sportfreunde Hehlrath,10,Kreisliga C Staffel 2 · Kreis Aachen,15,1,0,0,1,2,20,-18,0,0.0
+1009,,SV Merken 2,10,Kreisliga C Staffel 2 · Kreis Düren,15,1,0,0,1,0,22,-22,0,0.0
+1010,,SV SW Huchem-Stammeln II,10,Kreisliga C Staffel 1 · Kreis Düren,15,1,0,0,1,2,4,-2,-3,-3.0
+1011,,FC Borussia Hückelhoven II,10,"Kreisliga C,  Staffel 1 · Kreis Heinsberg",13,1,0,0,1,1,4,-3,-3,-3.0
+1012,,Godesberger FV II,10,"Kreisliga C, Gruppe 3 · Kreis Bonn",16,1,0,0,1,0,8,-8,-3,-3.0
+1013,,FSV Neunkirchen-Seelscheid IV,10,Kreisliga C Staffel 5 · Kreis Sieg,16,1,0,0,1,0,5,-5,-6,-6.0
+1014,,SV Schnellenbach II,11,Kreisliga D 8 · Kreis Berg,1,1,1,0,0,24,0,24,3,3.0
+1015,,SV St. Jöris II,11,Kreisliga D Staffel 2 · Kreis Aachen,1,1,1,0,0,20,0,20,3,3.0
+1016,,Bonner SG,11,"Kreisliga D, Gruppe 1 · Kreis Bonn",1,1,1,0,0,19,1,18,3,3.0
+1017,,TB 1906 Witterschlick III,11,"Kreisliga D, Gruppe 3 · Kreis Bonn",1,1,1,0,0,17,0,17,3,3.0
+1018,,Urbach II,11,Kreisliga D Staffel 5 · Kreis Köln,1,1,1,0,0,13,0,13,3,3.0
+1019,,Zollstock IV,11,Kreisliga D Staffel 3 · Kreis Köln,1,1,1,0,0,13,3,10,3,3.0
+1020,,AKM Köln I,11,Kreisliga D Staffel 1 · Kreis Köln,1,1,1,0,0,11,1,10,3,3.0
+1021,,FSG Merkstein II,11,Kreisliga D Staffel 2 · Kreis Aachen,2,1,1,0,0,11,1,10,3,3.0
+1022,,FC Wanderlust Süsterseel II,11,"Kreisliga D, Staffel 3 · Kreis Heinsberg",1,1,1,0,0,10,0,10,3,3.0
+1023,,Croatia I,11,Kreisliga D Staffel 3 · Kreis Köln,2,1,1,0,0,11,2,9,3,3.0
+1024,,Westhoven-Ensen II,11,Kreisliga D Staffel 2 · Kreis Köln,1,1,1,0,0,9,0,9,3,3.0
+1025,,Fühlingen II,11,Kreisliga D Staffel 3 · Kreis Köln,3,1,1,0,0,10,2,8,3,3.0
+1026,,FV Wiehl III,11,Kreisliga D 9 · Kreis Berg,1,1,1,0,0,9,1,8,3,3.0
+1027,,Olympia III,11,Kreisliga D Staffel 3 · Kreis Köln,4,1,1,0,0,9,1,8,3,3.0
+1028,,TuS Egen,11,Kreisliga D 8 · Kreis Berg,2,1,1,0,0,9,1,8,3,3.0
+1029,,SV Buschdorf 2,11,"Kreisliga D, Gruppe 2 · Kreis Bonn",1,1,1,0,0,8,1,7,3,3.0
+1030,,SpVgg. Straß,11,Kreisliga D Staffel 1 · Kreis Aachen,1,2,2,0,0,16,2,14,6,3.0
+1031,,FC Rhenania Immendorf II,11,"Kreisliga D, Staffel 3 · Kreis Heinsberg",2,1,1,0,0,7,0,7,3,3.0
+1032,,SV Niederbachem III,11,"Kreisliga D, Gruppe 3 · Kreis Bonn",2,1,1,0,0,7,0,7,3,3.0
+1033,,Rasensport Brand III,11,Kreisliga D Staffel 1 · Kreis Aachen,2,2,2,0,0,14,1,13,6,3.0
+1034,,SV Beuel 06 V,11,"Kreisliga D, Gruppe 2 · Kreis Bonn",2,1,1,0,0,9,3,6,3,3.0
+1035,,Borussia Brand II,11,Kreisliga D Staffel 1 · Kreis Aachen,4,1,1,0,0,8,2,6,3,3.0
+1036,,Hellas Köln III,11,Kreisliga D Staffel 3 · Kreis Köln,5,1,1,0,0,8,2,6,3,3.0
+1037,,Burtscheider TV III,11,Kreisliga D Staffel 1 · Kreis Aachen,3,2,2,0,0,14,2,12,6,3.0
+1038,,SC Alt.-Ersdorf III,11,"Kreisliga D, Gruppe 3 · Kreis Bonn",3,1,1,0,0,6,0,6,3,3.0
+1039,,VfR Würselen III,11,Kreisliga D Staffel 1 · Kreis Aachen,5,1,1,0,0,6,0,6,3,3.0
+1040,,SV Buschdorf,11,"Kreisliga D, Gruppe 1 · Kreis Bonn",2,1,1,0,0,7,2,5,3,3.0
+1041,,Auweiler-Esch I,11,Kreisliga D Staffel 3 · Kreis Köln,6,1,1,0,0,6,1,5,3,3.0
+1042,,Bergfried Leverkusen III,11,Kreisliga D Staffel 2 · Kreis Köln,2,1,1,0,0,6,1,5,3,3.0
+1043,,Morsbach II,11,Kreisliga D 9 · Kreis Berg,2,1,1,0,0,6,1,5,3,3.0
+1044,,Nippes GW III,11,Kreisliga D Staffel 1 · Kreis Köln,2,1,1,0,0,6,1,5,3,3.0
+1045,,FC Concordia Birgelen II,11,"Kreisliga D, Staffel 2 · Kreis Heinsberg",1,1,1,0,0,5,0,5,3,3.0
+1046,,FC Stolberg II,11,Kreisliga D Staffel 3 · Kreis Aachen,1,1,1,0,0,5,0,5,3,3.0
+1047,,SSV Süng II,11,Kreisliga D 8 · Kreis Berg,3,1,1,0,0,5,0,5,3,3.0
+1048,,Loope II,11,Kreisliga D 7 · Kreis Berg,1,1,1,0,0,7,3,4,3,3.0
+1049,,VfB Alsdorf,11,Kreisliga D Staffel 2 · Kreis Aachen,3,1,1,0,0,6,2,4,3,3.0
+1050,,Blau-Weiß Köln V,11,Kreisliga D Staffel 1 · Kreis Köln,3,1,1,0,0,5,1,4,3,3.0
+1051,,Dellbrück III,11,Kreisliga D Staffel 2 · Kreis Köln,3,1,1,0,0,5,1,4,3,3.0
+1052,,Borussia Brand III,11,Kreisliga D Staffel 3 · Kreis Aachen,2,1,1,0,0,4,0,4,3,3.0
+1053,,FC Wiedenest-Othetal III,11,Kreisliga D 9 · Kreis Berg,3,1,1,0,0,4,0,4,3,3.0
+1054,,SC Setterich,11,Kreisliga D Staffel 2 · Kreis Aachen,4,1,1,0,0,4,0,4,3,3.0
+1055,,FC Germania Teveren III,11,"Kreisliga D, Staffel 3 · Kreis Heinsberg",3,1,1,0,0,6,3,3,3,3.0
+1056,,FC Roetgen III,11,Kreisliga D Staffel 3 · Kreis Aachen,3,1,1,0,0,6,3,3,3,3.0
+1057,,Gencler Birligi Bergisch Gladbach II,11,Kreisliga D 7 · Kreis Berg,2,1,1,0,0,5,2,3,3,3.0
+1058,,SG Overath-Vilkerath II,11,Kreisliga D 7 · Kreis Berg,3,1,1,0,0,5,2,3,3,3.0
+1059,,SV Immerath II,11,"Kreisliga D, Staffel 1 · Kreis Heinsberg",1,1,1,0,0,5,2,3,3,3.0
+1060,,SV Union Rösrath III,11,Kreisliga D 7 · Kreis Berg,4,1,1,0,0,5,2,3,3,3.0
+1061,,SG Übach-Boscheln /JFC Alsdorf II,11,"Kreisliga D, Staffel 3 · Kreis Heinsberg",4,1,1,0,0,4,1,3,3,3.0
+1062,,Zollstock II,11,Kreisliga D Staffel 4 · Kreis Köln,1,1,1,0,0,4,1,3,3,3.0
+1063,,FC Borussia Derschlag III,11,Kreisliga D 9 · Kreis Berg,4,1,1,0,0,3,0,3,3,3.0
+1064,,GW Broicher Siedlung II,11,Kreisliga D Staffel 2 · Kreis Aachen,5,1,1,0,0,3,0,3,3,3.0
+1065,,ASG Uni Bonn III,11,"Kreisliga D, Gruppe 1 · Kreis Bonn",3,1,1,0,0,4,2,2,3,3.0
+1066,,SV Frömmersbach II,11,Kreisliga D 8 · Kreis Berg,4,1,1,0,0,4,2,2,3,3.0
+1067,,SV St. Jöris III,11,Kreisliga D Staffel 3 · Kreis Aachen,4,1,1,0,0,4,2,2,3,3.0
+1068,,TuS Elsenroth II,11,Kreisliga D 9 · Kreis Berg,5,1,1,0,0,4,2,2,3,3.0
+1069,,VfL Eintracht Warden II,11,Kreisliga D Staffel 2 · Kreis Aachen,6,1,1,0,0,4,2,2,3,3.0
+1070,,FSV Köln 99 II,11,Kreisliga D Staffel 1 · Kreis Köln,4,1,1,0,0,3,1,2,3,3.0
+1071,,FV Preußen Bonn 2,11,"Kreisliga D, Gruppe 2 · Kreis Bonn",3,1,1,0,0,3,1,2,3,3.0
+1072,,SC Wegberg II,11,"Kreisliga D, Staffel 1 · Kreis Heinsberg",2,1,1,0,0,3,1,2,3,3.0
+1073,,VfR 1910 Unterbruch II,11,"Kreisliga D, Staffel 2 · Kreis Heinsberg",2,1,1,0,0,3,1,2,3,3.0
+1074,,Worringen I,11,Kreisliga D Staffel 1 · Kreis Köln,5,1,1,0,0,3,1,2,3,3.0
+1075,,Lindlar III,11,Kreisliga D 8 · Kreis Berg,5,1,1,0,0,6,5,1,3,3.0
+1076,,VfL Lengsdorf 2,11,"Kreisliga D, Gruppe 2 · Kreis Bonn",4,1,1,0,0,6,5,1,3,3.0
+1077,,Eintracht II,11,Kreisliga D Staffel 4 · Kreis Köln,2,1,1,0,0,5,4,1,3,3.0
+1078,,Germania Freund II,11,Kreisliga D Staffel 2 · Kreis Aachen,7,1,1,0,0,5,4,1,3,3.0
+1079,,SV Ennert III,11,"Kreisliga D, Gruppe 2 · Kreis Bonn",5,1,1,0,0,5,4,1,3,3.0
+1080,,1. FC Hardtberg II,11,"Kreisliga D, Gruppe 2 · Kreis Bonn",6,1,1,0,0,4,3,1,3,3.0
+1081,,Arriba Perú e.V. 2,11,"Kreisliga D, Gruppe 1 · Kreis Bonn",4,1,1,0,0,4,3,1,3,3.0
+1082,,Fenerbahce I,11,Kreisliga D Staffel 5 · Kreis Köln,2,1,1,0,0,4,3,1,3,3.0
+1083,,SV Blau-Weiß Hand e.V. II,11,Kreisliga D 7 · Kreis Berg,5,1,1,0,0,4,3,1,3,3.0
+1084,,TuS 1910 Bonn-Dransdorf e.V.,11,"Kreisliga D, Gruppe 1 · Kreis Bonn",5,1,1,0,0,4,3,1,3,3.0
+1085,,1. FC Rheinland Übach-Palenberg,11,"Kreisliga D, Staffel 3 · Kreis Heinsberg",5,1,1,0,0,3,2,1,3,3.0
+1086,,Blau-Weiß Köln IV,11,Kreisliga D Staffel 4 · Kreis Köln,3,1,1,0,0,3,2,1,3,3.0
+1087,,Brück II,11,Kreisliga D Staffel 2 · Kreis Köln,4,1,1,0,0,3,2,1,3,3.0
+1088,,Medimeister Aachen,11,Kreisliga D Staffel 1 · Kreis Aachen,7,1,1,0,0,3,2,1,3,3.0
+1089,,Poll III,11,Kreisliga D Staffel 5 · Kreis Köln,3,1,1,0,0,3,2,1,3,3.0
+1090,,Union Köln II,11,Kreisliga D Staffel 4 · Kreis Köln,4,1,1,0,0,3,2,1,3,3.0
+1091,,VfB 08 Aachen,11,Kreisliga D Staffel 1 · Kreis Aachen,8,1,1,0,0,3,2,1,3,3.0
+1092,,DJK Löwe I,11,Kreisliga D Staffel 1 · Kreis Köln,6,1,1,0,0,2,1,1,3,3.0
+1093,,FC Adler Büsbach II,11,Kreisliga D Staffel 3 · Kreis Aachen,5,1,1,0,0,2,1,1,3,3.0
+1094,,JSV Köln 96 IV,11,Kreisliga D Staffel 4 · Kreis Köln,5,1,1,0,0,2,1,1,3,3.0
+1095,,Rossenbach II,11,Kreisliga D 9 · Kreis Berg,6,1,1,0,0,2,1,1,3,3.0
+1096,,TV Hoffnungsthal III,11,Kreisliga D 7 · Kreis Berg,6,1,1,0,0,1,0,1,3,3.0
+1097,,TuS Rheindorf I,11,Kreisliga D Staffel 2 · Kreis Köln,5,1,1,0,0,1,0,1,3,3.0
+1098,,FC KWB Aachen,11,Kreisliga D Staffel 1 · Kreis Aachen,6,2,1,0,1,7,4,3,3,1.5
+1099,,VfL 05 Aachen II,11,Kreisliga D Staffel 1 · Kreis Aachen,9,2,1,0,1,5,6,-1,3,1.5
+1100,,SC Berger Preuß III,11,Kreisliga D Staffel 2 · Kreis Aachen,8,1,0,1,0,4,4,0,1,1.0
+1101,,SuS Herzogenrath,11,Kreisliga D Staffel 2 · Kreis Aachen,9,1,0,1,0,4,4,0,1,1.0
+1102,,DJK Wipperfeld II,11,Kreisliga D 8 · Kreis Berg,6,1,0,1,0,3,3,0,1,1.0
+1103,,Eintracht Kornelimünster II,11,Kreisliga D Staffel 3 · Kreis Aachen,6,1,0,1,0,3,3,0,1,1.0
+1104,,SV Thier,11,Kreisliga D 8 · Kreis Berg,7,1,0,1,0,3,3,0,1,1.0
+1105,,VfL 05 Aachen III,11,Kreisliga D Staffel 3 · Kreis Aachen,7,1,0,1,0,3,3,0,1,1.0
+1106,,Anadolu I,11,Kreisliga D Staffel 5 · Kreis Köln,4,1,0,1,0,2,2,0,1,1.0
+1107,,Buchheim I,11,Kreisliga D Staffel 2 · Kreis Köln,6,1,0,1,0,2,2,0,1,1.0
+1108,,Türk Genc II,11,Kreisliga D Staffel 2 · Kreis Köln,7,1,0,1,0,2,2,0,1,1.0
+1109,,VfB 05 II,11,Kreisliga D Staffel 5 · Kreis Köln,5,1,0,1,0,2,2,0,1,1.0
+1110,,1. FC Heinsberg-Lieck II,11,"Kreisliga D, Staffel 2 · Kreis Heinsberg",3,1,0,1,0,1,1,0,1,1.0
+1111,,Raderthal II,11,Kreisliga D Staffel 4 · Kreis Köln,6,1,0,1,0,1,1,0,1,1.0
+1112,,SV Grün-Weiß Karken II,11,"Kreisliga D, Staffel 2 · Kreis Heinsberg",4,1,0,1,0,1,1,0,1,1.0
+1113,,TV Rodenkirchen I,11,Kreisliga D Staffel 4 · Kreis Köln,7,1,0,1,0,1,1,0,1,1.0
+1114,,Sinnersdorf II,11,Kreisliga D Staffel 1 · Kreis Köln,7,1,1,0,0,18,1,17,0,0.0
+1115,,SG Waldfeucht-Bocket-Braunsrath III,11,"Kreisliga D, Staffel 2 · Kreis Heinsberg",5,1,1,0,0,13,2,11,0,0.0
+1116,,Märchenbahnhof I,11,Kreisliga D Staffel 4 · Kreis Köln,8,1,1,0,0,8,0,8,0,0.0
+1117,,Germania Impekoven 2,11,"Kreisliga D, Gruppe 3 · Kreis Bonn",4,1,1,0,0,10,3,7,0,0.0
+1118,,Rath-Heumar II,11,Kreisliga D Staffel 2 · Kreis Köln,8,1,1,0,0,1,0,1,0,0.0
+1119,,"""Grün-Weiss"" Sparta Gerderath II",11,"Kreisliga D, Staffel 1 · Kreis Heinsberg",3,0,0,0,0,0,0,0,0,0.0
+1120,,ASC Akhtamar Frechen 2,11,Kreisliga D Staffel 7 · Kreis Rhein-Erft,1,0,0,0,0,0,0,0,0,0.0
+1121,,BC Efferen III,11,Kreisliga D Staffel 7 · Kreis Rhein-Erft,2,0,0,0,0,0,0,0,0,0.0
+1122,,BC Stotzheim III,11,Kreisliga D Staffel 8 · Kreis Rhein-Erft,1,0,0,0,0,0,0,0,0,0.0
+1123,,BSV Viktoria Bielstein 1920 e.V. III,11,Kreisliga D 9 · Kreis Berg,7,0,0,0,0,0,0,0,0,0.0
+1124,,BV Kirch-Kleintroisdorf,11,Kreisliga D Staffel 6 · Kreis Rhein-Erft,1,0,0,0,0,0,0,0,0,0.0
+1125,,BW Kerpen III,11,Kreisliga D Staffel 6 · Kreis Rhein-Erft,14,0,0,0,0,0,0,0,-3,0.0
+1126,,Bedburger BV 2,11,Kreisliga D Staffel 6 · Kreis Rhein-Erft,2,0,0,0,0,0,0,0,0,0.0
+1127,,Botan II,11,Kreisliga D Staffel 5 · Kreis Köln,6,0,0,0,0,0,0,0,0,0.0
+1128,,DJK Dorff,11,Kreisliga D Staffel 3 · Kreis Aachen,8,0,0,0,0,0,0,0,0,0.0
+1129,,DJK Gummersbach II,11,Kreisliga D 8 · Kreis Berg,8,0,0,0,0,0,0,0,0,0.0
+1130,,Dünnwald I zg.,11,Kreisliga D Staffel 5 · Kreis Köln,7,0,0,0,0,0,0,0,0,0.0
+1131,,Ehrenfeld I,11,Kreisliga D Staffel 4 · Kreis Köln,9,0,0,0,0,0,0,0,0,0.0
+1132,,Eintracht I,11,Kreisliga D Staffel 3 · Kreis Köln,7,0,0,0,0,0,0,0,0,0.0
+1133,,Erfa 09 Gymnich III,11,Kreisliga D Staffel 7 · Kreis Rhein-Erft,3,0,0,0,0,0,0,0,0,0.0
+1134,,F.C. Rot-Weiß Berrendorf 2,11,Kreisliga D Staffel 6 · Kreis Rhein-Erft,3,0,0,0,0,0,0,0,0,0.0
+1135,,FC Bensberg III,11,Kreisliga D 7 · Kreis Berg,7,0,0,0,0,0,0,0,0,0.0
+1136,,FC Berrenrath,11,Kreisliga D Staffel 7 · Kreis Rhein-Erft,4,0,0,0,0,0,0,0,0,0.0
+1137,,FC Berrenrath 2,11,Kreisliga D Staffel 8 · Kreis Rhein-Erft,2,0,0,0,0,0,0,0,0,0.0
+1138,,FC GW Etzweiler e.V. 2,11,Kreisliga D Staffel 6 · Kreis Rhein-Erft,4,0,0,0,0,0,0,0,0,0.0
+1139,,FC Inde Hahn II,11,Kreisliga D Staffel 3 · Kreis Aachen,9,0,0,0,0,0,0,0,0,0.0
+1140,,FC Rheinsüd Köln IV,11,Kreisliga D Staffel 8 · Kreis Rhein-Erft,3,0,0,0,0,0,0,0,0,0.0
+1141,,FC Schwadorf II,11,Kreisliga D Staffel 8 · Kreis Rhein-Erft,4,0,0,0,0,0,0,0,0,0.0
+1142,,FC Schwadorf III,11,Kreisliga D Staffel 7 · Kreis Rhein-Erft,5,0,0,0,0,0,0,0,0,0.0
+1143,,FC Viktoria Manheim 2,11,Kreisliga D Staffel 6 · Kreis Rhein-Erft,5,0,0,0,0,0,0,0,0,0.0
+1144,,FFC Bergheim,11,Kreisliga D Staffel 6 · Kreis Rhein-Erft,6,0,0,0,0,0,0,0,0,0.0
+1145,,FV Bonn-Endenich 1908 III,11,"Kreisliga D, Gruppe 1 · Kreis Bonn",6,0,0,0,0,0,0,0,0,0.0
+1146,,GKSC Hürth II,11,Kreisliga D Staffel 7 · Kreis Rhein-Erft,6,0,0,0,0,0,0,0,0,0.0
+1147,,Glückauf Habbelrath-Grefrath II,11,Kreisliga D Staffel 7 · Kreis Rhein-Erft,7,0,0,0,0,0,0,0,0,0.0
+1148,,Heppendorfer SC zg.,11,Kreisliga D Staffel 6 · Kreis Rhein-Erft,7,0,0,0,0,0,0,0,0,0.0
+1149,,Höhenhaus I,11,Kreisliga D Staffel 2 · Kreis Köln,9,0,0,0,0,0,0,0,0,0.0
+1150,,Kaster Königshoven II,11,Kreisliga D Staffel 6 · Kreis Rhein-Erft,8,0,0,0,0,0,0,0,0,0.0
+1151,,Kirch-Grottenherten 2,11,Kreisliga D Staffel 6 · Kreis Rhein-Erft,9,0,0,0,0,0,0,0,0,0.0
+1152,,Kohlscheider BC IV,11,Kreisliga D Staffel 1 · Kreis Aachen,10,0,0,0,0,0,0,0,0,0.0
+1153,,Köln 2000 I,11,Kreisliga D Staffel 5 · Kreis Köln,8,0,0,0,0,0,0,0,0,0.0
+1154,,Merheim IV,11,Kreisliga D Staffel 5 · Kreis Köln,9,0,0,0,0,0,0,0,0,0.0
+1155,,Niersquelle Kuckum III,11,"Kreisliga D, Staffel 1 · Kreis Heinsberg",4,0,0,0,0,0,0,0,0,0.0
+1156,,RG Wesseling III,11,Kreisliga D Staffel 8 · Kreis Rhein-Erft,5,0,0,0,0,0,0,0,0,0.0
+1157,,RW Ahrem 4,11,Kreisliga D Staffel 7 · Kreis Rhein-Erft,8,0,0,0,0,0,0,0,0,0.0
+1158,,RW Lessenich III,11,"Kreisliga D, Gruppe 3 · Kreis Bonn",5,0,0,0,0,0,0,0,0,0.0
+1159,,RW Röttgen 2,11,"Kreisliga D, Gruppe 3 · Kreis Bonn",6,0,0,0,0,0,0,0,0,0.0
+1160,,Rheindörfer Nord III,11,Kreisliga D Staffel 3 · Kreis Köln,8,0,0,0,0,0,0,0,0,0.0
+1161,,Roland West IV,11,Kreisliga D Staffel 3 · Kreis Köln,9,0,0,0,0,0,0,0,0,0.0
+1162,,SC Brühl 2,11,Kreisliga D Staffel 8 · Kreis Rhein-Erft,6,0,0,0,0,0,0,0,0,0.0
+1163,,SC Erftstadt-Ville,11,Kreisliga D Staffel 8 · Kreis Rhein-Erft,7,0,0,0,0,0,0,0,0,0.0
+1164,,SC Friesheim II,11,Kreisliga D Staffel 8 · Kreis Rhein-Erft,8,0,0,0,0,0,0,0,0,0.0
+1165,,SC Glessen 2,11,Kreisliga D Staffel 6 · Kreis Rhein-Erft,10,0,0,0,0,0,0,0,0,0.0
+1166,,SG Frechen 46 II,11,Kreisliga D Staffel 8 · Kreis Rhein-Erft,9,0,0,0,0,0,0,0,0,0.0
+1167,,SG Merbeck/Viktoria Wegberg,11,"Kreisliga D, Staffel 1 · Kreis Heinsberg",5,0,0,0,0,0,0,0,0,0.0
+1168,,SG Monschauer Land III,11,Kreisliga D Staffel 3 · Kreis Aachen,10,0,0,0,0,0,0,0,0,0.0
+1169,,SV Beuel 06 IV,11,"Kreisliga D, Gruppe 1 · Kreis Bonn",7,0,0,0,0,0,0,0,0,0.0
+1170,,SV Blatzheim 2,11,Kreisliga D Staffel 6 · Kreis Rhein-Erft,11,0,0,0,0,0,0,0,0,0.0
+1171,,SV Bonner Kickers 2,11,"Kreisliga D, Gruppe 1 · Kreis Bonn",8,0,0,0,0,0,0,0,0,0.0
+1172,,SV GW Schaufenberg,11,"Kreisliga D, Staffel 2 · Kreis Heinsberg",6,0,0,0,0,0,0,0,0,0.0
+1173,,SV Germania Eicherscheid III,11,Kreisliga D Staffel 3 · Kreis Aachen,11,0,0,0,0,0,0,0,0,0.0
+1174,,SV Kaster 2,11,Kreisliga D Staffel 6 · Kreis Rhein-Erft,12,0,0,0,0,0,0,0,0,0.0
+1175,,SV Klinkum II,11,"Kreisliga D, Staffel 1 · Kreis Heinsberg",6,0,0,0,0,0,0,0,0,0.0
+1176,,SV Lövenich/Widdersdorf U21,11,Kreisliga D Staffel 7 · Kreis Rhein-Erft,9,0,0,0,0,0,0,0,0,0.0
+1177,,SV Rot-Weiß Queckenberg e.V.,11,"Kreisliga D, Gruppe 3 · Kreis Bonn",7,0,0,0,0,0,0,0,0,0.0
+1178,,SV SW Merzbach 2,11,"Kreisliga D, Gruppe 3 · Kreis Bonn",8,0,0,0,0,0,0,0,0,0.0
+1179,,SV Türkspor Bergheim 2,11,Kreisliga D Staffel 6 · Kreis Rhein-Erft,13,0,0,0,0,0,0,0,0,0.0
+1180,,Spvg BBT II,11,Kreisliga D Staffel 7 · Kreis Rhein-Erft,13,0,0,0,0,0,0,0,-3,0.0
+1181,,Spvg Wesseling-Urfeld 3,11,Kreisliga D Staffel 8 · Kreis Rhein-Erft,10,0,0,0,0,0,0,0,0,0.0
+1182,,TPSK II,11,Kreisliga D Staffel 1 · Kreis Köln,8,0,0,0,0,0,0,0,0,0.0
+1183,,TSG Bonn 3,11,"Kreisliga D, Gruppe 3 · Kreis Bonn",9,0,0,0,0,0,0,0,0,0.0
+1184,,TSV Weiß 3,11,Kreisliga D Staffel 8 · Kreis Rhein-Erft,11,0,0,0,0,0,0,0,0,0.0
+1185,,TuS BW Königsdorf 3,11,Kreisliga D Staffel 7 · Kreis Rhein-Erft,10,0,0,0,0,0,0,0,0,0.0
+1186,,TuS Pützchen 05 II,11,"Kreisliga D, Gruppe 2 · Kreis Bonn",7,0,0,0,0,0,0,0,0,0.0
+1187,,TuS rrh. III,11,Kreisliga D Staffel 5 · Kreis Köln,10,0,0,0,0,0,0,0,0,0.0
+1188,,Union Köln I,11,Kreisliga D Staffel 5 · Kreis Köln,11,0,0,0,0,0,0,0,0,0.0
+1189,,VfL Erp II,11,Kreisliga D Staffel 8 · Kreis Rhein-Erft,12,0,0,0,0,0,0,0,0,0.0
+1190,,VfR Bachem III,11,Kreisliga D Staffel 7 · Kreis Rhein-Erft,11,0,0,0,0,0,0,0,0,0.0
+1191,,VfR Stommeln 2,11,Kreisliga D Staffel 7 · Kreis Rhein-Erft,12,0,0,0,0,0,0,0,0,0.0
+1192,,Viktoria Gruhlwerk 2,11,Kreisliga D Staffel 8 · Kreis Rhein-Erft,13,0,0,0,0,0,0,0,0,0.0
+1193,,Viktoria Kleingladbach II,11,"Kreisliga D, Staffel 1 · Kreis Heinsberg",7,0,0,0,0,0,0,0,0,0.0
+1194,,Westhoven-Ensen III,11,Kreisliga D Staffel 5 · Kreis Köln,12,0,0,0,0,0,0,0,0,0.0
+1195,,TSG Bonn 2,11,"Kreisliga D, Gruppe 2 · Kreis Bonn",8,1,0,0,1,5,6,-1,0,0.0
+1196,,VfL Engelskirchen II,11,Kreisliga D 8 · Kreis Berg,9,1,0,0,1,5,6,-1,0,0.0
+1197,,Club Galicia Bonn 2,11,"Kreisliga D, Gruppe 2 · Kreis Bonn",9,1,0,0,1,4,5,-1,0,0.0
+1198,,FV Eschweiler II,11,Kreisliga D Staffel 2 · Kreis Aachen,10,1,0,0,1,4,5,-1,0,0.0
+1199,,Nippes GW II,11,Kreisliga D Staffel 4 · Kreis Köln,10,1,0,0,1,4,5,-1,0,0.0
+1200,,Polonia Bonn,11,"Kreisliga D, Gruppe 1 · Kreis Bonn",9,1,0,0,1,3,4,-1,0,0.0
+1201,,SV SW Merzbach 3,11,"Kreisliga D, Gruppe 2 · Kreis Bonn",10,1,0,0,1,3,4,-1,0,0.0
+1202,,Sinnersdorf III,11,Kreisliga D Staffel 5 · Kreis Köln,13,1,0,0,1,3,4,-1,0,0.0
+1203,,TuS Marialinden III,11,Kreisliga D 7 · Kreis Berg,8,1,0,0,1,3,4,-1,0,0.0
+1204,,Agrippina II,11,Kreisliga D Staffel 4 · Kreis Köln,11,1,0,0,1,2,3,-1,0,0.0
+1205,,Merheim III,11,Kreisliga D Staffel 4 · Kreis Köln,12,1,0,0,1,2,3,-1,0,0.0
+1206,,Mülheim Nord II,11,Kreisliga D Staffel 5 · Kreis Köln,14,1,0,0,1,2,3,-1,0,0.0
+1207,,SG Union 94 Würm-Lindern III,11,"Kreisliga D, Staffel 3 · Kreis Heinsberg",6,1,0,0,1,2,3,-1,0,0.0
+1208,,TuS rrh. II,11,Kreisliga D Staffel 2 · Kreis Köln,10,1,0,0,1,2,3,-1,0,0.0
+1209,,VfJ Laurensberg III,11,Kreisliga D Staffel 1 · Kreis Aachen,11,1,0,0,1,2,3,-1,0,0.0
+1210,,Auweiler-Esch II,11,Kreisliga D Staffel 1 · Kreis Köln,9,1,0,0,1,1,2,-1,0,0.0
+1211,,TuS Lammersdorf II,11,Kreisliga D Staffel 3 · Kreis Aachen,12,1,0,0,1,1,2,-1,0,0.0
+1212,,Urbach III,11,Kreisliga D Staffel 4 · Kreis Köln,13,1,0,0,1,1,2,-1,0,0.0
+1213,,VfL Gummersbach II,11,Kreisliga D 9 · Kreis Berg,8,1,0,0,1,1,2,-1,0,0.0
+1214,,DJK SSV Ommerborn Sand,11,Kreisliga D 7 · Kreis Berg,9,1,0,0,1,0,1,-1,0,0.0
+1215,,Merheim II,11,Kreisliga D Staffel 2 · Kreis Köln,11,1,0,0,1,0,1,-1,0,0.0
+1216,,Stammheim II,11,Kreisliga D Staffel 2 · Kreis Köln,12,1,0,0,1,0,1,-1,0,0.0
+1217,,Rhenania Richterich III,11,Kreisliga D Staffel 1 · Kreis Aachen,12,1,0,0,1,2,4,-2,0,0.0
+1218,,SSV Walberberg III,11,"Kreisliga D, Gruppe 1 · Kreis Bonn",10,1,0,0,1,2,4,-2,0,0.0
+1219,,SV Bernberg II,11,Kreisliga D 9 · Kreis Berg,9,1,0,0,1,2,4,-2,0,0.0
+1220,,SV Linde II,11,Kreisliga D 8 · Kreis Berg,10,1,0,0,1,2,4,-2,0,0.0
+1221,,TV Konzen III,11,Kreisliga D Staffel 3 · Kreis Aachen,13,1,0,0,1,2,4,-2,0,0.0
+1222,,VfB 08 Aachen II,11,Kreisliga D Staffel 2 · Kreis Aachen,11,1,0,0,1,2,4,-2,0,0.0
+1223,,Ay-Yildiz Spor Hückelhoven II,11,"Kreisliga D, Staffel 2 · Kreis Heinsberg",7,1,0,0,1,1,3,-2,0,0.0
+1224,,DSK Köln II,11,Kreisliga D Staffel 1 · Kreis Köln,10,1,0,0,1,1,3,-2,0,0.0
+1225,,FC Hertha Bonn II,11,"Kreisliga D, Gruppe 2 · Kreis Bonn",11,1,0,0,1,1,3,-2,0,0.0
+1226,,Viktoria Doveren e.V. II,11,"Kreisliga D, Staffel 1 · Kreis Heinsberg",8,1,0,0,1,1,3,-2,0,0.0
+1227,,Zollstock III,11,Kreisliga D Staffel 1 · Kreis Köln,11,1,0,0,1,1,3,-2,0,0.0
+1228,,FC Randerath/Porselen III,11,"Kreisliga D, Staffel 3 · Kreis Heinsberg",7,1,0,0,1,3,6,-3,0,0.0
+1229,,JSC Blau-Weiss Aachen II,11,Kreisliga D Staffel 3 · Kreis Aachen,14,1,0,0,1,3,6,-3,0,0.0
+1230,,DJK Dürscheid II,11,Kreisliga D 7 · Kreis Berg,10,1,0,0,1,2,5,-3,0,0.0
+1231,,FV Ermis II,11,Kreisliga D 7 · Kreis Berg,11,1,0,0,1,2,5,-3,0,0.0
+1232,,SC 27 Bergisch Gladbach II,11,Kreisliga D 7 · Kreis Berg,12,1,0,0,1,2,5,-3,0,0.0
+1233,,SV Golkrath II,11,"Kreisliga D, Staffel 1 · Kreis Heinsberg",9,1,0,0,1,2,5,-3,0,0.0
+1234,,FSV Köln 99 I,11,Kreisliga D Staffel 4 · Kreis Köln,14,1,0,0,1,1,4,-3,0,0.0
+1235,,SVG Birgden-Langbroich-Schierwaldenrath III,11,"Kreisliga D, Staffel 3 · Kreis Heinsberg",8,1,0,0,1,1,4,-3,0,0.0
+1236,,SF Asbachtal II,11,Kreisliga D 9 · Kreis Berg,10,1,0,0,1,0,3,-3,0,0.0
+1237,,SV Blau-Weiß Alsdorf,11,Kreisliga D Staffel 2 · Kreis Aachen,12,1,0,0,1,0,3,-3,0,0.0
+1238,,Eintracht Verlautenheide IV,11,Kreisliga D Staffel 1 · Kreis Aachen,14,2,0,0,2,4,11,-7,0,0.0
+1239,,TuS Moitzfeld 1961 e.V. II,11,Kreisliga D 7 · Kreis Berg,13,1,0,0,1,3,7,-4,0,0.0
+1240,,Alemannia Mariadorf III,11,Kreisliga D Staffel 2 · Kreis Aachen,13,1,0,0,1,2,6,-4,0,0.0
+1241,,Holweide I,11,Kreisliga D Staffel 2 · Kreis Köln,13,1,0,0,1,1,5,-4,0,0.0
+1242,,JSV Köln 96 V,11,Kreisliga D Staffel 1 · Kreis Köln,12,1,0,0,1,1,5,-4,0,0.0
+1243,,FC Eschweiler III,11,Kreisliga D Staffel 2 · Kreis Aachen,14,1,0,0,1,0,4,-4,0,0.0
+1244,,SV ASA Atsch,11,Kreisliga D Staffel 3 · Kreis Aachen,15,1,0,0,1,0,4,-4,0,0.0
+1245,,TuS Homburg-Bröltal III,11,Kreisliga D 9 · Kreis Berg,11,1,0,0,1,0,4,-4,0,0.0
+1246,,TuS Germania Hersel 2,11,"Kreisliga D, Gruppe 1 · Kreis Bonn",11,1,0,0,1,2,7,-5,0,0.0
+1247,,Hitdorf II,11,Kreisliga D Staffel 2 · Kreis Köln,14,1,0,0,1,1,6,-5,0,0.0
+1248,,SG Holpe-Wallerhausen II,11,Kreisliga D 9 · Kreis Berg,12,1,0,0,1,1,6,-5,0,0.0
+1249,,TFC Köln II,11,Kreisliga D Staffel 3 · Kreis Köln,10,1,0,0,1,1,6,-5,0,0.0
+1250,,Trabzonspor II,11,Kreisliga D Staffel 1 · Kreis Köln,13,1,0,0,1,1,6,-5,0,0.0
+1251,,GW Lichtenbusch III,11,Kreisliga D Staffel 3 · Kreis Aachen,16,1,0,0,1,0,5,-5,0,0.0
+1252,,SG Hämmern / Heide,11,Kreisliga D 8 · Kreis Berg,11,1,0,0,1,0,5,-5,0,0.0
+1253,,Spfr. Ippendorf III,11,"Kreisliga D, Gruppe 2 · Kreis Bonn",12,1,0,0,1,3,9,-6,0,0.0
+1254,,Ditib Chorweiler II,11,Kreisliga D Staffel 3 · Kreis Köln,11,1,0,0,1,2,8,-6,0,0.0
+1255,,SV Kohlscheid II,11,Kreisliga D Staffel 1 · Kreis Aachen,13,1,0,0,1,0,6,-6,0,0.0
+1256,,TuS Odendorf 1919 e.V. 2,11,"Kreisliga D, Gruppe 3 · Kreis Bonn",10,1,0,0,1,0,6,-6,0,0.0
+1257,,SV Buschdorf 3,11,"Kreisliga D, Gruppe 3 · Kreis Bonn",11,1,0,0,1,3,10,-7,0,0.0
+1258,,Schwarz-Rot Aachen II,11,Kreisliga D Staffel 1 · Kreis Aachen,16,2,0,0,2,2,16,-14,0,0.0
+1259,,Spfr. RW Beuel,11,"Kreisliga D, Gruppe 2 · Kreis Bonn",13,1,0,0,1,1,8,-7,0,0.0
+1260,,FC Germania Bauchem III,11,"Kreisliga D, Staffel 3 · Kreis Heinsberg",9,1,0,0,1,0,7,-7,0,0.0
+1261,,VfR Forst II,11,Kreisliga D Staffel 1 · Kreis Aachen,17,2,0,0,2,0,15,-15,0,0.0
+1262,,Roter Stern Köln I,11,Kreisliga D Staffel 3 · Kreis Köln,12,1,0,0,1,2,10,-8,0,0.0
+1263,,Afrika Köln II,11,Kreisliga D Staffel 3 · Kreis Köln,13,1,0,0,1,1,9,-8,0,0.0
+1264,,SSV Marienheide II,11,Kreisliga D 8 · Kreis Berg,12,1,0,0,1,1,9,-8,0,0.0
+1265,,TuS Reichshof II,11,Kreisliga D 9 · Kreis Berg,13,1,0,0,1,1,9,-8,0,0.0
+1266,,Fenerbahce II,11,Kreisliga D Staffel 4 · Kreis Köln,15,1,0,0,1,0,8,-8,0,0.0
+1267,,SC Leverkusen II,11,Kreisliga D Staffel 2 · Kreis Köln,15,1,0,0,1,0,9,-9,0,0.0
+1268,,Galatasaray Köln I,11,Kreisliga D Staffel 3 · Kreis Köln,14,1,0,0,1,3,13,-10,0,0.0
+1269,,Rondorf III,11,Kreisliga D Staffel 1 · Kreis Köln,14,1,0,0,1,1,11,-10,0,0.0
+1270,,Sportfreunde Hehlrath II,11,Kreisliga D Staffel 2 · Kreis Aachen,15,1,0,0,1,1,11,-10,0,0.0
+1271,,SC Sparta Bardenberg II,11,Kreisliga D Staffel 1 · Kreis Aachen,15,1,0,0,1,0,10,-10,0,0.0
+1272,,TuS 09 Rot-Weiß Frelenberg II,11,"Kreisliga D, Staffel 3 · Kreis Heinsberg",10,1,0,0,1,0,10,-10,0,0.0
+1273,,TuS Jahn Hilfarth II,11,"Kreisliga D, Staffel 2 · Kreis Heinsberg",8,1,0,0,1,2,13,-11,0,0.0
+1274,,Buchheim II,11,Kreisliga D Staffel 5 · Kreis Köln,15,1,0,0,1,0,13,-13,0,0.0
+1275,,Roggendorf I,11,Kreisliga D Staffel 1 · Kreis Köln,15,1,0,0,1,1,18,-17,0,0.0
+1276,,1. JFC Brüser Berg 3,11,"Kreisliga D, Gruppe 3 · Kreis Bonn",12,1,0,0,1,0,17,-17,0,0.0
+1277,,Cosmos Bonn,11,"Kreisliga D, Gruppe 1 · Kreis Bonn",12,1,0,0,1,1,19,-18,0,0.0
+1278,,SV Kohlscheid III,11,Kreisliga D Staffel 2 · Kreis Aachen,16,1,0,0,1,0,20,-20,0,0.0
+1279,,SSV Bergneustadt III,11,Kreisliga D 8 · Kreis Berg,13,1,0,0,1,0,24,-24,0,0.0
+1280,,SC Widdig 1922 e.V. II,11,"Kreisliga D, Gruppe 1 · Kreis Bonn",13,1,0,0,1,3,4,-1,-3,-3.0
+1281,,SC 1920 Myhl II,11,"Kreisliga D, Staffel 2 · Kreis Heinsberg",9,1,0,0,1,0,5,-5,-3,-3.0
+1282,,SC Volmershoven-Heidgen 3,11,"Kreisliga D, Gruppe 3 · Kreis Bonn",13,1,0,0,1,0,7,-7,-3,-3.0
+1283,,FC Chorweiler II,11,Kreisliga D Staffel 3 · Kreis Köln,15,1,0,0,1,2,11,-9,-3,-3.0
