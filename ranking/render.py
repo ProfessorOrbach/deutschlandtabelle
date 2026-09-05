@@ -6,12 +6,14 @@ import io
 import json
 from pathlib import Path
 
+from . import landing
+
 TEMPLATE = """<!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Deutschlandweites Vereinsranking</title>
+<title>FCR Deutschland — die komplette Tabelle</title>
 <meta name="description" content="Tagesaktuelle Rangfolge deutscher Fußballvereine über alle erfassten Ligastufen, aus den Spielen der laufenden Saison.">
 <style>
 :root{
@@ -32,6 +34,9 @@ TEMPLATE = """<!doctype html>
 body{margin:0;background:var(--bg);color:var(--ink);
   font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 .wrap{max-width:1080px;margin:0 auto;padding:28px 18px 56px}
+a.zurueck{display:inline-block;margin:0 0 10px;color:var(--accent);
+  text-decoration:none;font-size:14px;font-weight:600}
+a.zurueck:hover{text-decoration:underline}
 header h1{margin:0 0 6px;font-size:clamp(22px,3.4vw,32px);letter-spacing:-.02em}
 header p{margin:0;color:var(--muted)}
 .stats{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
@@ -171,7 +176,8 @@ td.delta{width:56px;font-size:13px}
 <body>
 <div class="wrap">
 <header>
-  <h1>Deutschlandweites Vereinsranking</h1>
+  <a class="zurueck" href="index.html">← FCR Deutschland</a>
+  <h1>Die komplette Tabelle</h1>
   <p>Alle erfassten deutschen Fußballmannschaften in einer Rangfolge · Saison __SEASON__ · Stand __GENERATED__</p>
 </header>
 
@@ -326,6 +332,11 @@ document.getElementById('legend').innerHTML =
   [...new Set(RANKING.map(r => r.tier))].sort((a, b) => a - b)
     .map(t => `<span class="tier${t}">${t}. Stufe</span>`).join('');
 
+const parameter = new URLSearchParams(location.search);
+if (parameter.get('q')) q.value = parameter.get('q');
+if (parameter.get('verband')) verbandFilter.value = parameter.get('verband');
+if (parameter.get('stufe')) tierFilter.value = parameter.get('stufe');
+
 [q, tierFilter, leagueFilter, verbandFilter].forEach(
   el => el.addEventListener('input', render));
 render();
@@ -333,6 +344,87 @@ render();
 </body>
 </html>
 """
+
+
+# Spaltenname -> Feld im Ranking-Datensatz. Die Reihenfolge ist die Reihenfolge
+# in der Datei: erst die Einordnung (wer, wo, welche Stufe), dann die Bilanz.
+VEREINE_SPALTEN = [
+    ("rang_bundesweit", "rank"),
+    ("verein", "name"),
+    ("verband", "verband"),
+    ("gebiet", "area"),
+    ("ligastufe", "tier"),
+    ("spielklasse", "spielklasse"),
+    ("staffel", "league"),
+    ("staffel_id", "staffelId"),
+    ("platz_in_staffel", "leaguePos"),
+    ("spiele", "played"),
+    ("siege", "won"),
+    ("unentschieden", "drawn"),
+    ("niederlagen", "lost"),
+    ("tore", "goalsFor"),
+    ("gegentore", "goalsAgainst"),
+    ("tordifferenz", "goalDiff"),
+    ("punkte", "points"),
+    ("punkte_pro_spiel", "ppg"),
+    ("rangaenderung_vorwoche", "delta"),
+    ("quelle", "quelle"),
+]
+
+
+def _write_vereine(out_dir: Path, ranking: list[dict]) -> None:
+    """Eine Zeile je Mannschaft, mit vollständiger Einordnung in die Pyramide."""
+    buf = io.StringIO()
+    w = csv.writer(buf, lineterminator="\n")
+    w.writerow([name for name, _ in VEREINE_SPALTEN])
+    for r in ranking:
+        w.writerow(["" if r.get(key) is None else r.get(key)
+                    for _, key in VEREINE_SPALTEN])
+    (out_dir / "vereine.csv").write_text(buf.getvalue(), encoding="utf-8")
+
+
+def _write_ligen(out_dir: Path, ranking: list[dict], meta: dict) -> None:
+    """Eine Zeile je Staffel -- der Logikbaum ohne die Vereine.
+
+    Über `staffel_id` lässt sich vereine.csv daran anfügen; zusammen ergeben
+    beide Dateien die Kette Verband -> Ligastufe -> Spielklasse -> Gebiet ->
+    Staffel -> Verein.
+    """
+    gruppen: dict[str, dict] = {}
+    for r in ranking:
+        sid = r.get("staffelId") or r["league"]
+        g = gruppen.setdefault(sid, {
+            "staffel_id": sid, "staffel": r["league"], "ligastufe": r["tier"],
+            "spielklasse": r.get("spielklasse"), "verband": r.get("verband"),
+            "gebiet": r.get("area"), "quelle": r.get("quelle"),
+            "mannschaften": 0, "spiele_gesamt": 0, "tore_gesamt": 0,
+            "punkte_gesamt": 0, "bester": None, "bester_pkt": None,
+        })
+        g["mannschaften"] += 1
+        g["spiele_gesamt"] += r["played"]
+        g["tore_gesamt"] += r["goalsFor"]
+        g["punkte_gesamt"] += r["points"]
+        if r.get("leaguePos") == 1:
+            g["bester"], g["bester_pkt"] = r["name"], r["points"]
+
+    spalten = ["staffel_id", "verband", "gebiet", "ligastufe", "spielklasse",
+               "staffel", "mannschaften", "spiele_gesamt", "tore_gesamt",
+               "punkte_gesamt", "tabellenfuehrer", "tabellenfuehrer_punkte",
+               "quelle"]
+    buf = io.StringIO()
+    w = csv.writer(buf, lineterminator="\n")
+    w.writerow(spalten)
+    for g in sorted(gruppen.values(),
+                    key=lambda g: (g["ligastufe"], g["verband"] or "",
+                                   g["gebiet"] or "", g["staffel"])):
+        w.writerow([
+            g["staffel_id"], g["verband"] or "", g["gebiet"] or "",
+            g["ligastufe"], g["spielklasse"] or "", g["staffel"],
+            g["mannschaften"], g["spiele_gesamt"] // 2, g["tore_gesamt"],
+            g["punkte_gesamt"], g["bester"] or "",
+            "" if g["bester_pkt"] is None else g["bester_pkt"], g["quelle"] or "",
+        ])
+    (out_dir / "ligen.csv").write_text(buf.getvalue(), encoding="utf-8")
 
 
 def _compact(ranking: list[dict]) -> dict:
@@ -398,17 +490,13 @@ def write_site(out_dir: Path, ranking, meta) -> None:
     }.items():
         html = html.replace(key, value)
 
-    (out_dir / "index.html").write_text(html, encoding="utf-8")
+    (out_dir / "tabelle.html").write_text(html, encoding="utf-8")
     (out_dir / "ranking.json").write_text(
         json.dumps({"meta": meta, "ranking": ranking}, ensure_ascii=False,
                    separators=(",", ":")),
         encoding="utf-8")
 
-    buf = io.StringIO()
-    cols = ["rank", "delta", "name", "tier", "league", "leaguePos", "played", "won",
-            "drawn", "lost", "goalsFor", "goalsAgainst", "goalDiff", "points", "ppg"]
-    writer = csv.DictWriter(buf, fieldnames=cols, extrasaction="ignore")
-    writer.writeheader()
-    writer.writerows(ranking)
-    (out_dir / "ranking.csv").write_text(buf.getvalue(), encoding="utf-8")
+    _write_vereine(out_dir, ranking)
+    _write_ligen(out_dir, ranking, meta)
+    landing.write_landing(out_dir, ranking, meta)
     (out_dir / ".nojekyll").write_text("")

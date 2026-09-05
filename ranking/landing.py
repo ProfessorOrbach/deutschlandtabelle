@@ -1,10 +1,129 @@
-<!doctype html>
+"""Einstiegsseite: Marke, Beschreibung und die spannenden Kennzahlen.
+
+Die Tabelle selbst liegt auf `tabelle.html`. Hier steht, worum es geht, und
+was aus den Zahlen herausfällt, wenn man sie einmal quer zur Rangfolge liest.
+
+Alle Kennzahlen werden aus demselben Datensatz berechnet, den auch die Tabelle
+zeigt -- es gibt keine zweite Wahrheit.
+"""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+# Ein einziges gutes Spiel soll niemanden zum besten Verein Deutschlands
+# machen. Die Schwelle sinkt automatisch, wenn zu Saisonbeginn noch kaum
+# jemand so weit ist.
+MIN_SPIELE_STUFEN = (5, 4, 3, 2, 1)
+MIN_KANDIDATEN = 50
+
+
+def _schwelle(ranking: list[dict]) -> int:
+    for n in MIN_SPIELE_STUFEN:
+        if sum(1 for r in ranking if r["played"] >= n) >= MIN_KANDIDATEN:
+            return n
+    return 1
+
+
+def _pro_spiel(r: dict, feld: str) -> float:
+    return r[feld] / r["played"] if r["played"] else 0.0
+
+
+def kennzahlen(ranking: list[dict]) -> dict:
+    """Die Bestenlisten quer zur Ligastufe."""
+    n = _schwelle(ranking)
+    feld = [r for r in ranking if r["played"] >= n]
+
+    def bester(schluessel, quelle=None):
+        kandidaten = quelle if quelle is not None else feld
+        return max(kandidaten, key=schluessel) if kandidaten else None
+
+    mit_delta = [r for r in ranking if r.get("delta") is not None]
+
+    karten = [
+        {
+            "icon": "🏆", "titel": "Bester Verein Deutschlands",
+            "erklaerung": f"Ohne Rücksicht auf die Ligastufe: die meisten Punkte "
+                          f"pro Spiel, bei Gleichstand die bessere Tordifferenz "
+                          f"pro Spiel. Mindestens {n} Spiele.",
+            "team": bester(lambda r: (_pro_spiel(r, "points"),
+                                      _pro_spiel(r, "goalDiff"))),
+            "wert": lambda r: f"{_pro_spiel(r, 'points'):.2f} Punkte/Spiel",
+        },
+        {
+            "icon": "🔥", "titel": "Der heißeste Club",
+            "erklaerung": f"Die größte Tordifferenz pro Spiel — wer nicht nur "
+                          f"gewinnt, sondern auseinandernimmt. Mindestens {n} Spiele.",
+            "team": bester(lambda r: (_pro_spiel(r, "goalDiff"),
+                                      _pro_spiel(r, "points"))),
+            "wert": lambda r: f"{_pro_spiel(r, 'goalDiff'):+.2f} Tore/Spiel",
+        },
+        {
+            "icon": "⚽", "titel": "Die Torfabrik",
+            "erklaerung": f"Meiste eigene Tore pro Spiel. Mindestens {n} Spiele.",
+            "team": bester(lambda r: _pro_spiel(r, "goalsFor")),
+            "wert": lambda r: f"{_pro_spiel(r, 'goalsFor'):.2f} Tore/Spiel",
+        },
+        {
+            "icon": "🧱", "titel": "Das Bollwerk",
+            "erklaerung": f"Wenigste Gegentore pro Spiel. Mindestens {n} Spiele.",
+            "team": bester(lambda r: (-_pro_spiel(r, "goalsAgainst"),
+                                      _pro_spiel(r, "points"))),
+            "wert": lambda r: f"{_pro_spiel(r, 'goalsAgainst'):.2f} Gegentore/Spiel",
+        },
+        {
+            "icon": "📈", "titel": "Aufsteiger der Woche",
+            "erklaerung": "Größter Sprung im bundesweiten Ranking gegenüber der "
+                          "Vorwoche. Nur für Ligastufen mit Spieldaten — siehe unten.",
+            "team": bester(lambda r: r["delta"], mit_delta),
+            "wert": lambda r: f"{r['delta']:+d} Plätze auf Rang {r['rank']}",
+        },
+        {
+            "icon": "📉", "titel": "Absteiger der Woche",
+            "erklaerung": "Größter Verlust im bundesweiten Ranking gegenüber der "
+                          "Vorwoche.",
+            "team": bester(lambda r: -r["delta"], mit_delta),
+            "wert": lambda r: f"{r['delta']:+d} Plätze auf Rang {r['rank']}",
+        },
+        {
+            "icon": "🥶", "titel": "Das Schlusslicht",
+            "erklaerung": f"Die schwächste Punkteausbeute des Landes. "
+                          f"Mindestens {n} Spiele.",
+            "team": bester(lambda r: (-_pro_spiel(r, "points"),
+                                      -_pro_spiel(r, "goalDiff"))),
+            "wert": lambda r: f"{_pro_spiel(r, 'points'):.2f} Punkte/Spiel",
+        },
+        {
+            "icon": "💥", "titel": "Die dickste Klatsche",
+            "erklaerung": f"Schlechteste Tordifferenz pro Spiel. "
+                          f"Mindestens {n} Spiele.",
+            "team": bester(lambda r: (-_pro_spiel(r, "goalDiff"),
+                                      -_pro_spiel(r, "points"))),
+            "wert": lambda r: f"{_pro_spiel(r, 'goalDiff'):+.2f} Tore/Spiel",
+        },
+    ]
+
+    fertig = []
+    for k in karten:
+        r = k["team"]
+        if not r:
+            continue
+        fertig.append({
+            "icon": k["icon"], "titel": k["titel"], "erklaerung": k["erklaerung"],
+            "verein": r["name"], "liga": r["league"], "stufe": r["tier"],
+            "verband": r.get("verband") or "überregional",
+            "rang": r["rank"], "wert": k["wert"](r),
+        })
+    return {"karten": fertig, "min_spiele": n}
+
+
+TEMPLATE = """<!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FCR Deutschland — dein Fußball-Club-Ranking</title>
-<meta name="description" content="Alle 26.835 deutschen Fußballmannschaften von der Bundesliga bis zur Kreisklasse in einer einzigen Rangfolge. Wo steht dein Verein?">
+<meta name="description" content="Alle __N_TEAMS__ deutschen Fußballmannschaften von der Bundesliga bis zur Kreisklasse in einer einzigen Rangfolge. Wo steht dein Verein?">
 <style>
 :root{
   --bg:#f6f7f9; --panel:#ffffff; --line:#e3e6ea; --ink:#14171c; --muted:#666e79;
@@ -111,10 +230,10 @@ footer a{color:var(--accent)}
 
 <div class="intro">
   <p><b>Jede Mannschaft des Landes in einer einzigen Rangfolge.</b> Vom FC Bayern
-  auf Platz 1 bis zur letzten Kreisklasse: 26.835 Herrenmannschaften aus
-  1.952 Staffeln, 14 Ligastufen und allen 21
+  auf Platz 1 bis zur letzten Kreisklasse: __N_TEAMS__ Herrenmannschaften aus
+  __N_STAFFELN__ Staffeln, __N_STUFEN__ Ligastufen und allen __N_VERBAENDE__
   Landesverbänden — Tag für Tag neu berechnet aus den Ergebnissen der laufenden
-  Saison 2026/27.</p>
+  Saison __SEASON__.</p>
   <p>Sortiert wird zuerst nach Ligastufe, innerhalb einer Stufe nach Punkten pro
   Spiel. Dadurch stehen parallele Staffeln nicht blockweise hintereinander,
   sondern verzahnen sich zu einer echten Rangfolge.</p>
@@ -127,20 +246,20 @@ footer a{color:var(--accent)}
 </form>
 
 <div class="stats">
-  <div class="stat"><b>26.835</b><span>Mannschaften</span></div>
-  <div class="stat"><b>1.952</b><span>Staffeln</span></div>
-  <div class="stat"><b>14</b><span>Ligastufen</span></div>
-  <div class="stat"><b>21</b><span>Landesverbände</span></div>
+  <div class="stat"><b>__N_TEAMS__</b><span>Mannschaften</span></div>
+  <div class="stat"><b>__N_STAFFELN__</b><span>Staffeln</span></div>
+  <div class="stat"><b>__N_STUFEN__</b><span>Ligastufen</span></div>
+  <div class="stat"><b>__N_VERBAENDE__</b><span>Landesverbände</span></div>
 </div>
 
 <h2>Die Bestenlisten</h2>
 <p>Quer zur Tabelle gelesen — ohne Rücksicht darauf, in welcher Liga jemand spielt.</p>
 <div class="karten" id="karten"></div>
 
-<div class="hinweis">Erfasst sind alle 21 Landesverbände, von der Bundesliga bis hinunter zur Kreisklasse. <b>Aber:</b> unterhalb der Regionalliga gibt es zwischen den Verbänden keine sportliche Verbindung — ein Kreisligist aus Oberberg und einer aus Sachsen begegnen sich nie, weder direkt noch über eine Auf- und Abstiegskette. Die bundesweite Rangfolge ordnet dort nur nach Ligastufe und Punkten pro Spiel; ein sportliches Kräftemessen ist sie nicht. Wer vergleichen will, wählt oben einen Verband. Innerhalb eines Verbands ist die Rangfolge belastbar, weil dort alle Staffeln über Auf- und Abstieg zusammenhängen.</div>
+<div class="hinweis">__NOTE__</div>
 
 <footer>
-  <p>Stand 05.09.2026, 15:50 Uhr · Saison 2026/27 · Daten:
+  <p>Stand __GENERATED__ · Saison __SEASON__ · Daten:
   <a href="https://www.openligadb.de/">OpenLigaDB</a> und
   <a href="https://www.fussball.de/">fussball.de</a> ·
   <a href="vereine.csv">vereine.csv</a> ·
@@ -155,7 +274,7 @@ footer a{color:var(--accent)}
 </div>
 
 <script>
-const KARTEN = [{"icon": "🏆", "titel": "Bester Verein Deutschlands", "erklaerung": "Ohne Rücksicht auf die Ligastufe: die meisten Punkte pro Spiel, bei Gleichstand die bessere Tordifferenz pro Spiel. Mindestens 5 Spiele.", "verein": "SV Lengede II", "liga": "3. Kreisklasse Peine", "stufe": 11, "verband": "Niedersachsen", "rang": 20597, "wert": "3.00 Punkte/Spiel"}, {"icon": "🔥", "titel": "Der heißeste Club", "erklaerung": "Die größte Tordifferenz pro Spiel — wer nicht nur gewinnt, sondern auseinandernimmt. Mindestens 5 Spiele.", "verein": "SC TB Rambach", "liga": "KLD Wiesbaden", "stufe": 12, "verband": "Hessen", "rang": 25692, "wert": "+8.00 Tore/Spiel"}, {"icon": "⚽", "titel": "Die Torfabrik", "erklaerung": "Meiste eigene Tore pro Spiel. Mindestens 5 Spiele.", "verein": "SC TB Rambach", "liga": "KLD Wiesbaden", "stufe": 12, "verband": "Hessen", "rang": 25692, "wert": "9.40 Tore/Spiel"}, {"icon": "🧱", "titel": "Das Bollwerk", "erklaerung": "Wenigste Gegentore pro Spiel. Mindestens 5 Spiele.", "verein": "SG Reichenbach", "liga": "KOL Bergstraße", "stufe": 8, "verband": "Hessen", "rang": 2649, "wert": "0.00 Gegentore/Spiel"}, {"icon": "📈", "titel": "Aufsteiger der Woche", "erklaerung": "Größter Sprung im bundesweiten Ranking gegenüber der Vorwoche. Nur für Ligastufen mit Spieldaten — siehe unten.", "verein": "VfB Stuttgart", "liga": "Bundesliga", "stufe": 1, "verband": "überregional", "rang": 7, "wert": "+11 Plätze auf Rang 7"}, {"icon": "📉", "titel": "Absteiger der Woche", "erklaerung": "Größter Verlust im bundesweiten Ranking gegenüber der Vorwoche.", "verein": "FSV 63 Luckenwalde", "liga": "Regionalliga Nordost", "stufe": 4, "verband": "überregional", "rang": 143, "wert": "-54 Plätze auf Rang 143"}, {"icon": "🥶", "titel": "Das Schlusslicht", "erklaerung": "Die schwächste Punkteausbeute des Landes. Mindestens 5 Spiele.", "verein": "FC Genclerbirligi Wetzlar", "liga": "KLC Wetzlar Gr.1", "stufe": 11, "verband": "Hessen", "rang": 25371, "wert": "-2.00 Punkte/Spiel"}, {"icon": "💥", "titel": "Die dickste Klatsche", "erklaerung": "Schlechteste Tordifferenz pro Spiel. Mindestens 5 Spiele.", "verein": "TSKV Goslar II", "liga": "1. Nordharzklasse Staffel 1", "stufe": 9, "verband": "Niedersachsen", "rang": 12616, "wert": "-13.20 Tore/Spiel"}];
+const KARTEN = __KARTEN__;
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c =>
   ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 document.getElementById('karten').innerHTML = KARTEN.map(k => `
@@ -170,3 +289,27 @@ document.getElementById('karten').innerHTML = KARTEN.map(k => `
 </script>
 </body>
 </html>
+"""
+
+
+def write_landing(out_dir: Path, ranking: list[dict], meta: dict) -> None:
+    zahlen = kennzahlen(ranking)
+    verbaende = {r["verband"] for r in ranking if r.get("verband")}
+    stufen = {r["tier"] for r in ranking}
+
+    def tausend(n: int) -> str:
+        return f"{n:,}".replace(",", ".")
+
+    html = TEMPLATE
+    for schluessel, wert in {
+        "__N_TEAMS__": tausend(len(ranking)),
+        "__N_STAFFELN__": tausend(meta["leagues"]),
+        "__N_STUFEN__": str(len(stufen)),
+        "__N_VERBAENDE__": str(len(verbaende)),
+        "__SEASON__": meta["season_label"],
+        "__GENERATED__": meta["generated"],
+        "__NOTE__": meta.get("note") or "",
+        "__KARTEN__": json.dumps(zahlen["karten"], ensure_ascii=False),
+    }.items():
+        html = html.replace(schluessel, wert)
+    (out_dir / "index.html").write_text(html, encoding="utf-8")

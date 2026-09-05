@@ -58,6 +58,9 @@ def load(client: OpenLigaDB, season: int | None = None, verbose: bool = True):
                 team.icon = info.get("teamIconUrl") or team.icon
                 team.tier, team.league_name = ref.tier, ref.name
                 team.verband = ref.verband
+                team.spielklasse = ref.name
+                team.staffel_id = f"{ref.shortcut}/{season}"
+                team.quelle = "OpenLigaDB"
             matches.append(Match(
                 date=when, league_name=ref.name, tier=ref.tier,
                 home=h_key, away=a_key,
@@ -66,8 +69,11 @@ def load(client: OpenLigaDB, season: int | None = None, verbose: bool = True):
             kept += 1
         if kept:
             covered.add(ref.name)
-            leagues.append({"shortcut": ref.shortcut, "tier": ref.tier,
-                            "name": ref.name, "matches": kept})
+            leagues.append({"shortcut": f"{ref.shortcut}/{season}",
+                            "tier": ref.tier, "name": ref.name,
+                            "verband": ref.verband, "area": None,
+                            "spielklasse": ref.name, "matches": kept,
+                            "source": "OpenLigaDB"})
         if verbose:
             print(f"  {'ok ' if kept else '-- '}{ref.shortcut:16s} "
                   f"{ref.name:24.24s} {kept:4d} Spiele", file=sys.stderr)
@@ -99,6 +105,8 @@ def merge_standings(teams: dict[str, Team], groups: list[dict]):
             teams[key] = Team(
                 key=key, name=row["name"], icon=None, tier=group["tier"],
                 league_name=group["name"], verband=group["verband"],
+                area=group["area"], spielklasse=group["spielklasse"],
+                staffel_id=group["staffel"], quelle="fussball.de",
             )
             external[key] = Stats(
                 played=row["played"], won=row["won"], drawn=row["drawn"],

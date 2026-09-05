@@ -20,12 +20,22 @@ class Match:
 
 @dataclass
 class Team:
+    """Eine Mannschaft samt ihrer Einordnung in die Ligapyramide.
+
+    Die Kette Verband -> Ligastufe -> Spielklasse -> Gebiet -> Staffel ist der
+    inhaltliche Kern: sie sagt, wer wo gegen wen spielt. Deshalb wird sie hier
+    vollständig mitgeführt und nicht nur im Staffelnamen mitgeschleppt.
+    """
     key: str
     name: str
     icon: str | None = None
-    tier: int | None = None
-    league_name: str | None = None
-    verband: str | None = None
+    tier: int | None = None            # Ligastufe 1-14
+    league_name: str | None = None     # Name der konkreten Staffel
+    verband: str | None = None         # Landesverband
+    area: str | None = None            # Gebiet: Fußballkreis oder Verbandsebene
+    spielklasse: str | None = None     # Kategorie laut Verband, z.B. "Kreisliga B"
+    staffel_id: str | None = None      # Schlüssel der Staffel bei der Quelle
+    quelle: str | None = None          # OpenLigaDB oder fussball.de
 
 
 # --- Vereinsidentität -----------------------------------------------------

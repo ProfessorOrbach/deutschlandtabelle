@@ -287,6 +287,10 @@ class FussballDe:
         team_type, kinds = found
         sc = season_code(season)
         areas_by_league = (kinds.get("Gebiet") or {}).get(team_type, {})
+        # Kategoriename der Spielklasse ("Kreisliga B", "Landesklasse", ...).
+        # Er ist die Sprache des Verbands; der Staffelname darunter ist frei.
+        klassen = {k.lstrip("_"): v for k, v
+                   in ((kinds.get("Spielklasse") or {}).get(team_type, {})).items()}
         out: list[dict] = []
         for league_id, tier in verband.tiers.items():
             for area_key, area_name in (areas_by_league.get(league_id) or {}).items():
@@ -303,9 +307,12 @@ class FussballDe:
                                 continue
                             sid = re.search(r"/staffel/([0-9A-Z]+-[GC])", url)
                             if sid:
-                                out.append({"tier": tier, "area": area_name,
-                                            "verband": verband.label, "name": name,
-                                            "staffel": sid.group(1)})
+                                out.append({
+                                    "tier": tier, "area": area_name,
+                                    "verband": verband.label, "name": name,
+                                    "spielklasse": klassen.get(league_id),
+                                    "mandant": verband.mandant,
+                                    "staffel": sid.group(1)})
         return out
 
     # -- Tabelle ----------------------------------------------------------
@@ -390,6 +397,8 @@ def fetch(cache_dir: Path, season: int, verbose: bool = True) -> list[dict]:
         used.add(label)
         out.append({"name": label, "tier": entry["tier"],
                     "verband": entry["verband"], "area": entry["area"],
+                    "spielklasse": entry["spielklasse"],
+                    "mandant": entry["mandant"],
                     "staffel": entry["staffel"], "rows": rows})
     if verbose:
         teams = sum(len(g["rows"]) for g in out)

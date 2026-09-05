@@ -1,6 +1,31 @@
-# Deutschlandtabelle
+# FCR Deutschland — dein Fußball-Club-Ranking
 
 **→ [professororbach.github.io/deutschlandtabelle](https://professororbach.github.io/deutschlandtabelle/)**
+
+Die Seite hat zwei Ebenen: `index.html` ist die Einstiegsseite mit Marke, Beschreibung
+und den Bestenlisten, `tabelle.html` die komplette Rangfolge. Das Suchfeld auf der
+Einstiegsseite springt direkt in die gefilterte Tabelle (`tabelle.html?q=…`); ebenso
+verstanden werden `?verband=` und `?stufe=`.
+
+**Headerbild einsetzen:** eine Datei `docs/header.jpg` ablegen, empfohlen 2000 × 700 px.
+Der gestrichelte Platzhalter verschwindet dann von selbst — es ist kein Eingriff im Code
+nötig.
+
+## Die Bestenlisten auf der Einstiegsseite
+
+Acht Kennzahlen, jede quer zur Tabelle gerechnet, also **ohne Rücksicht auf die
+Ligastufe**: bester Verein Deutschlands (Punkte/Spiel, dann Tordifferenz/Spiel), der
+heißeste Club (größte Tordifferenz/Spiel), die Torfabrik, das Bollwerk, Auf- und
+Absteiger der Woche, das Schlusslicht und die dickste Klatsche.
+
+Damit kein Verein durch ein einziges gutes Spiel ganz nach oben rutscht, gilt eine
+Mindestspielzahl. Sie passt sich an: `ranking/landing.py` geht von fünf Spielen abwärts,
+bis mindestens 50 Mannschaften die Schwelle erreichen — zu Saisonbeginn also niedriger,
+später höher. Die geltende Schwelle steht auf jeder Karte.
+
+Auf- und Absteiger der Woche gibt es nur für die Ligastufen 1–4: für alles darunter
+liefert fussball.de keine Einzelspiele mit Datum, aus denen sich ein Stand von vor sieben
+Tagen nachrechnen ließe.
 
 Eine einzige, tagesaktuelle Rangfolge aller erfassten deutschen Fußballmannschaften —
 ligaübergreifend, von der Bundesliga abwärts, ausschließlich aus den Spielen der
@@ -112,6 +137,80 @@ Mandanten-ID, Name, Startstufe und die Spielklassen-IDs in Pyramidenreihenfolge.
 erst im Browser per JavaScript auf. Diesen Staffeln fehlt deshalb die Vorwochen-Differenz;
 sie zeigen dauerhaft „–".
 
+## Die Datendateien
+
+Der Logikbaum **Verband → Ligastufe → Spielklasse → Gebiet → Staffel → Verein** ist der
+inhaltliche Kern und liegt deshalb als zwei verknüpfbare Tabellen vor, nicht nur
+implizit im Staffelnamen.
+
+### `docs/vereine.csv` — eine Zeile je Mannschaft
+
+| Spalte | Bedeutung |
+|---|---|
+| `rang_bundesweit` | Platz in der Gesamtrangfolge, lückenlos 1..n |
+| `verein` | Name laut Quelle |
+| `verband` | Landesverband; leer bei den überregionalen Ligen (Stufe 1–4) |
+| `gebiet` | Fußballkreis oder Verbandsebene; leer, wo die Quelle keinen führt |
+| `ligastufe` | 1–14 |
+| `spielklasse` | Kategorie in der Sprache des Verbands, z. B. „Kreisliga B", „Landesklasse" |
+| `staffel` | die konkrete Staffel, in der gespielt wird |
+| `staffel_id` | Schlüssel der Staffel bei der Quelle — verbindet mit `ligen.csv` |
+| `platz_in_staffel` | klassischer Tabellenplatz, lückenlos 1..n je Staffel |
+| `spiele` … `punkte` | Bilanz der laufenden Saison |
+| `punkte_pro_spiel` | Sortierkriterium innerhalb einer Ligastufe |
+| `rangaenderung_vorwoche` | leer, wo die Quelle keine Einzelspiele liefert |
+| `quelle` | OpenLigaDB oder fussball.de |
+
+**Spielklasse und Staffel sind nicht dasselbe.** Die Spielklasse ist die Kategorie des
+Verbands und bestimmt die Ligastufe; die Staffel ist die konkrete Gruppe darunter. „Kreisliga B"
+ist eine Spielklasse, „Kreisliga B Staffel 3 · Kreis Berg" eine von vielen Staffeln darin.
+
+### `docs/ligen.csv` — eine Zeile je Staffel
+
+Der Baum ohne die Vereine: `staffel_id`, `verband`, `gebiet`, `ligastufe`, `spielklasse`,
+`staffel`, dazu `mannschaften`, `spiele_gesamt`, `tore_gesamt`, `punkte_gesamt`,
+`tabellenfuehrer` und `quelle`. Über `staffel_id` lässt sich `vereine.csv` daran anfügen.
+
+## Prüfen
+
+```bash
+python3 pruefen.py
+```
+
+Das Skript liest ausschließlich die beiden CSV-Dateien — es holt nichts nach und
+vertraut keiner Zwischenstufe der Pipeline, das Ergebnis ist also unabhängig
+nachvollziehbar. Geprüft wird in sechs Gruppen:
+
+1. **Verknüpfung** — jede `staffel_id` aus `vereine.csv` existiert in `ligen.csv`, keine
+   verwaiste Staffel, IDs eindeutig.
+2. **Logikbaum** — Verband, Ligastufe, Spielklasse und Gebiet sind innerhalb einer
+   Staffel einheitlich; beide Dateien beschreiben dieselbe Staffel gleich; eine
+   Spielklasse liegt je Verband auf genau einer Ligastufe; die Stufen eines Verbands sind
+   lückenlos.
+3. **Bilanz je Mannschaft** — S+U+N = Spiele, Tordifferenz = Tore − Gegentore, Punkte pro
+   Spiel stimmt.
+4. **Geschlossenheit je Staffel** — die schärfste Prüfung: in einer Staffel spielen alle
+   nur gegeneinander, also muss die **Summe der Tore der Summe der Gegentore entsprechen**.
+   Dazu: gerade Spielsumme, lückenlose Tabellenplätze, nicht mehr Punkte vergeben als
+   Partien erlauben.
+5. **Rangfolge** — Ränge lückenlos, Sortierung nach Ligastufe und dann Punkten pro Spiel.
+6. **Eckdaten** — 18/18/20 in den ersten drei Ligen, fünf Regionalligen auf Stufe 4.
+
+Vier Befunde sind **Hinweise, keine Fehler** — sie beschreiben Eigenheiten des
+Amateurfußballs und brechen nicht ab:
+
+* **Punktabzüge** (rund 140 Mannschaften): Punkte weichen von 3×Siege + Unentschieden ab.
+* **Ungleiche Torsummen** in 26 von 1.952 Staffeln, und in 10 davon eine ungerade
+  Spielsumme. Ursache ist eine Wertung gegen eine zurückgezogene Mannschaft: sie erzeugt
+  eine Niederlage ohne zugehörigen Sieg. In der Kreisliga A Aachen etwa stehen 7 Siege
+  gegen 8 Niederlagen, und die Torlücke von genau 5 entspricht dem 0:5 auf dem letzten
+  Platz. Ein *Parser*-Fehler sähe anders aus — er würde S+U+N, die Tordifferenz oder die
+  Tabellenplätze zerlegen, und die sind hart geprüft.
+* **Unterschiedlich weit gespielte Staffeln**: normal, weil Nachholspiele existieren.
+
+Rückgabewert 0 bei bestandenen harten Prüfungen, sonst 1. Aktueller Stand:
+**20 Prüfungen bestanden, 0 Fehler, 4 Hinweise.**
+
 ## Benutzung
 
 ```bash
@@ -119,8 +218,8 @@ python3 build.py              # baut docs/ (nutzt den Plattencache)
 python3 build.py --no-cache   # alles frisch laden
 ```
 
-Keine Abhängigkeiten außer Python 3.12+. Ergebnis: `docs/index.html`,
-`docs/ranking.json`, `docs/ranking.csv`.
+Keine Abhängigkeiten außer Python 3.12+. Ergebnis: `docs/index.html` (Einstieg), `docs/tabelle.html` (Tabelle),
+`docs/vereine.csv`, `docs/ligen.csv`, `docs/ranking.json`.
 
 ## Veröffentlichung
 
@@ -150,7 +249,9 @@ ranking/model.py      Datenmodell, Vereinsidentität, Ergebnis-Extraktion
 ranking/load.py       Ligen laden, Spiele und Mannschaften bilden
 ranking/fussballde.py Adapter für Stufe 5-11 (Entwurf, abschaltbar)
 ranking/rank.py       Tabelle, Rangfolge, Vorwochenvergleich
-ranking/render.py     HTML, JSON, CSV
+ranking/landing.py    Einstiegsseite und Bestenlisten
+ranking/render.py     Tabellenseite, CSV, JSON
+pruefen.py            Prüfskript für die CSV-Dateien
 ```
 
 ## Anmerkungen
