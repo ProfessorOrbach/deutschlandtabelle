@@ -1,4 +1,23 @@
-<!doctype html>
+"""Das Seitengerüst: eine Seite, vier Ansichten über die Adresszeile.
+
+    #home        Marke, Beschreibung, Überblick über die Sportarten
+    #fussball    Bestenlisten und komplette Tabelle
+    #handball    dito
+    #basketball  dito
+
+Warum eine einzige Seite: so lauten die Adressen wie gewünscht
+`.../#fussball`. Die Daten je Sportart liegen aber nicht in dieser Datei,
+sondern in `data/<sport>.json` und werden erst beim Wechsel geladen -- die
+Fußballtabelle allein wiegt gut zwei Megabyte, alle drei eingebettet wären
+unbenutzbar. Dadurch startet die Seite in Millisekunden und lädt nur, was
+wirklich angesehen wird.
+"""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+TEMPLATE = """<!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
@@ -145,49 +164,7 @@ td.delta{width:56px;font-size:13px}
 .up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--muted)}
 .empty{padding:28px;text-align:center;color:var(--muted)}
 .laden{padding:40px;text-align:center;color:var(--muted)}
-.t1-fg{color:var(--t1)}
-tbody tr.t1{background:color-mix(in srgb,var(--t1) 7%, var(--panel))}
-.t2-fg{color:var(--t2)}
-tbody tr.t2{background:color-mix(in srgb,var(--t2) 7%, var(--panel))}
-.t3-fg{color:var(--t3)}
-tbody tr.t3{background:color-mix(in srgb,var(--t3) 7%, var(--panel))}
-.t4-fg{color:var(--t4)}
-tbody tr.t4{background:color-mix(in srgb,var(--t4) 7%, var(--panel))}
-.t5-fg{color:var(--t5)}
-tbody tr.t5{background:color-mix(in srgb,var(--t5) 7%, var(--panel))}
-.t6-fg{color:var(--t6)}
-tbody tr.t6{background:color-mix(in srgb,var(--t6) 7%, var(--panel))}
-.t7-fg{color:var(--t7)}
-tbody tr.t7{background:color-mix(in srgb,var(--t7) 7%, var(--panel))}
-.t8-fg{color:var(--t8)}
-tbody tr.t8{background:color-mix(in srgb,var(--t8) 7%, var(--panel))}
-.t9-fg{color:var(--t9)}
-tbody tr.t9{background:color-mix(in srgb,var(--t9) 7%, var(--panel))}
-.t10-fg{color:var(--t10)}
-tbody tr.t10{background:color-mix(in srgb,var(--t10) 7%, var(--panel))}
-.t11-fg{color:var(--t11)}
-tbody tr.t11{background:color-mix(in srgb,var(--t11) 7%, var(--panel))}
-.t12-fg{color:var(--t12)}
-tbody tr.t12{background:color-mix(in srgb,var(--t12) 7%, var(--panel))}
-.t13-fg{color:var(--t13)}
-tbody tr.t13{background:color-mix(in srgb,var(--t13) 7%, var(--panel))}
-.t14-fg{color:var(--t14)}
-tbody tr.t14{background:color-mix(in srgb,var(--t14) 7%, var(--panel))}
-tbody tr.step > td{border-top:2px solid var(--line)}
-tbody tr.step.t1 > td{border-top-color:var(--t1)}
-tbody tr.step.t2 > td{border-top-color:var(--t2)}
-tbody tr.step.t3 > td{border-top-color:var(--t3)}
-tbody tr.step.t4 > td{border-top-color:var(--t4)}
-tbody tr.step.t5 > td{border-top-color:var(--t5)}
-tbody tr.step.t6 > td{border-top-color:var(--t6)}
-tbody tr.step.t7 > td{border-top-color:var(--t7)}
-tbody tr.step.t8 > td{border-top-color:var(--t8)}
-tbody tr.step.t9 > td{border-top-color:var(--t9)}
-tbody tr.step.t10 > td{border-top-color:var(--t10)}
-tbody tr.step.t11 > td{border-top-color:var(--t11)}
-tbody tr.step.t12 > td{border-top-color:var(--t12)}
-tbody tr.step.t13 > td{border-top-color:var(--t13)}
-tbody tr.step.t14 > td{border-top-color:var(--t14)}
+__TIER_CSS__
 tbody tr:hover{background:var(--accent-soft)}
 @media (max-width:1100px){
   th:nth-child(5),td:nth-child(5),th:nth-child(7),td:nth-child(7),
@@ -315,7 +292,7 @@ footer a{color:var(--accent)}
 </div>
 
 <script>
-const SPORTS = [{"name": "Fußball", "icon": "⚽", "torwort": "Tore", "hinweis": null, "slug": "fussball", "ready": true, "teams": 26825, "leagues": 1951, "tiers": 14, "season": "2026/27", "generated": "05.09.2026, 15:50 Uhr", "vergleichHinweis": "Unterhalb der überregionalen Ligen gibt es zwischen den Landesverbänden keine sportliche Verbindung — für einen belastbaren Vergleich oben einen <b>Verband</b> wählen.", "fuss": "<p>Stand 05.09.2026, 15:50 Uhr · Saison 2026/27 · <a href=\"fussball-vereine.csv\">fussball-vereine.csv</a> · <a href=\"fussball-ligen.csv\">fussball-ligen.csv</a></p>"}, {"name": "Handball", "icon": "🤾", "torwort": "Tore", "hinweis": null, "slug": "handball", "ready": true, "teams": 1875, "leagues": 173, "tiers": 11, "season": "2026/27", "generated": "05.09.2026, 16:46 Uhr", "vergleichHinweis": "Unterhalb der überregionalen Ligen gibt es zwischen den Landesverbänden keine sportliche Verbindung — für einen belastbaren Vergleich oben einen <b>Verband</b> wählen.", "fuss": "<p>Stand 05.09.2026, 16:46 Uhr · Saison 2026/27 · <a href=\"handball-vereine.csv\">handball-vereine.csv</a> · <a href=\"handball-ligen.csv\">handball-ligen.csv</a></p>"}, {"name": "Basketball", "icon": "🏀", "torwort": "Körbe", "hinweis": "Die Datenquelle für den deutschen Basketball ist noch nicht erschlossen. Sobald sie steht, erscheint hier dieselbe Rangfolge wie bei Fußball und Handball.", "slug": "basketball", "ready": false}];
+const SPORTS = __SPORTS__;
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c =>
   ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const tausend = n => Number(n).toLocaleString('de-DE');
@@ -521,3 +498,25 @@ route();
 </script>
 </body>
 </html>
+"""
+
+
+def _tier_css(max_tier: int = 14) -> str:
+    """Farbband je Ligastufe plus farbige Kante beim Stufenwechsel."""
+    zeilen = []
+    for t in range(1, max_tier + 1):
+        zeilen.append(f".t{t}-fg{{color:var(--t{t})}}")
+        zeilen.append(f"tbody tr.t{t}{{background:color-mix(in srgb,"
+                      f"var(--t{t}) 7%, var(--panel))}}")
+    zeilen.append("tbody tr.step > td{border-top:2px solid var(--line)}")
+    for t in range(1, max_tier + 1):
+        zeilen.append(f"tbody tr.step.t{t} > td{{border-top-color:var(--t{t})}}")
+    return "\n".join(zeilen)
+
+
+def write_shell(out_dir: Path, sports: list[dict]) -> None:
+    """Schreibt index.html. Die Daten je Sportart liegen in data/<slug>.json."""
+    html = TEMPLATE
+    html = html.replace("__TIER_CSS__", _tier_css())
+    html = html.replace("__SPORTS__", json.dumps(sports, ensure_ascii=False))
+    (out_dir / "index.html").write_text(html, encoding="utf-8")

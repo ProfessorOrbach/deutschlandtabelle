@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Prüft docs/vereine.csv und docs/ligen.csv auf innere Widersprüche.
+"""Prüft die CSV-Dateien einer Sportart auf innere Widersprüche.
 
-    python3 pruefen.py            # Bericht auf der Konsole
-    python3 pruefen.py --leise    # nur Fehler
+    python3 pruefen.py                     # Fußball
+    python3 pruefen.py --sport handball
+    python3 pruefen.py --leise             # nur Fehler
 
 Die Prüfungen arbeiten ausschließlich mit den CSV-Dateien selbst -- sie holen
 nichts nach und vertrauen keiner Zwischenstufe der Pipeline. Damit lässt sich
@@ -60,15 +61,16 @@ def zahl(wert: str) -> int:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--leise", action="store_true", help="nur Fehler ausgeben")
+    ap.add_argument("--sport", default="fussball")
     ap.add_argument("--verzeichnis", default=str(ROOT / "docs"))
     args = ap.parse_args()
 
     ordner = Path(args.verzeichnis)
-    vereine = lies(ordner / "vereine.csv")
-    ligen = lies(ordner / "ligen.csv")
+    vereine = lies(ordner / f"{args.sport}-vereine.csv")
+    ligen = lies(ordner / f"{args.sport}-ligen.csv")
     b = Bericht(args.leise)
 
-    print(f"vereine.csv: {len(vereine)} Zeilen · ligen.csv: {len(ligen)} Zeilen\n")
+    print(f"{args.sport}: {len(vereine)} Mannschaften · {len(ligen)} Staffeln\n")
 
     # --- 1. Verknüpfung der beiden Dateien -------------------------------
     print("Verknüpfung")
@@ -119,7 +121,10 @@ def main() -> int:
             stufen_je_verband[l["verband"]].add(int(l["ligastufe"]))
     luecken = [f"{vb}: {sorted(st)}" for vb, st in stufen_je_verband.items()
                if sorted(st) != list(range(min(st), max(st) + 1))]
-    b.pruefung("die Ligastufen eines Verbands sind lückenlos", luecken)
+    # Beim Fußball ist eine Lücke ein Zuordnungsfehler, beim Handball dagegen
+    # zu erwarten: nicht jeder Verband wickelt alle Stufen über handball.net ab.
+    b.pruefung("die Ligastufen eines Verbands sind lückenlos", luecken,
+               hart=(args.sport == "fussball"))
 
     # --- 3. Bilanz je Mannschaft -----------------------------------------
     print("\nBilanz je Mannschaft")
@@ -201,12 +206,14 @@ def main() -> int:
     for v in vereine:
         je_stufe[zahl(v["ligastufe"])] += 1
     soll = {1: 18, 2: 18, 3: 20}
-    b.pruefung("Bundesliga 18, 2. Bundesliga 18, 3. Liga 20",
-               [f"Stufe {s}: {je_stufe.get(s)} statt {n}"
-                for s, n in soll.items() if je_stufe.get(s) != n])
-    b.pruefung("Ligastufe 4 hat fünf Regionalligen",
-               [] if len({l["staffel"] for l in ligen if l["ligastufe"] == "4"}) == 5
-               else [f"{sorted({l['staffel'] for l in ligen if l['ligastufe']=='4'})}"])
+    if args.sport == "fussball":
+        b.pruefung("Bundesliga 18, 2. Bundesliga 18, 3. Liga 20",
+                   [f"Stufe {s}: {je_stufe.get(s)} statt {n}"
+                    for s, n in soll.items() if je_stufe.get(s) != n])
+        b.pruefung("Ligastufe 4 hat fünf Regionalligen",
+                   [] if len({l["staffel"] for l in ligen
+                              if l["ligastufe"] == "4"}) == 5
+                   else [f"{sorted({l['staffel'] for l in ligen if l['ligastufe']=='4'})}"])
 
     if not args.leise:
         print("\nVerteilung je Ligastufe")
@@ -216,9 +223,9 @@ def main() -> int:
     # --- Ergebnis ---------------------------------------------------------
     print(f"\n{b.bestanden} Prüfungen bestanden, {len(b.fehler)} Fehler, "
           f"{len(b.hinweise)} Hinweise")
-    print("Hinweise beschreiben Eigenheiten des Amateurfußballs (Punktabzüge, "
+    print("Hinweise beschreiben Eigenheiten des Amateursports (Punktabzüge, "
           "Wertungen gegen\nzurückgezogene Mannschaften, unterschiedlich weit "
-          "gespielte Staffeln) -- keine Fehler.")
+          "gespielte Staffeln, unvollständige\nAbdeckung) -- keine Fehler.")
     if b.fehler:
         print("Fehler in: " + ", ".join(b.fehler))
         return 1

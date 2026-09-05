@@ -1,37 +1,37 @@
-# FCR Deutschland — dein Fußball-Club-Ranking
+# FCR Deutschland — dein Club-Ranking
 
 **→ [professororbach.github.io/deutschlandtabelle](https://professororbach.github.io/deutschlandtabelle/)**
 
-Die Seite hat zwei Ebenen: `index.html` ist die Einstiegsseite mit Marke, Beschreibung
-und den Bestenlisten, `tabelle.html` die komplette Rangfolge. Das Suchfeld auf der
-Einstiegsseite springt direkt in die gefilterte Tabelle (`tabelle.html?q=…`); ebenso
-verstanden werden `?verband=` und `?stufe=`.
+Jeder Verein des Landes in einer einzigen Rangfolge — von der Bundesliga bis zur
+Kreisklasse, für mehrere Sportarten.
+
+| Sportart | Stand | Umfang |
+|---|---|---|
+| ⚽ Fußball | fertig | 26.825 Mannschaften, 1.951 Staffeln, 14 Ligastufen, 21 Landesverbände |
+| 🤾 Handball | fertig | 1.875 Mannschaften, 173 Staffeln, 11 Ligastufen |
+| 🏀 Basketball | offen | Datenquelle noch nicht erschlossen |
+
+## Aufbau der Seite
+
+Eine Seite, vier Ansichten über die Adresszeile:
+
+```
+#home        Marke, Beschreibung, Überblick über die Sportarten
+#fussball    Bestenlisten und komplette Tabelle
+#handball    dito
+#basketball  Platzhalter, solange die Quelle fehlt
+```
+
+Warum eine einzige Seite: so lauten die Adressen wie gewünscht `…/#fussball`. Die
+Daten liegen aber **nicht** in der Seite, sondern je Sportart in `docs/data/<sport>.json`
+und werden erst beim Wechsel geladen — die Fußballtabelle allein wiegt 2,2 MB, alle
+Sportarten eingebettet wären unbenutzbar. Dadurch ist `index.html` nur 25 KB groß.
+
+Das Suchfeld auf der Startseite springt in die gefilterte Tabelle der gewählten
+Sportart (`#fussball?q=…`); ebenso verstanden werden `?verband=` und `?stufe=`.
 
 **Headerbild einsetzen:** eine Datei `docs/header.jpg` ablegen, empfohlen 2000 × 700 px.
-Der gestrichelte Platzhalter verschwindet dann von selbst — es ist kein Eingriff im Code
-nötig.
-
-## Die Bestenlisten auf der Einstiegsseite
-
-Acht Kennzahlen, jede quer zur Tabelle gerechnet, also **ohne Rücksicht auf die
-Ligastufe**: bester Verein Deutschlands (Punkte/Spiel, dann Tordifferenz/Spiel), der
-heißeste Club (größte Tordifferenz/Spiel), die Torfabrik, das Bollwerk, Auf- und
-Absteiger der Woche, das Schlusslicht und die dickste Klatsche.
-
-Damit kein Verein durch ein einziges gutes Spiel ganz nach oben rutscht, gilt eine
-Mindestspielzahl. Sie passt sich an: `ranking/landing.py` geht von fünf Spielen abwärts,
-bis mindestens 50 Mannschaften die Schwelle erreichen — zu Saisonbeginn also niedriger,
-später höher. Die geltende Schwelle steht auf jeder Karte.
-
-Auf- und Absteiger der Woche gibt es nur für die Ligastufen 1–4: für alles darunter
-liefert fussball.de keine Einzelspiele mit Datum, aus denen sich ein Stand von vor sieben
-Tagen nachrechnen ließe.
-
-Eine einzige, tagesaktuelle Rangfolge aller erfassten deutschen Fußballmannschaften —
-ligaübergreifend, von der Bundesliga abwärts, ausschließlich aus den Spielen der
-laufenden Saison. Ausgabe ist eine statische Seite für GitHub Pages.
-
-→ Ursprünglicher Umsetzungsplan und Datenquellen-Recherche: [PLAN.md](PLAN.md)
+Der gestrichelte Platzhalter verschwindet dann von selbst.
 
 ## Das Problem
 
@@ -137,13 +137,50 @@ Mandanten-ID, Name, Startstufe und die Spielklassen-IDs in Pyramidenreihenfolge.
 erst im Browser per JavaScript auf. Diesen Staffeln fehlt deshalb die Vorwochen-Differenz;
 sie zeigen dauerhaft „–".
 
+## Handball: handball.net
+
+Der Spielbetrieb des DHB liegt hinter einer JSON-Schnittstelle, die ohne Anmeldung
+antwortet — sie verlangt allerdings einen `Referer`-Header, sonst kommt HTTP 403:
+
+```
+/api/new/competitions?season_id=2627&per_page=100&page=<n>&has_phases=1&with_phases=1
+/api/new/standings?phase_id=<id>
+/api/new/federations/<id>
+```
+
+**Die Ligastufe ist hier einfacher als beim Fußball.** handball.net führt zu jedem
+Wettbewerb eine `category`, deren Name bundesweit vereinheitlicht ist
+(„Bezirksoberliga / Kreisoberliga / Regionsoberliga"). Elf Namen decken die ganze
+Pyramide ab — statt 146 Spielklassen über 21 Verbandstabellen wie im Fußball.
+
+Zwei Fallen, über die ich gestolpert bin und die im Code kommentiert sind:
+
+* **Die Kategorie-*IDs* sind nicht die Ligastufe.** Sie wiederholen sich je
+  Altersklasse und Geschlecht — id 3 und id 16 heißen beide „3. Liga". Maßgeblich
+  ist der Name.
+* **`standings` liefert eine Zeile je Mannschaft und geplantem Spieltag.** Eine
+  16er-Staffel mit 30 Spieltagen ergibt 480 Zeilen, die derzeit alle denselben Stand
+  tragen. Ungefiltert kam ich auf 40.416 Handballmannschaften. Es wird je Mannschaft
+  die Zeile mit den meisten absolvierten Spielen genommen.
+
+Ein struktureller Marker für Ligabetrieb fehlt: `competition_type_id` ist bei allen
+897 Wettbewerben 0, und einem Freundschaftsspiel wird munter die Kategorie „Oberliga"
+verpasst. Freundschafts-, Test- und Pokalrunden werden deshalb über den Namen
+ausgeschlossen — unschöner, aber die Daten geben nichts anderes her.
+
+**Bekannte Lücken:** Die 1. und 2. Bundesliga führt die HBL auf einer eigenen
+Plattform und fehlt; das Ranking beginnt bei der 3. Liga. Und nicht jeder
+Landesverband wickelt seinen Spielbetrieb über handball.net ab, die Abdeckung
+unterhalb der überregionalen Ligen ist daher nicht flächendeckend. Beides steht als
+Hinweis auf der Seite.
+
 ## Die Datendateien
 
 Der Logikbaum **Verband → Ligastufe → Spielklasse → Gebiet → Staffel → Verein** ist der
 inhaltliche Kern und liegt deshalb als zwei verknüpfbare Tabellen vor, nicht nur
 implizit im Staffelnamen.
 
-### `docs/vereine.csv` — eine Zeile je Mannschaft
+### `docs/<sport>-vereine.csv` — eine Zeile je Mannschaft
 
 | Spalte | Bedeutung |
 |---|---|
@@ -165,16 +202,17 @@ implizit im Staffelnamen.
 Verbands und bestimmt die Ligastufe; die Staffel ist die konkrete Gruppe darunter. „Kreisliga B"
 ist eine Spielklasse, „Kreisliga B Staffel 3 · Kreis Berg" eine von vielen Staffeln darin.
 
-### `docs/ligen.csv` — eine Zeile je Staffel
+### `docs/<sport>-ligen.csv` — eine Zeile je Staffel
 
 Der Baum ohne die Vereine: `staffel_id`, `verband`, `gebiet`, `ligastufe`, `spielklasse`,
 `staffel`, dazu `mannschaften`, `spiele_gesamt`, `tore_gesamt`, `punkte_gesamt`,
-`tabellenfuehrer` und `quelle`. Über `staffel_id` lässt sich `vereine.csv` daran anfügen.
+`tabellenfuehrer` und `quelle`. Über `staffel_id` lässt sich die Vereinsdatei daran anfügen.
 
 ## Prüfen
 
 ```bash
-python3 pruefen.py
+python3 pruefen.py                     # Fußball
+python3 pruefen.py --sport handball
 ```
 
 Das Skript liest ausschließlich die beiden CSV-Dateien — es holt nichts nach und
@@ -209,17 +247,22 @@ Amateurfußballs und brechen nicht ab:
 * **Unterschiedlich weit gespielte Staffeln**: normal, weil Nachholspiele existieren.
 
 Rückgabewert 0 bei bestandenen harten Prüfungen, sonst 1. Aktueller Stand:
-**20 Prüfungen bestanden, 0 Fehler, 4 Hinweise.**
+**Fußball: 20 Prüfungen bestanden, 0 Fehler, 4 Hinweise.
+Handball: 20 bestanden, 0 Fehler, 2 Hinweise.**
+
+Beim Handball führt die Quelle drei Mannschaften doppelt in derselben Staffel
+(„TV Bitburg" zweimal); sie werden zu einer zusammengefasst.
 
 ## Benutzung
 
 ```bash
-python3 build.py              # baut docs/ (nutzt den Plattencache)
-python3 build.py --no-cache   # alles frisch laden
+python3 build.py --sport fussball    # rund eine Stunde beim Kaltstart
+python3 build.py --sport handball    # wenige Minuten
+python3 build.py --nur-huelle        # nur index.html neu, nichts abrufen
 ```
 
-Keine Abhängigkeiten außer Python 3.12+. Ergebnis: `docs/index.html` (Einstieg), `docs/tabelle.html` (Tabelle),
-`docs/vereine.csv`, `docs/ligen.csv`, `docs/ranking.json`.
+Keine Abhängigkeiten außer Python 3.12+. Ergebnis: `docs/index.html`, `docs/data/<sport>.json`,
+`docs/<sport>-vereine.csv`, `docs/<sport>-ligen.csv`.
 
 ## Veröffentlichung
 
@@ -249,8 +292,10 @@ ranking/model.py      Datenmodell, Vereinsidentität, Ergebnis-Extraktion
 ranking/load.py       Ligen laden, Spiele und Mannschaften bilden
 ranking/fussballde.py Adapter für Stufe 5-11 (Entwurf, abschaltbar)
 ranking/rank.py       Tabelle, Rangfolge, Vorwochenvergleich
-ranking/landing.py    Einstiegsseite und Bestenlisten
-ranking/render.py     Tabellenseite, CSV, JSON
+ranking/site.py       Seitengerüst mit den #-Routen
+ranking/landing.py    die Bestenlisten
+ranking/handballnet.py Adapter für handball.net
+ranking/render.py     CSV und kompakte Fassung
 pruefen.py            Prüfskript für die CSV-Dateien
 ```
 
