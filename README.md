@@ -8,7 +8,7 @@ Kreisklasse, für mehrere Sportarten.
 | Sportart | Stand | Umfang |
 |---|---|---|
 | ⚽ Fußball | fertig | 26.825 Mannschaften, 1.951 Staffeln, 14 Ligastufen, 21 Landesverbände |
-| 🤾 Handball | fertig | 1.875 Mannschaften, 173 Staffeln, 11 Ligastufen |
+| 🤾 Handball | fertig | 1.911 Mannschaften, 175 Staffeln, 13 Ligastufen |
 | 🏀 Basketball | offen | Datenquelle noch nicht erschlossen |
 
 ## Aufbau der Seite
@@ -168,11 +168,32 @@ Ein struktureller Marker für Ligabetrieb fehlt: `competition_type_id` ist bei a
 verpasst. Freundschafts-, Test- und Pokalrunden werden deshalb über den Namen
 ausgeschlossen — unschöner, aber die Daten geben nichts anderes her.
 
-**Bekannte Lücken:** Die 1. und 2. Bundesliga führt die HBL auf einer eigenen
-Plattform und fehlt; das Ranking beginnt bei der 3. Liga. Und nicht jeder
-Landesverband wickelt seinen Spielbetrieb über handball.net ab, die Abdeckung
-unterhalb der überregionalen Ligen ist daher nicht flächendeckend. Beides steht als
-Hinweis auf der Seite.
+### Die Bundesligen kommen von woanders
+
+handball.net führt den Spielbetrieb erst ab der 3. Liga. Die 1. und 2. Bundesliga
+laufen auf der HBL-Seite (opel-hbl.de), deren Tabellen-Widget von **Sportradar**
+stammt:
+
+```
+https://embed-api.eui.connect.sportradar.com/v1/embed/<id>/standings?locale=de-DE
+    248 = 1. Handball-Bundesliga
+    254 = 2. Handball-Bundesliga
+```
+
+Der Endpunkt antwortet ohne jeden Header. Saison-Parameter ignoriert er — jede
+Embed-ID ist fest auf einen Wettbewerb *und* dessen laufende Saison konfiguriert.
+Die IDs stehen deshalb hart in `ranking/hbl.py`, und zur Sicherheit wird der
+Wettbewerbsname gegengeprüft: **Embed 257 liefert ebenfalls 18 Mannschaften der
+1. Bundesliga — aber die abgeschlossene Vorsaison.** Ohne diese Prüfung wäre so ein
+Vertauscher unbemerkt geblieben.
+
+Punkte stehen im deutschen Handball-Format „4:0" (Plus- zu Minuspunkten); gezählt
+wird die Zahl vor dem Doppelpunkt. Das passt zum Zwei-Punkte-System, das auch
+handball.net liefert.
+
+**Bekannte Lücke:** Nicht jeder Landesverband wickelt seinen Spielbetrieb über
+handball.net ab, die Abdeckung unterhalb der überregionalen Ligen ist daher nicht
+flächendeckend. Das steht als Hinweis auf der Seite.
 
 ## Die Datendateien
 
@@ -294,7 +315,8 @@ ranking/fussballde.py Adapter für Stufe 5-11 (Entwurf, abschaltbar)
 ranking/rank.py       Tabelle, Rangfolge, Vorwochenvergleich
 ranking/site.py       Seitengerüst mit den #-Routen
 ranking/landing.py    die Bestenlisten
-ranking/handballnet.py Adapter für handball.net
+ranking/handballnet.py Adapter für handball.net (ab 3. Liga)
+ranking/hbl.py        Adapter für die Handball-Bundesligen (Sportradar)
 ranking/render.py     CSV und kompakte Fassung
 pruefen.py            Prüfskript für die CSV-Dateien
 ```

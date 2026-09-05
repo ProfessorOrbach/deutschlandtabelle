@@ -20,7 +20,8 @@ import shutil
 import sys
 from pathlib import Path
 
-from ranking import fussballde, handballnet, landing, load, rank, render, site
+from ranking import (fussballde, handballnet, hbl, landing, load, rank,
+                     render, site)
 from ranking.api import OpenLigaDB
 from ranking.leagues import EXPECTED_TIER4, current_season
 
@@ -90,23 +91,25 @@ def baue_fussball(cache_dir: Path, season: int, ohne_fussballde: bool):
 
 # --- Handball -------------------------------------------------------------
 def baue_handball(cache_dir: Path, season: int):
-    groups = handballnet.fetch(cache_dir, season)
+    # Zwei Quellen: die Bundesligen laufen über das Sportradar-Widget der HBL,
+    # alles darunter über handball.net.
+    groups = hbl.fetch(cache_dir) + handballnet.fetch(cache_dir, season)
     if not groups:
         return None
     teams: dict = {}
     external = load.merge_standings(teams, groups)
     ranking = rank.build([], teams, external)
     verbaende = sorted({g["verband"] for g in groups if g["verband"]})
-    note_summary = "Nur der Spielbetrieb auf handball.net — die Bundesligen fehlen"
-    note = (f"Grundlage ist der Spielbetrieb auf handball.net mit "
-            f"{len(verbaende)} Verbänden und Kreisen. <b>Zwei Lücken:</b> Die 1. und "
-            "2. Bundesliga führt die HBL auf einer eigenen Plattform und fehlt "
-            "deshalb — das Ranking beginnt bei der 3. Liga. Und nicht jeder "
-            "Landesverband wickelt seinen Spielbetrieb über handball.net ab; die "
-            "Abdeckung unterhalb der überregionalen Ligen ist daher nicht "
-            "flächendeckend. Ein Vergleich zwischen Verbänden ist unterhalb der "
-            "Regionalliga ohnehin nicht sportlich begründet, weil es dort keine "
-            "gemeinsame Auf- und Abstiegskette gibt.")
+    note_summary = ("Ab Ligastufe 3 nur innerhalb eines Verbands sinnvoll "
+                    "vergleichbar")
+    note = ("Die 1. und 2. Bundesliga kommen von der HBL, alles darunter aus dem "
+            f"Spielbetrieb auf handball.net mit {len(verbaende)} Verbänden und "
+            "Kreisen. <b>Eine Lücke bleibt:</b> nicht jeder Landesverband wickelt "
+            "seinen Spielbetrieb über handball.net ab, die Abdeckung unterhalb der "
+            "überregionalen Ligen ist daher nicht flächendeckend. Und wie im Fußball "
+            "gilt: zwischen Verbänden gibt es unterhalb der Regionalliga keine "
+            "gemeinsame Auf- und Abstiegskette, ein Vergleich ist dort also nicht "
+            "sportlich begründet.")
     return ranking, len(groups), 0, note, note_summary
 
 
